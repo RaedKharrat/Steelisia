@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 //import './Testimonials.css'; // Import the CSS file
 
 const Testimonials = () => {
+  useEffect(() => {
+    const $ = window.$; // Ensure jQuery is available globally
+    $('.owl-carousel').owlCarousel({
+      items: 1,
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayHoverPause: true,
+    });
+  }, []);
+
   return (
     <div className="section testimonials">
       <div className="container">
@@ -9,27 +20,27 @@ const Testimonials = () => {
           <div className="col-lg-7">
             <div className="owl-carousel owl-testimonials">
               <div className="item">
-                <p>“Please tell your friends or colleagues about TemplateMo website. Anyone can access the website to download free templates. Thank you for visiting.”</p>
+                <p>“I couldn't be happier with my custom-made sectional! The quality and craftsmanship are incredible, and it fits perfectly in my living room. Thank you for bringing my vision to life!”</p>
                 <div className="author">
-                  <img src="assets/images/testimonial-author.jpg" alt="Claude David" />
-                  <span className="category">Full Stack Master</span>
-                  <h4>Claude David</h4>
+                  <img src="/Frontoffice/assets/images/profile-pic (1).png" alt="Claude David" />
+                  <span className="category">Software Engineer</span>
+                  <h4>Kharrat Raed</h4>
                 </div>
               </div>
               <div className="item">
-                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravid.”</p>
+                <p>“The delivery service was amazing – fast, professional, and careful with the furniture. Our new dining set is stunning, and the customer service was top-notch from start to finish!”</p>
                 <div className="author">
-                  <img src="assets/images/testimonial-author.jpg" alt="Thomas Jefferson" />
-                  <span className="category">UI Expert</span>
-                  <h4>Thomas Jefferson</h4>
+                  <img src="/Frontoffice/assets/images/alimochlilwayn.JPG" alt="Thomas Jefferson" />
+                  <span className="category">Business Advisor </span>
+                <h4>Ayouni Aly</h4>
                 </div>
               </div>
               <div className="item">
-                <p>“Scholar is free website template provided by TemplateMo for educational related websites. This CSS layout is based on Bootstrap v5.3.0 framework.”</p>
+                <p>“Finding the perfect pieces for our space was easy with their consultation service. We are thrilled with our new furniture, and it has completely transformed our home!”</p>
                 <div className="author">
-                  <img src="assets/images/testimonial-author.jpg" alt="Stella Blair" />
-                  <span className="category">Digital Animator</span>
-                  <h4>Stella Blair</h4>
+                  <img src="/Frontoffice/assets/images/testimonial-author.jpg" alt="Stella Blair" />
+                  <span className="category">Satisfied Customer</span>
+                  <h4>Ayari Chayma</h4>
                 </div>
               </div>
             </div>
@@ -37,8 +48,8 @@ const Testimonials = () => {
           <div className="col-lg-5 align-self-center">
             <div className="section-heading">
               <h6>TESTIMONIALS</h6>
-              <h2>What they say about us?</h2>
-              <p>You can search free CSS templates on Google using different keywords such as templatemo portfolio, templatemo gallery, templatemo blue color, etc.</p>
+              <h2>What our customers are saying</h2>
+              <p>Our clients love our selection of furniture, custom design options, and exceptional customer service. Here’s what they have to say about shopping with us.</p>
             </div>
           </div>
         </div>

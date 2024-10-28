@@ -1,5 +1,5 @@
 import React from 'react';
-//import './AboutUs.css'; // Import any necessary CSS
+// import './AboutUs.css'; // Import any necessary CSS
 
 const AboutUs = () => {
   return (
@@ -11,48 +11,48 @@ const AboutUs = () => {
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingOne">
                   <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Where shall we begin?
+                    Our Story
                   </button>
                 </h2>
                 <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    Dolor <strong>almesit amet</strong>, consectetur adipiscing elit, sed doesn't eiusmod tempor incididunt ut labore consectetur <code>adipiscing</code> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
+                    Our journey began with a passion for quality craftsmanship and unique furniture designs. We believe that each piece in your home should tell a story and bring comfort and style into your life.
                   </div>
                 </div>
               </div>
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingTwo">
                   <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    How do we work together?
+                    Our Design Philosophy
                   </button>
                 </h2>
                 <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    Dolor <strong>almesit amet</strong>, consectetur adipiscing elit, sed doesn't eiusmod tempor incididunt ut labore consectetur <code>adipiscing</code> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
+                    We prioritize sustainable materials and timeless designs that not only enhance your space but also respect the environment. Our design team carefully selects every element to ensure beauty, functionality, and durability.
                   </div>
                 </div>
               </div>
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingThree">
                   <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Why SCHOLAR is the best?
+                    Why Choose Us?
                   </button>
                 </h2>
                 <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    There are more than one hundred responsive HTML templates to choose from <strong>Template</strong>Mo website. You can browse by different tags or categories.
+                    From custom furniture to curated decor essentials, we offer everything to bring your home to life. Our expert team and exceptional customer service make every purchase a seamless experience.
                   </div>
                 </div>
               </div>
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingFour">
                   <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    Do we get the best support?
+                    Unmatched Customer Support
                   </button>
                 </h2>
                 <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                   <div className="accordion-body">
-                    You can also search on Google with specific keywords such as <code>templatemo business templates, templatemo gallery templates, admin dashboard templatemo, 3-column templatemo, etc.</code>
+                    Our support team is here to assist you every step of the way, from design consultations to delivery. We are committed to making sure you’re delighted with every purchase.
                   </div>
                 </div>
               </div>
@@ -61,10 +61,10 @@ const AboutUs = () => {
           <div className="col-lg-5 align-self-center">
             <div className="section-heading">
               <h6>About Us</h6>
-              <h2>What makes us the best academy online?</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida risus commodo.</p>
+              <h2>Creating Beautiful, Lasting Furniture for Every Space</h2>
+              <p>We blend traditional craftsmanship with modern designs to create furniture that speaks to your unique style. Each piece is crafted with care, ensuring quality and beauty for years to come.</p>
               <div className="main-button">
-                <a href="#">Discover More</a>
+                <a href="#">Learn More About Us</a>
               </div>
             </div>
           </div>

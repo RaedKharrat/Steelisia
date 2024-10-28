@@ -34,11 +34,11 @@ const App = () => {
           <MainBanner />
           <Services />
           <AboutUs />
-          <TeamSection />
+          <Courses />
+          <Events />
           <FunFacts />
           <Testimonials />
-          <Events />
-          <Courses />
+          <TeamSection />
           <ContactUs />
           <Footer />
         </>
