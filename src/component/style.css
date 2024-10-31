@@ -204,12 +204,14 @@ body {
 .forms .form-content .button {
   color: #fff;
   margin-top: 40px;
+  border-radius: 20px;
+
 }
 
 .forms .form-content .button input {
   color: #fff;
   background: #4E7A50;
-  border-radius: 6px;
+  border-radius: 20px;
   padding: 0;
   cursor: pointer;
   transition: all 0.4s ease;

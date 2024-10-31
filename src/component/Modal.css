@@ -1,0 +1,62 @@
+/* Modal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   /* backdrop-filter: blur(2px); /* Apply blur effect to the modal content itself */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.3); /* White background with 0.8 opacity */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px; /* Increased width to 400px, adjust as necessary */
+    text-align: center;
+    backdrop-filter: blur(20px); /* Apply blur effect to the modal content itself */
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-buttons button[type="submit"] {
+    background-color: #4E7A50; /* Submit button color */
+    color: white;
+    border-radius: 20px; /* Rounded corners */
+
+
+}
+
+/* Email input field styling */
+.modal-content input[type="email"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Add padding for better spacing */
+    border: 1px solid #8e8e8e; /* Light gray border */
+    border-radius: 20px; /* Rounded corners */
+    margin-top: 10px; /* Space above the input */
+    outline: none; /* Remove outline on focus */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+    opacity: 0.3;
+}
+
+.modal-content input[type="email"]:focus {
+    border-color: #4E7A50; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(78, 122, 80, 0.5); /* Optional shadow for focus */
+}
