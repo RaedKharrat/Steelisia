@@ -120,12 +120,12 @@ body {
 }
 
 ::selection {
-  background: #7a6ad8;
+  background: #4E7A50;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #7a6ad8;
+  background: #4E7A50;
   color: #fff;
 }
 
@@ -147,12 +147,12 @@ body {
 }
 
 .section-heading h2 em {
-  color: #7a6ad8;
+  color: #d3c650;
   font-style: normal;
 }
 
 .section-heading h6 {
-  color: #7a6ad8;
+  color: #4E7A50;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 600;
@@ -161,7 +161,7 @@ body {
 .main-button a {
   display: inline-block;
   background-color: #fff;
-  color: #7a6ad8;
+  color: #4E7A50;
   font-size: 14px;
   font-weight: 500;
   height: 40px;
@@ -172,7 +172,7 @@ body {
 }
 
 .main-button a:hover {
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   color: #fff;
 }
 
@@ -249,7 +249,7 @@ Pre-loader Style
   height: 16px;
   top: 12px;
   left: 15px;
-  background: #7a6ad8;
+  background: #4E7A50;
   border-radius: 50%;
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -272,7 +272,7 @@ Pre-loader Style
   width: 16px;
   height: 16px;
   margin-left: 16px;
-  background: #7a6ad8;
+  background: #4E7A50;
   border-radius: 50%;
 }
 
@@ -285,7 +285,7 @@ Header Style
 */
 
 .background-header {
-  background-color: #7a6ad8 !important;
+  background-color: #4E7A50 !important;
   border-radius: 0px 0px 25px 25px;
   height: 80px!important;
   position: fixed!important;
@@ -606,7 +606,7 @@ Header Style
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
-    color: #7a6ad8!important;
+    color: #4E7A50!important;
     opacity: 1;
   }
   .header-area.header-sticky .nav li.search-icon a {
@@ -696,7 +696,7 @@ Banner Style
 }
 
 .main-banner .item span.category {
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   color: #fff;
   font-size: 14px;
   text-transform: uppercase;
@@ -731,7 +731,7 @@ Banner Style
 
 .main-banner .item .buttons .main-button a {
   font-size: 14px;
-  color: #7a6ad8;
+  color: #4E7A50;
   background-color: #fff;
   display: inline-block;
   height: 50px;
@@ -742,7 +742,7 @@ Banner Style
 }
 
 .main-banner .item .buttons .icon-button i {
-  color: #7a6ad8;
+  color: #4E7A50;
   background-color: #fff;
   display: inline-block;
   height: 50px;
@@ -815,7 +815,7 @@ Services Style
   display: inline-block;
   text-align: center;
   line-height: 190px;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   border-radius: 50%;
   position: absolute;
   right: 0;
@@ -878,7 +878,7 @@ About Style
 .accordion {
   margin-top: -40px;
   margin-bottom: -40px;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   border-radius: 40px;
   padding: 80px 50px 50px 50px;
 }
@@ -897,7 +897,7 @@ About Style
 }
 
 .accordion-button:not(.collapsed) {
-  color: #7a6ad8;
+  color: #4E7A50;
   background-color: #fff;
 }
 
@@ -919,7 +919,7 @@ h2.accordion-header button {
   text-align: center;
   line-height: 30px;
   border-radius: 50%;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   color: #fff;
 }
 
@@ -985,7 +985,7 @@ Courses Style
 
 .event_filter li a.is_active,
 .event_filter li a:hover {
-  color: #7a6ad8;
+  color: #4E7A50;
 }
 
 .events_item .thumb {
@@ -1004,7 +1004,7 @@ Courses Style
   top: 30px;
   font-size: 14px;
   text-transform: uppercase;
-  color: #7a6ad8;
+  color: #4E7A50;
   background-color: rgba(250, 250, 250, 0.95);
   padding: 8px 20px;
   border-radius: 25px;
@@ -1054,7 +1054,7 @@ Courses Style
 }
 
 .events_item .down-content span.author {
-  color: #7a6ad8;
+  color: #4E7A50;
   font-size: 15px;
   display: inline-block;
   margin-bottom: 6px;
@@ -1067,7 +1067,7 @@ Courses Style
 }
 
 .events_item:hover .down-content h4 {
-  color: #7a6ad8;
+  color: #4E7A50;
 }
 
 .events_item:hover .thumb span.price {
@@ -1095,7 +1095,7 @@ Facts Style
   z-index: -1;
   width: 95%;
   height: 100%;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   content: '';
   border-top-right-radius: 500px;
   border-bottom-right-radius: 500px;
@@ -1174,7 +1174,7 @@ Team Style
 }
 
 .team-member .main-content span.category {
-  color: #7a6ad8;
+  color: #4E7A50;
   font-size: 15px;
 }
 
@@ -1192,7 +1192,7 @@ Team Style
 
 .team-member .main-content ul li a {
   background-color: #fff;
-  color: #7a6ad8;
+  color: #4E7A50;
   display: inline-block;
   text-align: center;
   line-height: 40px;
@@ -1204,7 +1204,7 @@ Team Style
 }
 
 .team-member .main-content ul li a:hover {
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   color: #fff;
 }
 
@@ -1246,7 +1246,7 @@ Testimonials Style
 }
 
 .testimonials .item {
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   border-radius: 25px;
   padding: 80px;
 }
@@ -1296,7 +1296,7 @@ Testimonials Style
   line-height: 50px;
   font-size: 24px;
   display: inline-block;
-  color: #7a6ad8;
+  color: #4E7A50;
   background-color: #fff;
   border-radius: 50%;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.10);
@@ -1363,7 +1363,7 @@ Events Style
 .events .item ul li span.category {
   font-size: 14px;
   text-transform: uppercase;
-  color: #7a6ad8;
+  color: #4E7A50;
   background-color: #fff;
   padding: 8px 20px;
   border-radius: 25px;
@@ -1386,7 +1386,7 @@ Events Style
 
 .events .item ul li h6 {
   font-size: 16px;
-  color: #7a6ad8;
+  color: #4E7A50;
   font-weight: 600;
 }
 
@@ -1394,7 +1394,7 @@ Events Style
   position: absolute;
   right: 0;
   top: 22px;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   width: 60px;
   height: 120px;
   display: inline-block;
@@ -1456,7 +1456,7 @@ Contact Style
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   width: 80px;
   padding: 30px 8px;
   line-height: 25px;
@@ -1486,7 +1486,7 @@ Contact Style
 
 .contact-us .special-offer h6 em {
   font-style: normal;
-  color: #7a6ad8;
+  color: #4E7A50;
   font-weight: 600;
 }
 
@@ -1497,7 +1497,7 @@ Contact Style
 
 .contact-us .special-offer h4 em {
   font-style: normal;
-  color: #7a6ad8;
+  color: #4E7A50;
 }
 
 .contact-us .special-offer a {
@@ -1509,7 +1509,7 @@ Contact Style
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   color: #fff;
   border-radius: 50%;
 }
@@ -1517,7 +1517,7 @@ Contact Style
 .contact-us .contact-us-content {
   border-radius: 25px;
   padding: 80px;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   position: relative;
   z-index: 1;
 }
@@ -1594,7 +1594,7 @@ Contact Style
   background-color: #fff;
   padding: 0px 25px;
   border-radius: 25px;
-  color: #7a6ad8;
+  color: #4E7A50;
   transition: all .4s;
   position: relative;
   z-index: 3;
@@ -1638,7 +1638,7 @@ Footer Style
 footer {
   margin-top: 150px;
   position: relative;
-  background-color: #7a6ad8;
+  background-color: #4E7A50;
   vertical-align: middle;
   min-height: 150px;
   border-radius: 150px 150px 0px 0px;
@@ -1787,7 +1787,7 @@ body {
     margin-top: 30px;
   }
   .about-us .main-button a {
-    background-color: #7a6ad8;
+    background-color: #4E7A50;
     color: #fff;
   }
   .courses {

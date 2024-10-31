@@ -6,12 +6,14 @@ import Services from './component/Services.jsx';
 import AboutUs from './component/AboutUs.jsx';
 import MainBanner from './component/MainBanner.jsx';
 import FunFacts from './component/FunFact.jsx';
-import TeamSection from './component/Team.jsx';
 import Testimonials from './component/Testimonials.jsx';
 import Events from './component/Events.jsx';
-import Courses from './component/Courses.jsx';
+import FurnitureSales from './component/Courses.jsx';
 import ContactUs from './component/Contact.jsx';
 import Footer from './component/Footer.jsx';
+
+
+
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -19,7 +21,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 2000 milliseconds = 2 seconds
+    }, 2000); // 2 seconds delay
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, []);
@@ -34,11 +36,9 @@ const App = () => {
           <MainBanner />
           <Services />
           <AboutUs />
-          <Courses />
           <Events />
           <FunFacts />
           <Testimonials />
-          <TeamSection />
           <ContactUs />
           <Footer />
         </>

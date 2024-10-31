@@ -1,9 +1,8 @@
 import React from 'react';
-//import './Preloader.css'; // Assuming you have separate CSS for styling
 
-const Preloader = () => {
+const Preloader = ({ loading }) => {
   return (
-    <div id="js-preloader" className="js-preloader">
+    <div id="js-preloader" className={`js-preloader ${loading ? '' : 'loaded'}`}>
       <div className="preloader-inner">
         <span className="dot"></span>
         <div className="dots">

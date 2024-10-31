@@ -1,0 +1,19 @@
+.logo-img {
+  transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
+  position: relative;
+}
+
+.logo-img.animate-slide {
+  animation: slideIn 0.5s forwards; /* Adjust duration as needed */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%); /* Start from the left */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); /* End in the original position */
+    opacity: 1;
+  }
+}
