@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './Header.css';
 import logoApp from './logoApp.png';
 import logoApp2 from './logoApp2.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 const Header = () => {
   const [logo, setLogo] = useState(logoApp);
@@ -29,7 +28,7 @@ const Header = () => {
       className="header-area header-sticky"
       style={{
         opacity: 0.95,
-        backdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(5px)',
         borderRadius: '10px',
       }}
     >
@@ -92,10 +91,12 @@ const Header = () => {
                   <a href="#contact">Register Now!</a>
                 </li>
                 <li className="scroll-to-section">
-                  <a href="#contact" style={{ color: 'white' }}>
-                    <strong>Sign In</strong>
+                  <a href="#contact" style={{ color: 'white', paddingLeft: '80px', fontWeight: 'bold' }}>
+                    Sign In
                   </a>
                 </li>
+
+
               </ul>
               <a className="menu-trigger">
                 <span>Menu</span>

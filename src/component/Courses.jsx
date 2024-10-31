@@ -7,7 +7,7 @@ const FurnitureSales = () => {
         <div className="row">
           <div className="col-lg-12 text-center">
             <div className="section-heading">
-              <h6>Latest Furniture</h6>
+              <h6>Shop</h6>
               <h2>Latest Furniture Items for Sale</h2>
             </div>
           </div>
@@ -40,58 +40,7 @@ const FurnitureSales = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 align-self-center mb-30 event_outer development">
-            <div className="events_item">
-              <div className="thumb">
-                <a href="#"><img src="/Frontoffice/assets/images/course-02.jpg" alt="Dining Table" /></a>
-                <span className="category">Table</span>
-                <span className="price"><h6><em>$</em>500</h6></span>
-              </div>
-              <div className="down-content">
-                <span className="author">Elegant Home</span>
-                <h4>Dining Table Set</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6 align-self-center mb-30 event_outer design wordpress">
-            <div className="events_item">
-              <div className="thumb">
-                <a href="#"><img src="/Frontoffice/assets/images/course-03.jpg" alt="Stylish Chair" /></a>
-                <span className="category">Chair</span>
-                <span className="price"><h6><em>$</em>320</h6></span>
-              </div>
-              <div className="down-content">
-                <span className="author">Chic Decor</span>
-                <h4>Stylish Dining Chair</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6 align-self-center mb-30 event_outer development">
-            <div className="events_item">
-              <div className="thumb">
-                <a href="#"><img src="/Frontoffice/assets/images/course-04.jpg" alt="Coffee Table" /></a>
-                <span className="category">Table</span>
-                <span className="price"><h6><em>$</em>200</h6></span>
-              </div>
-              <div className="down-content">
-                <span className="author">Cozy Living</span>
-                <h4>Modern Coffee Table</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6 align-self-center mb-30 event_outer wordpress development">
-            <div className="events_item">
-              <div className="thumb">
-                <a href="#"><img src="/Frontoffice/assets/images/course-05.jpg" alt="Ergonomic Office Chair" /></a>
-                <span className="category">Chair</span>
-                <span className="price"><h6><em>$</em>300</h6></span>
-              </div>
-              <div className="down-content">
-                <span className="author">Work Comfort</span>
-                <h4>Ergonomic Office Chair</h4>
-              </div>
-            </div>
-          </div>
+          
           <div className="col-lg-4 col-md-6 align-self-center mb-30 event_outer wordpress design">
             <div className="events_item">
               <div className="thumb">

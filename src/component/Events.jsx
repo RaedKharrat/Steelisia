@@ -1,3 +1,4 @@
+import { height } from '@fortawesome/free-solid-svg-icons/fa0';
 import React from 'react';
 //import './Events.css'; // Import CSS file if necessary
 
@@ -8,8 +9,8 @@ const Events = () => {
         <div className="row">
           <div className="col-lg-12 text-center">
             <div className="section-heading">
-              <h6>Schedule</h6>
-              <h2>Upcoming Events</h2>
+              <h6>Promotions</h6>
+              <h2>Exclusive Furniture Sales</h2>
             </div>
           </div>
 
@@ -19,26 +20,26 @@ const Events = () => {
               <div className="row">
                 <div className="col-lg-3">
                   <div className="image">
-                    <img src="/Frontoffice/assets/images/event-01.jpg" alt="UI Best Practices" />
+                    <img src="/Frontoffice/assets/images/course-01.jpg" alt="Living Room Set Sale" style={{height:'250px', width:'auto'}} />
                   </div>
                 </div>
                 <div className="col-lg-9">
                   <ul>
                     <li>
-                      <span className="category">Web Design</span>
-                      <h4>UI Best Practices</h4>
+                      <span className="category">Living Room</span>
+                      <h4>Exclusive Living Room Set Sale</h4>
                     </li>
                     <li>
                       <span>Date:</span>
-                      <h6>16 Feb 2036</h6>
+                      <h6>16 Nov 2024</h6>
                     </li>
                     <li>
                       <span>Duration:</span>
-                      <h6>22 Hours</h6>
+                      <h6>2 Days</h6>
                     </li>
                     <li>
                       <span>Price:</span>
-                      <h6>$120</h6>
+                      <h6>Starting at $999</h6>
                     </li>
                   </ul>
                   <a href="#"><i className="fa fa-angle-right"></i></a>
@@ -53,26 +54,26 @@ const Events = () => {
               <div className="row">
                 <div className="col-lg-3">
                   <div className="image">
-                    <img src="/Frontoffice/assets/images/event-02.jpg" alt="New Design Trend" />
+                    <img src="/Frontoffice/assets/images/course-06.jpg" alt="Bedroom Furniture Promotion" style={{height:'250px', width:'auto'}}  />
                   </div>
                 </div>
                 <div className="col-lg-9">
                   <ul>
                     <li>
-                      <span className="category">Front End</span>
-                      <h4>New Design Trend</h4>
+                      <span className="category">Bedroom</span>
+                      <h4>Special Bedroom Furniture Promotion</h4>
                     </li>
                     <li>
                       <span>Date:</span>
-                      <h6>24 Feb 2036</h6>
+                      <h6>20 Nov 2024</h6>
                     </li>
                     <li>
                       <span>Duration:</span>
-                      <h6>30 Hours</h6>
+                      <h6>3 Days</h6>
                     </li>
                     <li>
                       <span>Price:</span>
-                      <h6>$320</h6>
+                      <h6>Up to 30% Off</h6>
                     </li>
                   </ul>
                   <a href="#"><i className="fa fa-angle-right"></i></a>
@@ -87,26 +88,26 @@ const Events = () => {
               <div className="row">
                 <div className="col-lg-3">
                   <div className="image">
-                    <img src="/Frontoffice/assets/images/event-03.jpg" alt="Web Programming" />
+                    <img src="/Frontoffice/assets/images/course-01.jpg" alt="Office Furniture Clearance" style={{height:'250px', width:'auto'}} />
                   </div>
                 </div>
                 <div className="col-lg-9">
                   <ul>
                     <li>
-                      <span className="category">Full Stack</span>
-                      <h4>Web Programming</h4>
+                      <span className="category">Office</span>
+                      <h4>Office Furniture Clearance Sale</h4>
                     </li>
                     <li>
                       <span>Date:</span>
-                      <h6>12 Mar 2036</h6>
+                      <h6>25 Nov 2024</h6>
                     </li>
                     <li>
                       <span>Duration:</span>
-                      <h6>48 Hours</h6>
+                      <h6>4 Days</h6>
                     </li>
                     <li>
                       <span>Price:</span>
-                      <h6>$440</h6>
+                      <h6>Starting at $199</h6>
                     </li>
                   </ul>
                   <a href="#"><i className="fa fa-angle-right"></i></a>

@@ -8,7 +8,6 @@ import MainBanner from './component/MainBanner.jsx';
 import FunFacts from './component/FunFact.jsx';
 import Testimonials from './component/Testimonials.jsx';
 import Events from './component/Events.jsx';
-import FurnitureSales from './component/Courses.jsx';
 import ContactUs from './component/Contact.jsx';
 import Footer from './component/Footer.jsx';
 
@@ -36,7 +35,7 @@ const Homepage = () => {
           <MainBanner />
           <Services />
           <AboutUs />
-          <FurnitureSales />
+
           <Events />
           <FunFacts />
           <Testimonials />
