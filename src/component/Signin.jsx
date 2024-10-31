@@ -40,7 +40,7 @@ const LoginSignupForm = () => {
         <div className="form-content">
           <div className="login-form">
             <img src={logoapp2} alt="Logo" className="form-logo" style={{ marginBottom: '40px', height: '50px', width: 'auto' }} /> {/* Logo added here */}
-            <div className="title">Login</div>
+            <div className="title" style={{color:'#4E7A50'}}>Login</div>
             <form action="#">
               <div className="input-boxes">
                 <div className="input-box">
@@ -68,7 +68,7 @@ const LoginSignupForm = () => {
           </div>
           <div className="signup-form">
             <img src={logoapp} alt="Logo" className="form-logo" /> {/* Logo added here */}
-            <div className="title">Signup</div>
+            <div className="title"style={{color:'#4E7A50'}}>Signup</div>
             <form action="#">
               <div className="input-boxes">
                 <div className="input-box">
