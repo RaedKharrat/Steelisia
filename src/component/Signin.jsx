@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './style.css';
-import Modal from './Modal'; // Import the modal component
+import Modal from './Modal'; // Forgot password modal
+import OtpModal from './OtpModal'; // OTP modal
+import ResetPasswordModal from './ResetPasswordModal'; // Reset Password Modal
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser, faPhone, faMapMarkerAlt, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import logoapp from './logoAppDark.png';
@@ -9,7 +11,9 @@ import logoapp2 from './logoAppDark2.png';
 const LoginSignupForm = () => {
   const [showPasswordLogin, setShowPasswordLogin] = useState(false);
   const [showPasswordSignup, setShowPasswordSignup] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for forgot password modal visibility
+  const [isOtpModalOpen, setIsOtpModalOpen] = useState(false); // State for OTP modal visibility
+  const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false); // State for reset password modal visibility
 
   const togglePasswordVisibilityLogin = () => {
     setShowPasswordLogin(prev => !prev);
@@ -20,11 +24,31 @@ const LoginSignupForm = () => {
   };
 
   const handleForgotPasswordClick = () => {
-    setIsModalOpen(true); // Open the modal
+    setIsModalOpen(true); // Open the forgot password modal
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal
+    setIsModalOpen(false); // Close the forgot password modal
+  };
+
+  const handleOpenOtpModal = () => {
+    setIsModalOpen(false); // Close forgot password modal
+    setIsOtpModalOpen(true); // Open OTP modal
+  };
+
+  const handleCloseOtpModal = () => {
+    setIsOtpModalOpen(false); // Close the OTP modal
+  };
+
+  const handleVerify = () => {
+    // Handle OTP verification logic here
+    console.log("OTP Verified"); // Replace this with actual verification logic
+    handleCloseOtpModal(); // Close OTP modal
+    setIsResetPasswordModalOpen(true); // Open reset password modal
+  };
+
+  const handleCloseResetPasswordModal = () => {
+    setIsResetPasswordModalOpen(false); // Close reset password modal
   };
 
   return (
@@ -48,6 +72,7 @@ const LoginSignupForm = () => {
       </div>
       <div className="forms">
         <div className="form-content">
+          {/* Login Form */}
           <div className="login-form">
             <img src={logoapp2} alt="Logo" className="form-logo" style={{ marginBottom: '40px', height: '50px', width: 'auto' }} />
             <div className="title" style={{ color: '#4E7A50' }}>Login</div>
@@ -68,7 +93,7 @@ const LoginSignupForm = () => {
                     <FontAwesomeIcon icon={showPasswordLogin ? faEyeSlash : faEye} />
                   </span>
                 </div>
-                <div className="text"><a href="#" onClick={handleForgotPasswordClick}>Forgot password?</a></div> {/* Update the link to open the modal */}
+                <div className="text"><a href="#" onClick={handleForgotPasswordClick}>Forgot password?</a></div>
                 <div className="button input-box">
                   <input type="submit" value="Submit" />
                 </div>
@@ -76,6 +101,8 @@ const LoginSignupForm = () => {
               </div>
             </form>
           </div>
+
+          {/* Signup Form */}
           <div className="signup-form">
             <img src={logoapp} alt="Logo" className="form-logo" />
             <div className="title" style={{ color: '#4E7A50' }}>Signup</div>
@@ -117,7 +144,15 @@ const LoginSignupForm = () => {
           </div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} /> {/* Include the modal */}
+
+      {/* Forgot Password Modal */}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleOpenOtpModal} />
+
+      {/* OTP Modal */}
+      <OtpModal isOpen={isOtpModalOpen} onClose={handleCloseOtpModal} onVerify={handleVerify} />
+
+      {/* Reset Password Modal */}
+      <ResetPasswordModal isOpen={isResetPasswordModalOpen} onClose={handleCloseResetPasswordModal} />
     </div>
   );
 };
