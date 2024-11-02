@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import Header from './component/Header.jsx';
-import Preloader from './component/Preloader.jsx';
-import Services from './component/Services.jsx';
-import AboutUs from './component/AboutUs.jsx';
-import MainBanner from './component/MainBanner.jsx';
-import FunFacts from './component/FunFact.jsx';
-import Testimonials from './component/Testimonials.jsx';
-import Events from './component/Events.jsx';
-import ContactUs from './component/Contact.jsx';
-import Footer from './component/Footer.jsx';
+import '../App.css';
+import Header from '../component/Header.jsx';
+import Preloader from '../component/Preloader.jsx';
+import Services from '../component/Services.jsx';
+import AboutUs from '../component/AboutUs.jsx';
+import MainBanner from '../component/MainBanner.jsx';
+import FunFacts from '../component/FunFact.jsx';
+import Testimonials from '../component/Testimonials.jsx';
+import Events from '../component/Events.jsx';
+import ContactUs from '../component/Contact.jsx';
+import Footer from '../component/Footer.jsx';
 
 
 

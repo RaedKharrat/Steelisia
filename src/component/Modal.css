@@ -66,7 +66,7 @@
 }
 
 .modal-content input[type="email"]:focus {
-    border-color: #4E7A50; /* Change border color on focus */
+    border-color: #2b2b2b; /* Change border color on focus */
     box-shadow: 0 0 5px rgba(78, 122, 80, 0.5); /* Optional shadow for focus */
 }
 /* Modal.css */
@@ -90,7 +90,7 @@
 }
 
 .otp-field:focus {
-    border-color: #4E7A50;
+    border-color: #2b2b2b;
     box-shadow: 0 0 5px rgba(78, 122, 80, 0.5);
 }
 /* Modal.css */
@@ -161,7 +161,7 @@
 }
 
 .modal-input:focus {
-    border-color: #4E7A50; /* Change border color on focus */
+    border-color: #2b2b2b; /* Change border color on focus */
     box-shadow: 0 0 5px rgba(78, 122, 80, 0.5); /* Optional shadow for focus */
 }
 /* Modal.css */

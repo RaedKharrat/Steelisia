@@ -1,42 +1,24 @@
-import React, { useEffect, useState } from 'react';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
-import Header from './component/Header.jsx';
-import Preloader from './component/Preloader.jsx';
-import Services from './component/Services.jsx';
-import AboutUs from './component/AboutUs.jsx';
-import MainBanner from './component/MainBanner.jsx';
-import FunFacts from './component/FunFact.jsx';
-import Testimonials from './component/Testimonials.jsx';
-import Events from './component/Events.jsx';
-import Signin from './component/Signin.jsx';
-import ContactUs from './component/Contact.jsx';
-import Footer from './component/Footer.jsx';
-
-
-
+import AuthPage from './screen/AuthPage.jsx';
+import Homepage from './screen/Homepage.jsx';
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 500); // 2 seconds delay
-
-    return () => clearTimeout(timer); // Cleanup on unmount
-  }, []);
-
   return (
-    <div>
-      {loading ? (
-        <Preloader />
-      ) : (
-        <>
-          <Signin />
-         
-        </>
-      )}
-    </div>
+    <Router>
+      <Routes>
+        {/* Set AuthPage as the default route */}
+        <Route path="/" element={<AuthPage />} />
+        
+        {/* Other routes */}
+        <Route path="/home" element={<Homepage />} />
+
+
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
   );
 };
 

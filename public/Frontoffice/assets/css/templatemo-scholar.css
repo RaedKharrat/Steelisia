@@ -120,12 +120,12 @@ body {
 }
 
 ::selection {
-  background: #4E7A50;
+  background: #2b2b2b;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #4E7A50;
+  background: #2b2b2b;
   color: #fff;
 }
 
@@ -152,7 +152,7 @@ body {
 }
 
 .section-heading h6 {
-  color: #4E7A50;
+  color: #2b2b2b;
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 600;
@@ -161,7 +161,7 @@ body {
 .main-button a {
   display: inline-block;
   background-color: #fff;
-  color: #4E7A50;
+  color: #2b2b2b;
   font-size: 14px;
   font-weight: 500;
   height: 40px;
@@ -172,7 +172,7 @@ body {
 }
 
 .main-button a:hover {
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   color: #fff;
 }
 
@@ -249,7 +249,7 @@ Pre-loader Style
   height: 16px;
   top: 12px;
   left: 15px;
-  background: #4E7A50;
+  background: #2b2b2b;
   border-radius: 50%;
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -272,7 +272,7 @@ Pre-loader Style
   width: 16px;
   height: 16px;
   margin-left: 16px;
-  background: #4E7A50;
+  background: #2b2b2b;
   border-radius: 50%;
 }
 
@@ -285,7 +285,7 @@ Header Style
 */
 
 .background-header {
-  background-color: #4E7A50 !important;
+  background-color: #2b2b2b !important;
   border-radius: 0px 0px 25px 25px;
   height: 80px!important;
   position: fixed!important;
@@ -402,7 +402,7 @@ Header Style
   height: 40px;
   line-height: 40px;
   text-transform: capitalize;
-  color: #d7edc7;
+  color: #ebebeb;
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
   -o-transition: all 0.4s ease 0s;
@@ -562,7 +562,7 @@ Header Style
 @media (max-width: 767px) {
   .background-header .main-nav .nav,
   .header-area .main-nav .nav {
-    background-color: #e1f6d0;
+    background-color: #ebebeb;
   }
   .background-header .main-nav .nav li a,
   .header-area .main-nav .nav li a {
@@ -570,13 +570,13 @@ Header Style
     height: 50px;
     font-weight: 400;
     color: #1e1e1e;
-    background-color: #e1f6d0;
+    background-color: #ebebeb;
      border-radius: 0px 0px 25px 25px;
   }
   .background-header .main-nav .nav li,
   .header-area .main-nav .nav li {
     border-top: 1px solid #ddd;
-    background-color: #e1f6d0;
+    background-color: #ebebeb;
     height: 50px;
     border-radius: 0px 0px 25px 25px;
   }
@@ -606,7 +606,7 @@ Header Style
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
-    color: #4E7A50!important;
+    color: #2b2b2b!important;
     opacity: 1;
   }
   .header-area.header-sticky .nav li.search-icon a {
@@ -696,7 +696,7 @@ Banner Style
 }
 
 .main-banner .item span.category {
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   color: #fff;
   font-size: 14px;
   text-transform: uppercase;
@@ -731,7 +731,7 @@ Banner Style
 
 .main-banner .item .buttons .main-button a {
   font-size: 14px;
-  color: #4E7A50;
+  color: #2b2b2b;
   background-color: #fff;
   display: inline-block;
   height: 50px;
@@ -742,7 +742,7 @@ Banner Style
 }
 
 .main-banner .item .buttons .icon-button i {
-  color: #4E7A50;
+  color: #2b2b2b;
   background-color: #fff;
   display: inline-block;
   height: 50px;
@@ -815,7 +815,7 @@ Services Style
   display: inline-block;
   text-align: center;
   line-height: 190px;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   border-radius: 50%;
   position: absolute;
   right: 0;
@@ -830,7 +830,7 @@ Services Style
 .services .service-item .main-content {
   border-radius: 25px;
   padding: 80px 30px 50px 30px;
-  background-color: #e1f6d0;
+  background-color: #ebebeb;
   margin-bottom: 30px;
   margin-right: 80px;
   transition: all .4s;
@@ -869,7 +869,7 @@ About Style
   z-index: -1;
   width: 84%;
   height: 100%;
-  background-color: #e1f6d0;
+  background-color: #ebebeb;
   content: '';
   border-top-left-radius: 500px;
   border-bottom-left-radius: 500px;
@@ -878,7 +878,7 @@ About Style
 .accordion {
   margin-top: -40px;
   margin-bottom: -40px;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   border-radius: 40px;
   padding: 80px 50px 50px 50px;
 }
@@ -897,7 +897,7 @@ About Style
 }
 
 .accordion-button:not(.collapsed) {
-  color: #4E7A50;
+  color: #2b2b2b;
   background-color: #fff;
 }
 
@@ -919,7 +919,7 @@ h2.accordion-header button {
   text-align: center;
   line-height: 30px;
   border-radius: 50%;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   color: #fff;
 }
 
@@ -959,7 +959,7 @@ Courses Style
 /* Filter styles */
 .event_filter {
   text-align: center;
-  background-color: #e1f6d0;
+  background-color: #ebebeb;
   border-radius: 50px;
   padding: 15px 40px;
   list-style: none;
@@ -981,7 +981,7 @@ Courses Style
 
 .event_filter li a.is_active,
 .event_filter li a:hover {
-  color: #4E7A50;
+  color: #2b2b2b;
 }
 
 /* Event box container for responsive layout */
@@ -994,7 +994,7 @@ Courses Style
 
 /* Event item styling with adaptive height and width */
 .events_item {
-  background-color: #e1f6d0;
+  background-color: #ebebeb;
   border-radius: 25px;
   margin-bottom: 30px;
   position: relative;
@@ -1027,7 +1027,7 @@ Courses Style
   top: 30px;
   font-size: 14px;
   text-transform: uppercase;
-  color: #4E7A50;
+  color: #2b2b2b;
   background-color: rgba(250, 250, 250, 0.95);
   padding: 8px 20px;
   border-radius: 25px;
@@ -1069,7 +1069,7 @@ Courses Style
 }
 
 .events_item .down-content span.author {
-  color: #4E7A50;
+  color: #2b2b2b;
   font-size: 15px;
   display: inline-block;
   margin-bottom: 6px;
@@ -1082,7 +1082,7 @@ Courses Style
 }
 
 .events_item:hover .down-content h4 {
-  color: #4E7A50;
+  color: #2b2b2b;
 }
 
 .events_item:hover .thumb span.price {
@@ -1118,7 +1118,7 @@ Facts Style
   z-index: -1;
   width: 95%;
   height: 100%;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   content: '';
   border-top-right-radius: 500px;
   border-bottom-right-radius: 500px;
@@ -1192,12 +1192,12 @@ Team Style
 .team-member .main-content {
   border-radius: 25px;
   padding: 140px 30px 40px 30px;
-  background-color: #e1f6d0;
+  background-color: #ebebeb;
   text-align: center;
 }
 
 .team-member .main-content span.category {
-  color: #4E7A50;
+  color: #2b2b2b;
   font-size: 15px;
 }
 
@@ -1215,7 +1215,7 @@ Team Style
 
 .team-member .main-content ul li a {
   background-color: #fff;
-  color: #4E7A50;
+  color: #2b2b2b;
   display: inline-block;
   text-align: center;
   line-height: 40px;
@@ -1227,7 +1227,7 @@ Team Style
 }
 
 .team-member .main-content ul li a:hover {
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   color: #fff;
 }
 
@@ -1252,7 +1252,7 @@ Testimonials Style
   z-index: -1;
   width: 65%;
   height: 100%;
-  background-color: #e1f6d0;
+  background-color: #ebebeb;
   content: '';
   border-top-left-radius: 500px;
   border-bottom-left-radius: 500px;
@@ -1269,7 +1269,7 @@ Testimonials Style
 }
 
 .testimonials .item {
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   border-radius: 25px;
   padding: 80px;
 }
@@ -1319,7 +1319,7 @@ Testimonials Style
   line-height: 50px;
   font-size: 24px;
   display: inline-block;
-  color: #4E7A50;
+  color: #2b2b2b;
   background-color: #fff;
   border-radius: 50%;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.10);
@@ -1350,7 +1350,7 @@ Events Style
 }
 
 .events .item {
-  background-color: #e1f6d0;
+  background-color: #ebebeb;
   border-radius: 25px;
   position: relative;
   padding: 40px;
@@ -1386,7 +1386,7 @@ Events Style
 .events .item ul li span.category {
   font-size: 14px;
   text-transform: uppercase;
-  color: #4E7A50;
+  color: #2b2b2b;
   background-color: #fff;
   padding: 8px 20px;
   border-radius: 25px;
@@ -1409,7 +1409,7 @@ Events Style
 
 .events .item ul li h6 {
   font-size: 16px;
-  color: #4E7A50;
+  color: #2b2b2b;
   font-weight: 600;
 }
 
@@ -1417,7 +1417,7 @@ Events Style
   position: absolute;
   right: 0;
   top: 22px;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   width: 60px;
   height: 120px;
   display: inline-block;
@@ -1450,7 +1450,7 @@ Contact Style
   z-index: -1;
   width: 65%;
   height: 100%;
-  background-color: #e1f6d0;
+  background-color: #ebebeb;
   content: '';
   border-top-right-radius: 500px;
   border-bottom-right-radius: 500px;
@@ -1479,7 +1479,7 @@ Contact Style
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   width: 80px;
   padding: 30px 8px;
   line-height: 25px;
@@ -1509,7 +1509,7 @@ Contact Style
 
 .contact-us .special-offer h6 em {
   font-style: normal;
-  color: #4E7A50;
+  color: #2b2b2b;
   font-weight: 600;
 }
 
@@ -1520,7 +1520,7 @@ Contact Style
 
 .contact-us .special-offer h4 em {
   font-style: normal;
-  color: #4E7A50;
+  color: #2b2b2b;
 }
 
 .contact-us .special-offer a {
@@ -1532,7 +1532,7 @@ Contact Style
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   color: #fff;
   border-radius: 50%;
 }
@@ -1540,7 +1540,7 @@ Contact Style
 .contact-us .contact-us-content {
   border-radius: 25px;
   padding: 80px;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   position: relative;
   z-index: 1;
 }
@@ -1617,7 +1617,7 @@ Contact Style
   background-color: #fff;
   padding: 0px 25px;
   border-radius: 25px;
-  color: #4E7A50;
+  color: #2b2b2b;
   transition: all .4s;
   position: relative;
   z-index: 3;
@@ -1661,7 +1661,7 @@ Footer Style
 footer {
   margin-top: 150px;
   position: relative;
-  background-color: #4E7A50;
+  background-color: #2b2b2b;
   vertical-align: middle;
   min-height: 150px;
   border-radius: 150px 150px 0px 0px;
@@ -1810,7 +1810,7 @@ body {
     margin-top: 30px;
   }
   .about-us .main-button a {
-    background-color: #4E7A50;
+    background-color: #2b2b2b;
     color: #fff;
   }
   .courses {
@@ -1895,7 +1895,7 @@ body {
     margin-right: 0px;
   }
   .contact-us .special-offer {
-    background-color: #e1f6d0;
+    background-color: #ebebeb;
     margin-bottom: 60px;
     padding: 34px 30px 34px 100px;
     width: 100%;
