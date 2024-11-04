@@ -3,7 +3,7 @@ import React from 'react';
 
 const Team = () => {
   return (
-    <div className="team section" id="team">
+    <div className="team section" >
       <div className="container">
         <div className="row">
           <div className="col-lg-3 col-md-6">

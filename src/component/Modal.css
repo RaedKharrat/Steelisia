@@ -13,7 +13,7 @@
 }
 
 .modal-content {
-    background: rgba(207, 255, 218, 0.3); /* White background with 0.8 opacity */
+    background: rgba(182, 182, 182, 0.3); /* White background with 0.8 opacity */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -91,7 +91,7 @@
 
 .otp-field:focus {
     border-color: #2b2b2b;
-    box-shadow: 0 0 5px rgba(78, 122, 80, 0.5);
+    box-shadow: 0 0 5px rgba(104, 104, 104, 0.5);
 }
 /* Modal.css */
 .modal-overlay {
@@ -108,7 +108,7 @@
 }
 
 .modal-content {
-    background: rgba(207, 255, 218, 0.3); /* White background with 0.8 opacity */
+    background: rgba(216, 216, 216, 0.3); /* White background with 0.8 opacity */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

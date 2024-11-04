@@ -14,7 +14,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <div className="section testimonials">
+    <div className="section testimonials" style={{marginTop:'30px'}}>
       <div className="container">
         <div className="row">
           <div className="col-lg-7">

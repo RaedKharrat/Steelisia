@@ -3,7 +3,7 @@ import React from 'react';
 
 const AboutUs = () => {
   return (
-    <div className="section about-us">
+    <div className="section about-us"  id="team">
       <div className="container">
         <div className="row">
           <div className="col-lg-6 offset-lg-1">

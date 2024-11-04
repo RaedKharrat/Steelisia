@@ -27,10 +27,7 @@ const Homepage = () => {
 
   return (
     <div>
-      {loading ? (
-        <Preloader />
-      ) : (
-        <>
+
           <Header />
           <MainBanner />
           <Services />
@@ -41,8 +38,7 @@ const Homepage = () => {
           <Testimonials />
           <ContactUs />
           <Footer />
-        </>
-      )}
+
     </div>
   );
 };

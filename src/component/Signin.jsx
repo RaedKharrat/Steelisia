@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
@@ -18,6 +18,31 @@ const LoginSignupForm = () => {
   const [isOtpModalOpen, setIsOtpModalOpen] = useState(false);
   const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState(''); // State to hold the email
+
+  useEffect(() => {
+    // Set body style for the login/signup page
+    document.body.style.backgroundColor = '#2b2b2b'; // Optional: makes sure body takes full height
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center'; // Optional: centers content horizontally
+    document.body.style.alignItems = 'center'; // Optional: centers content vertically
+    document.body.style.height = '100vh'; // Optional: makes sure body takes full height
+    document.body.style.margin = '10px'; // Optional: makes sure body takes full height
+
+    // Cleanup function to reset body styles when component unmounts
+    return () => {
+      resetBodyStyles();
+    };
+  }, []);
+
+  const resetBodyStyles = () => {
+    document.body.style.backgroundColor = ''; 
+    document.body.style.display = '';
+    document.body.style.justifyContent = '';
+    document.body.style.alignItems = '';
+    document.body.style.height = '';
+    document.body.style.margin = '';
+  };
 
   const togglePasswordVisibilityLogin = () => {
     setShowPasswordLogin((prev) => !prev);
@@ -47,9 +72,9 @@ const LoginSignupForm = () => {
   const handleVerify = () => {
     console.log("OTP Verified");
     handleCloseOtpModal();
-    setIsResetPasswordModalOpen(true);
+    setIsResetPasswordModalOpen(true); 
   };
-
+  
   const handleCloseResetPasswordModal = () => {
     setIsResetPasswordModalOpen(false);
   };
@@ -58,16 +83,29 @@ const LoginSignupForm = () => {
     event.preventDefault();
     const email = event.target[0].value.toLowerCase();
     const password = event.target[1].value;
-
+  
     try {
       const response = await axios.post('http://localhost:9090/user/login', { email, password });
-      console.log(response.data);
-      navigate('/home');
+  
+      // Check if response contains the JWT token
+      if (response.data && response.data.jwt) {
+        const token = response.data.jwt;
+  
+        // Save the token to local storage
+        localStorage.setItem('authToken', token);
+  
+        // Navigate to home page after successful login
+        navigate('/home');
+        resetBodyStyles(); // Reset styles immediately after navigation
+      } else {
+        setErrorMessage('Login failed: No token received');
+      }
     } catch (error) {
       setErrorMessage(error.response?.data?.message || 'Login failed');
       console.error('Login error:', error);
     }
   };
+
 
   const handleSignup = async (event) => {
     event.preventDefault();
@@ -104,16 +142,19 @@ const LoginSignupForm = () => {
         }
       });
       console.log(response.data);
-      // Optionally, navigate to a different page after signup
-      // navigate("/homepage");
     } catch (error) {
       setErrorMessage(error.response?.data?.message || "Signup failed");
       console.error("Signup error:", error.response);
     }
   };
 
+  const handleSubmitEmail = (submittedEmail) => {
+    setEmail(submittedEmail);
+    handleOpenOtpModal(); // Open OTP modal after submitting email
+  };
+
   return (
-    <div className="container">
+    <div className="containerauth">
       <input type="checkbox" id="flip" />
       <div className="cover">
         <div className="front">
@@ -134,8 +175,8 @@ const LoginSignupForm = () => {
       <div className="forms">
         <div className="form-content">
           <div className="login-form">
-            <img src={logoapp2} alt="Logo" className="form-logo" style={{ marginBottom: '40px', height: '50px', width: 'auto' }} />
-            <div className="title" style={{ color: 'black' }}>Login</div>
+            <img src={logoapp2} alt="Logo" className="form-logo" />
+            <div className="title">Login</div>
             <form onSubmit={handleLogin}>
               <div className="input-boxes">
                 <div className="input-box">
@@ -165,7 +206,7 @@ const LoginSignupForm = () => {
 
           <div className="signup-form">
             <img src={logoapp} alt="Logo" className="form-logo" />
-            <div className="title" style={{ color: '#2e2e2e' }}>Signup</div>
+            <div className="title">Signup</div>
             <form onSubmit={handleSignup}>
               <div className="input-boxes">
                 <div className="input-box">
@@ -202,14 +243,14 @@ const LoginSignupForm = () => {
                 <div className="button input-box">
                   <input type="submit" value="Submit" />
                 </div>
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
                 <div className="text sign-up-text">Already have an account? <label htmlFor="flip">Login now</label></div>
               </div>
             </form>
           </div>
         </div>
       </div>
-
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleOpenOtpModal} />
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} onSubmitEmail={handleSubmitEmail} />
       <OtpModal isOpen={isOtpModalOpen} onClose={handleCloseOtpModal} onVerify={handleVerify} />
       <ResetPasswordModal isOpen={isResetPasswordModalOpen} onClose={handleCloseResetPasswordModal} />
     </div>

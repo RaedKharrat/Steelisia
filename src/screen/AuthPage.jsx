@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import '../App.css';
+//import '../App.css';
 
-import Signin from '../component/Signin.jsx';
+import Signin from '../component/Signin';
 
 
 

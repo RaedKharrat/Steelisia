@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import Header from './component/Header.jsx';
-import Preloader from './component/Preloader.jsx';
-import MainBanner from './component/MainBanner.jsx';
-import FurnitureSales from './component/Courses.jsx';
-import Footer from './component/Footer.jsx';
+import '../App.css';
+import Header from '../component/Header.jsx';
+//import Preloader from './component/Preloader.jsx';
+import MainBanner from '../component/MainBanner.jsx';
+import FurnitureSales from '../component/ShopComponent.jsx';
+import Footer from '../component/Footer.jsx';
 
 
 
 
-const App = () => {
+const Shop = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,20 +22,16 @@ const App = () => {
 
   return (
     <div>
-      {loading ? (
-        <Preloader />
-      ) : (
-        <>
+     
           <Header />
           <MainBanner />
 
           <FurnitureSales />
 
           <Footer />
-        </>
-      )}
+
     </div>
   );
 };
 
-export default App;
+export default Shop;

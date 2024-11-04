@@ -29,11 +29,7 @@ const MainBanner = () => {
                     <div className="main-button">
                       <a href="#">Shop Now</a>
                     </div>
-                    <div className="icon-button">
-                      <a href="#">
-                        <FontAwesomeIcon icon={faPlay} /> Explore Our Collection
-                      </a>
-                    </div>
+                  
                   </div>
                 </div>
               </div>
@@ -46,11 +42,7 @@ const MainBanner = () => {
                     <div className="main-button">
                       <a href="#">Request a Catalog</a>
                     </div>
-                    <div className="icon-button">
-                      <a href="#">
-                        <FontAwesomeIcon icon={faPlay} /> View Best Sellers
-                      </a>
-                    </div>
+              
                   </div>
                 </div>
               </div>
@@ -63,11 +55,7 @@ const MainBanner = () => {
                     <div className="main-button">
                       <a href="#">Start Shopping</a>
                     </div>
-                    <div className="icon-button">
-                      <a href="#">
-                        <FontAwesomeIcon icon={faPlay} /> How to Shop Online?
-                      </a>
-                    </div>
+
                   </div>
                 </div>
               </div>

@@ -314,8 +314,9 @@ Header Style
 
 .header-area .main-nav {
   background: transparent;
-  display: flex
+  display: flex;
 }
+
 
 .header-area .main-nav .logo {
   -webkit-transition: all 0.3s ease 0s;
