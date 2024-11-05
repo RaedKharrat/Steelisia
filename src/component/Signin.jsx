@@ -115,7 +115,7 @@ const LoginSignupForm = () => {
     const password = event.target[3].value;
     const phone = event.target[4].value;
     const adresse = event.target[5].value;
-    const role = "Admin"; // Ensure this matches what your API expects
+    const role = "Client"; // Ensure this matches what your API expects
 
     console.log("Signup data:", {
       first_name,
@@ -127,6 +127,7 @@ const LoginSignupForm = () => {
       role,
     });
 
+    
     try {
       const response = await axios.post("http://localhost:9090/user/signup", {
         first_name,

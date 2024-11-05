@@ -1,0 +1,60 @@
+.filter-container {
+    background-color: #f8f9fa; /* Light background for the filter container */
+    padding: 20px; /* Padding around the container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 20px; /* Space below the filter container */
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Align items to the start */
+    width: 100%; /* Full width of the filter container */
+}
+
+.price-filter {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Full width for the price filter */
+}
+
+.range-values {
+    display: flex;
+    justify-content: space-between; /* Space out min and max values */
+    width: 100%; /* Full width for range values */
+    margin-top: 10px; /* Space above the range values */
+}
+
+.slider-container {
+    margin: 20px 0; /* Vertical margin around the slider */
+    width: 100%; /* Ensure the slider container takes full width */
+}
+
+.slider-track {
+    background: #ccc; /* Track color */
+    height: 4px; /* Track height */
+    border-radius: 2px; /* Rounded corners */
+}
+
+.slider-thumb {
+    background: #734b00; /* Thumb color */
+    height: 13px; /* Thumb height */
+    width: 13px; /* Thumb width */
+    border-radius: 50%; /* Circular thumb */
+    cursor: pointer; /* Cursor change on hover */
+    border: 2px solid white; /* White border around the thumb */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Shadow for the thumb */
+}
+
+/* Additional CSS to make the slider itself full-width */
+.slider {
+    width: 100%; /* Make the slider full width */
+}
+.items-container {
+    background-color: #f8f9fa; /* Same background as filter */
+    padding: 20px; /* Padding around items */
+    border-radius: 10px; /* Rounded corners to match filter */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    margin-top: 20px; /* Space above items container */
+}

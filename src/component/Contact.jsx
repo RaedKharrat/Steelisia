@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import './ContactUs.css'; // Import CSS file if necessary
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -18,8 +17,9 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here, e.g., send to an API
-    console.log('Form submitted:', formData);
+    const { name, email, message } = formData;
+    const mailtoLink = `mailto:kharrat.raed@esprit.tn?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)} - From: ${encodeURIComponent(email)}`;
+    window.location.href = mailtoLink;
   };
 
   return (
