@@ -11,7 +11,8 @@ const DashboardP = () => {
   const [loading, setLoading] = useState(true);
   const [totalProducts, setTotalProducts] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-  
+  const [categories, setCategories] = useState([]);  // State for categories
+
   // State for adding a new product
   const [newProduct, setNewProduct] = useState({
     name: '',
@@ -57,6 +58,19 @@ const DashboardP = () => {
     fetchProductCount();
   }, []);
 
+  useEffect(() => {
+    // Fetch categories dynamically
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://localhost:9090/categorie/');
+        setCategories(response.data); // Assuming the response contains the list of categories
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
   const deleteProduct = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
@@ -86,7 +100,7 @@ const DashboardP = () => {
 
   const handleCreateProduct = async (event) => {
     event.preventDefault();
-    
+
     const formData = new FormData();
     formData.append('name', newProduct.name);
     formData.append('description', newProduct.description);
@@ -149,6 +163,12 @@ const DashboardP = () => {
               <span className="links_name">Products</span>
             </Link>
           </li>
+          <li>
+            <Link to="/dashboard-categories">
+              <i className="bx bx-category-alt"></i>
+              <span className="links_name">Categories</span>
+            </Link>
+          </li>
           <li className="log_out">
             <Link to="#">
               <i className="bx bx-log-out"></i>
@@ -195,7 +215,15 @@ const DashboardP = () => {
           <div className="sales-boxes">
             <div className="recent-sales box">
               <div className="title">Products List</div>
+              <button 
+                  className="btn btn-outline-success" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#createProductModal"
+                  style={{margin:'10px'}}>
+                  Create new Product
+                </button>
               <div className="sales-details">
+                
                 <table className="table table-striped" id="productTable">
                   <thead>
                     <tr>
@@ -223,12 +251,7 @@ const DashboardP = () => {
                 </table>
               </div>
               <div className="button">
-                <button 
-                  className="btn btn-primary" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#createProductModal">
-                  Create new Product
-                </button>
+             
               </div>
 
               {/* Create Product Modal */}
@@ -236,81 +259,85 @@ const DashboardP = () => {
                 <div className="modal-dialog">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <h5 className="modal-title" id="createProductModalLabel">Create New Product</h5>
+                      <h5 className="modal-title" id="createProductModalLabel">Add New Product</h5>
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
                       <form onSubmit={handleCreateProduct}>
                         <div className="mb-3">
+                          <label className="form-label">Name</label>
                           <input
                             type="text"
                             className="form-control"
                             value={newProduct.name}
-                            onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-                            placeholder="Product Name"
-                            required
+                            onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
                           />
                         </div>
                         <div className="mb-3">
+                          <label className="form-label">Description</label>
                           <input
                             type="text"
                             className="form-control"
                             value={newProduct.description}
-                            onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
-                            placeholder="Description"
-                            required
+                            onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
                           />
                         </div>
                         <div className="mb-3">
+                          <label className="form-label">Price</label>
                           <input
                             type="number"
                             className="form-control"
                             value={newProduct.prix}
-                            onChange={(e) => setNewProduct({ ...newProduct, prix: e.target.value })}
-                            placeholder="Price"
-                            required
+                            onChange={(e) => setNewProduct({...newProduct, prix: e.target.value})}
                           />
                         </div>
                         <div className="mb-3">
+                          <label className="form-label">Quantity</label>
                           <input
                             type="number"
                             className="form-control"
                             value={newProduct.qnt}
-                            onChange={(e) => setNewProduct({ ...newProduct, qnt: e.target.value })}
-                            placeholder="Quantity"
-                            required
+                            onChange={(e) => setNewProduct({...newProduct, qnt: e.target.value})}
                           />
                         </div>
                         <div className="mb-3">
+                          <label className="form-label">Category</label>
                           <select
                             className="form-control"
-                            value={newProduct.etat}
-                            onChange={(e) => setNewProduct({ ...newProduct, etat: e.target.value })}>
-                            <option value="available">disponible</option>
-                            <option value="unavailable">non disponible</option>
+                            value={newProduct.idCategorie}
+                            onChange={(e) => setNewProduct({...newProduct, idCategorie: e.target.value})}>
+                            <option value="">Select Category</option>
+                            {categories.map((category) => (
+                              <option key={category._id} value={category._id}>
+                                {category.name}
+                              </option>
+                            ))}
                           </select>
                         </div>
                         <div className="mb-3">
+                          <label className="form-label">Images</label>
                           <input
                             type="file"
                             className="form-control"
                             multiple
-                            onChange={(e) => setNewProduct({ ...newProduct, images: e.target.files })}
+                            onChange={(e) => setNewProduct({...newProduct, images: e.target.files})}
                           />
                         </div>
-                        <button type="submit" className="btn btn-primary">Create Product</button>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" className="btn btn-primary">Save Product</button>
+                        </div>
                       </form>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </section>
     </div>
   );
-};
+}
 
 export default DashboardP;

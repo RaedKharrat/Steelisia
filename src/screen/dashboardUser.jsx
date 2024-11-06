@@ -105,16 +105,22 @@ const DashboardU = () => {
         <ul className="nav-links">
           <li>
             <Link to="/dashboard-users" className="active">
-              <i className="bx bx-grid-alt"></i>
+              <i className="bx bx-grid-alt" ></i>
               <span className="links_name">Users</span>
             </Link>
           </li>
           <li>
-            <Link to="/dashboard-produit">
+            <Link to="/dashboard-produit" >
               <i className="bx bx-package"></i>
               <span className="links_name">Products</span>
             </Link>
           </li>
+          <li>
+                <Link to="/dashboard-categories" >
+                <i className="bx bx-category-alt"></i>
+                <span className="links_name">Categories</span>
+                </Link>
+            </li>
           <li className="log_out">
             <Link to="#">
               <i className="bx bx-log-out"></i>
@@ -123,6 +129,7 @@ const DashboardU = () => {
           </li>
         </ul>
       </aside>
+
 
       <section className="home-section">
         <nav>

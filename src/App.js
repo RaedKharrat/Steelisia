@@ -7,6 +7,8 @@ import Homepage from './screen/Homepage.jsx';
 import Shop from './screen/Shop.jsx';
 import DashboardP from './screen/dashboard.jsx';
 import DashboardU from './screen/dashboardUser.jsx';
+import DashboardC from './screen/DashboardC.jsx';
+import DashboardCmd from './screen/dashboardCmd.jsx';
 
 const App = () => {
   return (
@@ -20,7 +22,8 @@ const App = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/dashboard-produit" element={<DashboardP />} />
         <Route path="/dashboard-users" element={<DashboardU />} />
-
+        <Route path="/dashboard-categories" element={<DashboardC />} />
+        <Route path="/dashboard-commande" element={<DashboardCmd />} />
 
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
