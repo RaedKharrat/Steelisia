@@ -130,6 +130,32 @@ nav .search-box input{
   font-size: 18px;
   padding: 0 15px;
 }
+/* Status Dropdown Styling */
+form .form-control {
+  border-radius: 20px;
+}
+
+.status-success {
+  background-color: #00ddff;
+  color: white;
+}
+
+.status-info {
+  background-color: #21c146;
+  color: white;
+}
+
+.status-danger {
+  background-color: #e20f24;
+  color: white;
+}
+
+.status-warning {
+  background-color: #ffe607;
+  color: white;
+}
+
+
 nav .search-box .bx-search{
   position: absolute;
   height: 40px;
@@ -262,12 +288,29 @@ nav .profile-details i{
 /* left box */
 .home-content .sales-boxes .recent-sales{
   width: 100%;
-  background: #fff;
+  background: #f2f2f2;
   padding: 20px 30px;
   margin: 0 20px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
+
+.home-content .sales-boxes .recent-sales:hover {
+  background: #ffffff; /* Slightly change the background on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Increase the shadow */
+}
+.home-content .sales-boxes .recent-sales {
+  width: 100%;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Smooth transition for all changes */
+}
+
+
+
 .home-content .sales-boxes .sales-details{
   display: flex;
   align-items: center;

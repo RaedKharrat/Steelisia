@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css'; // Ensure you have the correct styles in this file
 import $ from 'jquery'; // Import jQuery
+import Sidebar from '../component/sidebar';  // Import the Sidebar component
+
 
 const DashboardU = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -97,38 +99,8 @@ const DashboardU = () => {
 
   return (
     <div className="dashboard">
-      <aside className={`sidebar ${sidebarActive ? 'active' : ''}`}>
-        <div className="logo-details">
-          <i className="bx bxl-c-plus-plus"></i>
-          <span className="logo_name">Steelisia</span>
-        </div>
-        <ul className="nav-links">
-          <li>
-            <Link to="/dashboard-users" className="active">
-              <i className="bx bx-grid-alt" ></i>
-              <span className="links_name">Users</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard-produit" >
-              <i className="bx bx-package"></i>
-              <span className="links_name">Products</span>
-            </Link>
-          </li>
-          <li>
-                <Link to="/dashboard-categories" >
-                <i className="bx bx-category-alt"></i>
-                <span className="links_name">Categories</span>
-                </Link>
-            </li>
-          <li className="log_out">
-            <Link to="#">
-              <i className="bx bx-log-out"></i>
-              <span className="links_name">Log out</span>
-            </Link>
-          </li>
-        </ul>
-      </aside>
+            <Sidebar sidebarActive={sidebarActive} toggleSidebar={toggleSidebar} /> {/* Use Sidebar component here */}
+
 
 
       <section className="home-section">
@@ -138,12 +110,7 @@ const DashboardU = () => {
             <span className="dashboard">Dashboard</span>
           </div>
           <div className="search-box">
-            <input
-              type="text"
-              placeholder="Search users..."
-              id="searchInput"
-              className="form-control"
-            />
+
           </div>
           <div className="profile-details">
             <img src="/Frontoffice/assets/images/profile.jpg" alt="Profile" />
@@ -167,12 +134,20 @@ const DashboardU = () => {
           <div className="sales-boxes">
             <div className="recent-sales box">
               <div className="title">Users List</div>
+              <input
+              type="text"
+              placeholder="Search users..."
+              id="searchInput"
+              className="form-control"
+              style={{marginTop:'30px' , marginBottom:'10px'}}
+            />
               <div className="sales-details">
                 <table className="table table-striped" id="userTable">
                   <thead>
                     <tr>
                       <th>First Name</th>
                       <th>Last Name</th>
+                      <th>Role</th>
                       <th>Email</th>
                       <th>Company</th>
                       <th>Phone</th>
@@ -184,12 +159,14 @@ const DashboardU = () => {
                       <tr key={user._id}>
                         <td>{user.first_name}</td>
                         <td>{user.last_name}</td>
+                        <td>{user.role} <i class="fa fa-check-circle" style={{ color: 'green'}}></i>
+                        </td>
                         <td>{user.email}</td>
                         <td>{user.companyName}</td>
                         <td>{user.phone}</td>
                         <td>
-                          <button className="btn btn-warning btn-sm me-2" onClick={() => handleEditUser(user)}>Edit</button>
-                          <button className="btn btn-danger btn-sm" onClick={() => deleteUser(user._id)}>Delete</button>
+                          <button className="btn btn-success btn-sm me-2" onClick={() => handleEditUser(user)}><i className="fas fa-pencil-alt"></i> </button>
+                          <button className="btn btn-outline-danger btn-sm" onClick={() => deleteUser(user._id)}><i className="fas fa-trash-alt"></i> </button>
                         </td>
                       </tr>
                     ))}
@@ -275,8 +252,9 @@ const DashboardU = () => {
                         value={editUser.role}
                         onChange={(e) => setEditUser({ ...editUser, role: e.target.value })}
                       >
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
+                        <option value="Client">Client</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Company Owner">Company owner</option>
                       </select>
                     </div>
                     <button type="submit" className="btn btn-success">Update</button>

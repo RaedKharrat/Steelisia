@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
+import Sidebar from '../component/sidebar';  // Import the Sidebar component
+
 
 const DashboardP = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -145,38 +147,8 @@ const DashboardP = () => {
 
   return (
     <div className="dashboard">
-      <aside className={`sidebar ${sidebarActive ? 'active' : ''}`}>
-        <div className="logo-details">
-          <i className="bx bxl-c-plus-plus"></i>
-          <span className="logo_name">Steelisia</span>
-        </div>
-        <ul className="nav-links">
-          <li>
-            <Link to="/dashboard-users">
-              <i className="bx bx-grid-alt"></i>
-              <span className="links_name">Users</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard-produit" className="active">
-              <i className="bx bx-package"></i>
-              <span className="links_name">Products</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard-categories">
-              <i className="bx bx-category-alt"></i>
-              <span className="links_name">Categories</span>
-            </Link>
-          </li>
-          <li className="log_out">
-            <Link to="#">
-              <i className="bx bx-log-out"></i>
-              <span className="links_name">Log out</span>
-            </Link>
-          </li>
-        </ul>
-      </aside>
+            <Sidebar sidebarActive={sidebarActive} toggleSidebar={toggleSidebar} /> {/* Use Sidebar component here */}
+
 
       <section className="home-section">
         <nav>
@@ -185,13 +157,7 @@ const DashboardP = () => {
             <span className="dashboard">Dashboard</span>
           </div>
           <div className="search-box">
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="form-control"
-            />
+
           </div>
           <div className="profile-details">
             <img src="/Frontoffice/assets/images/profile.jpg" alt="Profile" />
@@ -215,8 +181,17 @@ const DashboardP = () => {
           <div className="sales-boxes">
             <div className="recent-sales box">
               <div className="title">Products List</div>
+              <input
+              type="text"
+              placeholder="Search products..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="form-control"
+              style={{marginTop:'30px' , marginBottom:'10px'}}
+
+            />
               <button 
-                  className="btn btn-outline-success" 
+                  className="btn btn-outline-primary" 
                   data-bs-toggle="modal" 
                   data-bs-target="#createProductModal"
                   style={{margin:'10px'}}>
@@ -227,8 +202,9 @@ const DashboardP = () => {
                 <table className="table table-striped" id="productTable">
                   <thead>
                     <tr>
+                      <th>Reference</th>
                       <th>Name</th>
-                      <th>Price</th>
+                      <th>Price /dt</th>
                       <th>Quantity</th>
                       <th>Status</th>
                       <th>Actions</th>
@@ -237,13 +213,15 @@ const DashboardP = () => {
                   <tbody>
                     {filteredProducts.map(product => (
                       <tr key={product._id}>
+                        <td>{product._id}</td>
+                        <td>{product.name}</td>
                         <td>{product.name}</td>
                         <td>{product.prix}</td>
                         <td>{product.qnt}</td>
                         <td>{product.etat}</td>
                         <td>
-                          <button className="btn btn-warning btn-sm me-2" onClick={() => handleEditProduct(product)}>Edit</button>
-                          <button className="btn btn-danger btn-sm" onClick={() => deleteProduct(product._id)}>Delete</button>
+                          <button className="btn btn-success btn-sm me-2" onClick={() => handleEditProduct(product)}><i className="fas fa-pencil-alt"></i> </button>
+                          <button className="btn btn-outline-danger btn-sm" onClick={() => deleteProduct(product._id)}><i className="fas fa-trash-alt"></i> </button>
                         </td>
                       </tr>
                     ))}
@@ -268,6 +246,8 @@ const DashboardP = () => {
                           <label className="form-label">Name</label>
                           <input
                             type="text"
+                            placeholder="write product name"
+
                             className="form-control"
                             value={newProduct.name}
                             onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
@@ -278,14 +258,16 @@ const DashboardP = () => {
                           <input
                             type="text"
                             className="form-control"
+                            placeholder="write product description"
                             value={newProduct.description}
                             onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
                           />
                         </div>
                         <div className="mb-3">
-                          <label className="form-label">Price</label>
+                          <label className="form-label">Price /Dt</label>
                           <input
                             type="number"
+                            placeholder="write price of 1 single item"
                             className="form-control"
                             value={newProduct.prix}
                             onChange={(e) => setNewProduct({...newProduct, prix: e.target.value})}
@@ -295,6 +277,7 @@ const DashboardP = () => {
                           <label className="form-label">Quantity</label>
                           <input
                             type="number"
+                            placeholder="write product stock number"
                             className="form-control"
                             value={newProduct.qnt}
                             onChange={(e) => setNewProduct({...newProduct, qnt: e.target.value})}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
+import Sidebar from '../component/sidebar';  // Import the Sidebar component
 
 const DashboardCategorie = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -94,38 +95,7 @@ const DashboardCategorie = () => {
 
   return (
     <div className="dashboard">
-      <aside className={`sidebar ${sidebarActive ? 'active' : ''}`}>
-        <div className="logo-details">
-          <i className="bx bxl-c-plus-plus"></i>
-          <span className="logo_name">Steelisia</span>
-        </div>
-        <ul className="nav-links">
-          <li>
-            <Link to="/dashboard-users">
-              <i className="bx bx-grid-alt" ></i>
-              <span className="links_name">Users</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard-produit" >
-              <i className="bx bx-package"></i>
-              <span className="links_name">Products</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard-categories" className="active">
-              <i className="bx bx-category-alt"></i>
-              <span className="links_name">Categories</span>
-            </Link>
-          </li>
-          <li className="log_out">
-            <Link to="#">
-              <i className="bx bx-log-out"></i>
-              <span className="links_name">Log out</span>
-            </Link>
-          </li>
-        </ul>
-      </aside>
+      <Sidebar sidebarActive={sidebarActive} toggleSidebar={toggleSidebar} /> {/* Use Sidebar component here */}
 
       <section className="home-section">
         <nav>
@@ -134,14 +104,14 @@ const DashboardCategorie = () => {
             <span className="dashboard">Dashboard</span>
           </div>
           <div className="mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search categories..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search categories..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
           <div className="profile-details">
             <img src="/Frontoffice/assets/images/profile.jpg" alt="Profile" />
             <span className="admin_name">Admin</span>
@@ -149,7 +119,7 @@ const DashboardCategorie = () => {
           </div>
         </nav>
 
-        <div className="home-content" style={{width:'100%'}}>
+        <div className="home-content" style={{ width: '100%' }}>
           <div className="overview-boxes">
             <div className="box">
               <div className="right-side">
@@ -160,19 +130,16 @@ const DashboardCategorie = () => {
             </div>
           </div>
 
-          <div className="sales-boxes" style={{width:'100%'}}>
+          <div className="sales-boxes" style={{ width: '100%' }}>
             <div className="recent-sales box">
               <div className="title">Category List</div>
 
-              {/* Add New Category Button */}
-
               {/* Category List Table */}
-              <div className="sales-details" style={{width:'100%'}}>
+              <div className="sales-details" style={{ width: '100%' }}>
                 <table className="table table-striped" id="categoryTable">
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Description</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -180,22 +147,18 @@ const DashboardCategorie = () => {
                     {filteredCategories.map(category => (
                       <tr key={category._id}>
                         <td>{category.name}</td>
-                        <td>{category.description}</td>
                         <td>
-                          <button className="btn btn-warning btn-sm me-2" onClick={() => handleEditCategory(category)}>Edit</button>
-                          <button className="btn btn-danger btn-sm" onClick={() => deleteCategory(category._id)}>Delete</button>
+                          <button className="btn btn-success btn-sm me-2" onClick={() => handleEditCategory(category)}> <i className="fas fa-pencil-alt"></i></button>
+                          <button className="btn btn-outline-danger btn-sm" onClick={() => deleteCategory(category._id)}><i className="fas fa-trash-alt"></i></button>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                
               </div>
               <button className="btn btn-outline-success mb-3" onClick={() => setShowAddCategoryModal(true)}>Add New Category</button>
-
             </div>
           </div>
-          
 
           {/* Add Category Modal */}
           {showAddCategoryModal && (
@@ -207,21 +170,52 @@ const DashboardCategorie = () => {
                     <button type="button" className="btn-close" onClick={() => setShowAddCategoryModal(false)}></button>
                   </div>
                   <div className="modal-body">
-                    <form onSubmit={handleAddCategory}>
-                      <div className="mb-3">
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Category Name"
-                          value={newCategoryName}
-                          onChange={(e) => setNewCategoryName(e.target.value)}
-                          required
-                        />
-                      </div>
-                      <button type="submit" className="btn btn-primary" style={{margin:'5px'}}>Save</button>
-                      <button type="button" className="btn btn-outline-danger" onClick={() => setShowAddCategoryModal(false)}>Cancel</button>
-                    </form>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={newCategoryName}
+                      onChange={(e) => setNewCategoryName(e.target.value)}
+                      placeholder="Category Name"
+                    />
                   </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" onClick={() => setShowAddCategoryModal(false)}>Close</button>
+                    <button type="button" className="btn btn-primary" onClick={handleAddCategory}>Save Category</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Edit Category Modal */}
+          {editCategory && (
+            <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="editCategoryModalLabel">Edit Category</h5>
+                    <button type="button" className="btn-close" onClick={() => setEditCategory(null)}></button>
+                  </div>
+                  <form onSubmit={handleUpdateCategory}>
+                    <div className="modal-body">
+                      <input
+                        type="text"
+                        className="form-control mb-2"
+                        value={editCategory.name}
+                        onChange={(e) => setEditCategory({ ...editCategory, name: e.target.value })}
+                      />
+                      <textarea
+                        className="form-control"
+                        value={editCategory.description}
+                        onChange={(e) => setEditCategory({ ...editCategory, description: e.target.value })}
+                        placeholder="Description"
+                      />
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" onClick={() => setEditCategory(null)}>Close</button>
+                      <button type="submit" className="btn btn-primary">Save Changes</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
