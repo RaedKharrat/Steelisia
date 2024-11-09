@@ -234,10 +234,10 @@ const LoginSignupForm = () => {
       <Modal isOpen={isModalOpen} handleClose={handleCloseModal} onSubmit={handleSubmitEmail} />
 
       {/* OTP Modal */}
-      <OtpModal isOpen={isOtpModalOpen} handleClose={handleCloseOtpModal} onVerify={handleVerify} />
+      <OtpModal isOpen={isOtpModalOpen} handleClose={handleCloseOtpModal} onVerify={handleVerify} email={email} />
 
       {/* Reset Password Modal */}
-      <ResetPasswordModal isOpen={isResetPasswordModalOpen} handleClose={handleCloseResetPasswordModal} />
+      <ResetPasswordModal isOpen={isResetPasswordModalOpen} handleClose={handleCloseResetPasswordModal} email={email} />
     </div>
   );
 };
