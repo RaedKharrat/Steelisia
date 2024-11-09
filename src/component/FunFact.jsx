@@ -11,25 +11,25 @@ const FunFacts = () => {
               <div className="row">
                 <div className="col-lg-3 col-md-6">
                   <div className="counter">
-                    <h2 className="timer count-title count-number" data-to="150" data-speed="1000">150</h2>
-                    <p className="count-text">Happy Students</p>
+                    <h2 className="timer count-title count-number" data-to="150" data-speed="1000">50</h2>
+                    <p className="count-text">Products</p>
                   </div>
                 </div>
                 <div className="col-lg-3 col-md-6">
                   <div className="counter">
-                    <h2 className="timer count-title count-number" data-to="804" data-speed="1000">804</h2>
-                    <p className="count-text">Course Hours</p>
+                    <h2 className="timer count-title count-number" data-to="804" data-speed="1000">10</h2>
+                    <p className="count-text">package offer</p>
                   </div>
                 </div>
                 <div className="col-lg-3 col-md-6">
                   <div className="counter">
-                    <h2 className="timer count-title count-number" data-to="50" data-speed="1000">50</h2>
-                    <p className="count-text">Employed Students</p>
+                    <h2 className="timer count-title count-number" data-to="50" data-speed="1000">10</h2>
+                    <p className="count-text">Conventional Company</p>
                   </div>
                 </div>
                 <div className="col-lg-3 col-md-6">
                   <div className="counter end">
-                    <h2 className="timer count-title count-number" data-to="15" data-speed="1000">15</h2>
+                    <h2 className="timer count-title count-number" data-to="15" data-speed="1000">1</h2>
                     <p className="count-text">Years Experience</p>
                   </div>
                 </div>

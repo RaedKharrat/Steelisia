@@ -32,13 +32,16 @@
 }
 
 .slider-track {
-    background: #ccc; /* Track color */
+    background: linear-gradient(to right, #ff7a00 0%, #ff7a00 0%, #008000 0%, #008000 100%);
     height: 4px; /* Track height */
     border-radius: 2px; /* Rounded corners */
+    transition: background 0.2s ease; /* Smooth transition when thumbs move */
 }
 
+
+
 .slider-thumb {
-    background: #734b00; /* Thumb color */
+    background: #2d2d2d; /* Thumb color */
     height: 13px; /* Thumb height */
     width: 13px; /* Thumb width */
     border-radius: 50%; /* Circular thumb */

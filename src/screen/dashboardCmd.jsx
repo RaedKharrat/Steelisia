@@ -181,6 +181,25 @@ const DashboardCmd = () => {
     }
   };
 
+  const handleDownloadPDF = async (commandId) => {
+    try {
+      const response = await axios.get(`http://localhost:9090/cmd/commande-pdf/${commandId}`, {
+        responseType: 'blob', // Important for file download
+      });
+      // Create a link to download the PDF
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `command_${commandId}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link); // Clean up the link after download
+    } catch (error) {
+      console.error('Error downloading PDF:', error);
+    }
+  };
+
+
   if (loading) return <div>Loading...</div>;
 
   // Filter commands based on search term
@@ -270,45 +289,43 @@ const DashboardCmd = () => {
     <div className="number" style={{ fontSize: '28px', fontWeight: '600', color: '#333', marginTop: '5px' }}>{pendingCommandes}</div>
   </div>
 
-  {/* Total Canceled Box */}
-  <div className="overview-boxes" style={{
-    backgroundColor: '#fff',
-    borderRadius: '10px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    padding: '20px',
-    width: '200px',
-    height: '180px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-  }}>
-    <i className="bx bx-x" style={{ fontSize: '50px', color: '#F44336' }}></i>
-    <div className="box-topic" style={{ fontSize: '14px', color: '#777', marginTop: '10px', fontWeight: 'bold' }}>Total Canceled</div>
-    <div className="number" style={{ fontSize: '28px', fontWeight: '600', color: '#333', marginTop: '5px' }}>{canceledCommandes}</div>
-  </div>
+<div className="overview-boxes" style={{
+  backgroundColor: '#fff',
+  borderRadius: '10px',
+  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  padding: '20px',
+  width: '200px',
+  height: '180px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+}}>
+  <i className="bx bx-check-circle" style={{ fontSize: '50px', color: '#4CAF50' }}></i>
+  <div className="box-topic" style={{ fontSize: '14px', color: '#777', marginTop: '10px', fontWeight: 'bold' }}>Total Delivered</div>
+  <div className="number" style={{ fontSize: '28px', fontWeight: '600', color: '#333', marginTop: '5px' }}>{deliveredCommandes}</div>
+</div>
 
-  {/* Total Shipped Box */}
-  <div className="overview-boxes" style={{
-    backgroundColor: '#fff',
-    borderRadius: '10px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    padding: '20px',
-    width: '200px',
-    height: '180px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-  }}>
-    <i className="bx bx-truck" style={{ fontSize: '50px', color: '#2196F3' }}></i>
-    <div className="box-topic" style={{ fontSize: '14px', color: '#777', marginTop: '10px', fontWeight: 'bold' }}>Total Shipped</div>
-    <div className="number" style={{ fontSize: '28px', fontWeight: '600', color: '#333', marginTop: '5px' }}>{shippedCount}</div>
-  </div>
+<div className="overview-boxes" style={{
+  backgroundColor: '#fff',
+  borderRadius: '10px',
+  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  padding: '20px',
+  width: '200px',
+  height: '180px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+}}>
+  <i className="bx bx-package" style={{ fontSize: '50px', color: '#3F51B5' }}></i>
+  <div className="box-topic" style={{ fontSize: '14px', color: '#777', marginTop: '10px', fontWeight: 'bold' }}>Total Shipped</div>
+  <div className="number" style={{ fontSize: '28px', fontWeight: '600', color: '#333', marginTop: '5px' }}>{shippedCount}</div>
+</div>
 
   {/* Total Delivered Box */}
   <div className="overview-boxes" style={{
@@ -409,7 +426,15 @@ const DashboardCmd = () => {
                         <button onClick={() => deleteCommand(command._id)} className="btn btn-outline-danger">
                           <i className="fas fa-trash-alt"></i> {/* Trash icon */}
                         </button>
+                        <button
+                          className="btn btn-link"
+                          onClick={() => handleDownloadPDF(command._id)}
+                        >
+                          
+                          <i className="fas fa-file-pdf" style={{ color: 'green' }}></i> {/* PDF icon */}
+                        </button>
                         </td>
+
                       </tr>
                     ))}
                   </tbody>
@@ -420,47 +445,7 @@ const DashboardCmd = () => {
         </div>
 
         {/* Add Command Modal */}
-        {showAddCommandModal && (
-          <div className="modal" style={{ display: 'block' }}>
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title">Add New Command</h5>
-                  <button type="button" className="close" onClick={() => setShowAddCommandModal(false)}>&times;</button>
-                </div>
-                <div className="modal-body">
-                  <form onSubmit={handleAddCommand}>
-                    <div className="form-group">
-                      <label htmlFor="newCommandName">Command Name</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="newCommandName"
-                        value={newCommandName}
-                        onChange={(e) => setNewCommandName(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="newCommandStatus">Status</label>
-                      <select
-                        className="form-control"
-                        id="newCommandStatus"
-                        value={newCommandStatus}
-                        onChange={(e) => setNewCommandStatus(e.target.value)}
-                      >
-                        {statusOptions.map(status => (
-                          <option key={status} value={status}>{status}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Save Command</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        
       </section>
     </div>
   );

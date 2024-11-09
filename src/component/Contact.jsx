@@ -29,15 +29,15 @@ const ContactUs = () => {
           <div className="col-lg-6 align-self-center">
             <div className="section-heading">
               <h6>Contact Us</h6>
-              <h2>Feel free to contact us anytime</h2>
+              <h2>Explore Our Premium Furniture Collection</h2>
               <p>
-                Thank you for choosing our templates. We provide you best CSS templates at absolutely 100% free of charge. You may support us by sharing our website with your friends.
+                At Steelisia, we specialize in crafting high-quality, durable furniture made from premium metal and wood. Whether for your home or office, our pieces blend elegance with functionality, offering the perfect addition to any space.
               </p>
               <div className="special-offer">
-                <span className="offer">off<br /><em>50%</em></span>
-                <h6>Valid: <em>24 April 2036</em></h6>
-                <h4>Special Offer <em>50%</em> OFF!</h4>
-                <a href="#"><i className="fa fa-angle-right"></i></a>
+                <span className="offer">off<br /><em>30%</em></span>
+                <h6>Valid: <em>15 January 2025</em></h6>
+                <h4>Exclusive Offer: Get <em>30%</em> OFF on All  Package Furniture!</h4>
+                <a href="#events"><i className="fa fa-angle-right"></i></a>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@ const ContactUs = () => {
                       <textarea
                         name="message"
                         id="message"
-                        placeholder="Your Message"
+                        placeholder="Tell us your furniture needs..."
                         value={formData.message}
                         onChange={handleChange}
                       ></textarea>
@@ -86,7 +86,7 @@ const ContactUs = () => {
                   <div className="col-lg-12">
                     <fieldset>
                       <button type="submit" id="form-submit" className="orange-button">
-                        Send Message Now
+                        Send Your Message
                       </button>
                     </fieldset>
                   </div>

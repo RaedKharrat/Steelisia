@@ -19,3 +19,60 @@
 }
 
 
+/* Submenu styling */
+.submenu {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  background-color: #333;
+  border-radius: 5px;
+  width: 200px;
+  top: 100%;
+  left: 0;
+  display: none;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition */
+  transform: translateY(10px); /* Slight downward movement to start */
+}
+
+.dropdown:hover .submenu {
+  display: block; /* Show submenu on hover */
+  opacity: 1; /* Fade-in effect */
+  transform: translateY(0); /* Move into place */
+}
+
+/* Submenu Item Styling */
+.submenu li {
+  padding: 10px;
+  background-color: #333;
+}
+
+.submenu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.submenu li a:hover {
+  background-color: #555;
+}
+
+/* Menu Item Styling */
+.nav > li {
+  position: relative; /* Ensure the submenu is positioned correctly */
+}
+
+/* Smooth hover effect on the main menu */
+.nav > li > a {
+  transition: color 0.3s ease;
+}
+
+.nav > li > a:hover {
+  color: #f39c12; /* Change color on hover */
+}
+
+/* Ensuring the menu and submenu don't overlap the page */
+.main-nav {
+  position: relative;
+}
