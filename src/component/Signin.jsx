@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
-import Modal from './Modal'; // Forgot password modal
-import OtpModal from './OtpModal'; // OTP modal
-import ResetPasswordModal from './ResetPasswordModal'; // Reset Password Modal
+import Modal from './Modal';
+import OtpModal from './OtpModal';
+import ResetPasswordModal from './ResetPasswordModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock, faUser, faPhone, faMapMarkerAlt, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faUser, faPhone, faMapMarkerAlt, faEye, faEyeSlash, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import logoapp from './logoAppDark.png';
 import logoapp2 from './logoAppDark2.png';
 
@@ -14,22 +14,20 @@ const LoginSignupForm = () => {
   const navigate = useNavigate();
   const [showPasswordLogin, setShowPasswordLogin] = useState(false);
   const [showPasswordSignup, setShowPasswordSignup] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Track modal visibility
   const [isOtpModalOpen, setIsOtpModalOpen] = useState(false);
   const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [email, setEmail] = useState(''); // State to hold the email
 
   useEffect(() => {
-    // Set body style for the login/signup page
-    document.body.style.backgroundColor = '#2b2b2b'; // Optional: makes sure body takes full height
+    document.body.style.backgroundColor = '#2b2b2b';
     document.body.style.display = 'flex';
-    document.body.style.justifyContent = 'center'; // Optional: centers content horizontally
-    document.body.style.alignItems = 'center'; // Optional: centers content vertically
-    document.body.style.height = '100vh'; // Optional: makes sure body takes full height
-    document.body.style.margin = '10px'; // Optional: makes sure body takes full height
+    document.body.style.justifyContent = 'center';
+    document.body.style.alignItems = 'center';
+    document.body.style.height = '100vh';
+    document.body.style.margin = '10px';
 
-    // Cleanup function to reset body styles when component unmounts
     return () => {
       resetBodyStyles();
     };
@@ -53,15 +51,15 @@ const LoginSignupForm = () => {
   };
 
   const handleForgotPasswordClick = () => {
-    setIsModalOpen(true);
+    setIsModalOpen(true); // Show modal when "Forgot password" is clicked
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(false); // Close modal when canceled
   };
 
   const handleOpenOtpModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(false); // Close modal when OTP modal opens
     setIsOtpModalOpen(true);
   };
 
@@ -74,7 +72,7 @@ const LoginSignupForm = () => {
     handleCloseOtpModal();
     setIsResetPasswordModalOpen(true); 
   };
-  
+
   const handleCloseResetPasswordModal = () => {
     setIsResetPasswordModalOpen(false);
   };
@@ -83,20 +81,15 @@ const LoginSignupForm = () => {
     event.preventDefault();
     const email = event.target[0].value.toLowerCase();
     const password = event.target[1].value;
-  
+
     try {
       const response = await axios.post('http://localhost:9090/user/login', { email, password });
-  
-      // Check if response contains the JWT token
+
       if (response.data && response.data.jwt) {
         const token = response.data.jwt;
-  
-        // Save the token to local storage
         localStorage.setItem('authToken', token);
-  
-        // Navigate to home page after successful login
         navigate('/home');
-        resetBodyStyles(); // Reset styles immediately after navigation
+        resetBodyStyles();
       } else {
         setErrorMessage('Login failed: No token received');
       }
@@ -106,7 +99,6 @@ const LoginSignupForm = () => {
     }
   };
 
-
   const handleSignup = async (event) => {
     event.preventDefault();
     const first_name = event.target[0].value;
@@ -115,19 +107,9 @@ const LoginSignupForm = () => {
     const password = event.target[3].value;
     const phone = event.target[4].value;
     const adresse = event.target[5].value;
-    const role = "Client"; // Ensure this matches what your API expects
+    const companyName = event.target[6].value; // New company name field
+    const role = "Client";
 
-    console.log("Signup data:", {
-      first_name,
-      last_name,
-      email,
-      password,
-      phone,
-      adresse,
-      role,
-    });
-
-    
     try {
       const response = await axios.post("http://localhost:9090/user/signup", {
         first_name,
@@ -136,6 +118,7 @@ const LoginSignupForm = () => {
         password,
         phone,
         adresse,
+        companyName, // Include company name in the request
         role,
       }, {
         headers: {
@@ -151,7 +134,7 @@ const LoginSignupForm = () => {
 
   const handleSubmitEmail = (submittedEmail) => {
     setEmail(submittedEmail);
-    handleOpenOtpModal(); // Open OTP modal after submitting email
+    handleOpenOtpModal();
   };
 
   return (
@@ -186,17 +169,13 @@ const LoginSignupForm = () => {
                 </div>
                 <div className="input-box">
                   <FontAwesomeIcon icon={faLock} />
-                  <input 
-                    type={showPasswordLogin ? 'text' : 'password'} 
-                    placeholder="Enter your password" 
-                    required 
-                  />
+                  <input type={showPasswordLogin ? 'text' : 'password'} placeholder="Enter your password" required />
                   <span onClick={togglePasswordVisibilityLogin}>
                     <FontAwesomeIcon icon={showPasswordLogin ? faEyeSlash : faEye} />
                   </span>
                 </div>
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <div className="text"><a href="#" onClick={handleForgotPasswordClick}>Forgot password?</a></div>
+                <div className="text"><a  onClick={handleForgotPasswordClick}>Forgot password?</a></div>
                 <div className="button input-box">
                   <input type="submit" value="Submit" />
                 </div>
@@ -224,11 +203,7 @@ const LoginSignupForm = () => {
                 </div>
                 <div className="input-box">
                   <FontAwesomeIcon icon={faLock} />
-                  <input 
-                    type={showPasswordSignup ? 'text' : 'password'} 
-                    placeholder="Enter your password" 
-                    required 
-                  />
+                  <input type={showPasswordSignup ? 'text' : 'password'} placeholder="Enter your password" required />
                   <span onClick={togglePasswordVisibilitySignup}>
                     <FontAwesomeIcon icon={showPasswordSignup ? faEyeSlash : faEye} />
                   </span>
@@ -241,19 +216,28 @@ const LoginSignupForm = () => {
                   <FontAwesomeIcon icon={faMapMarkerAlt} />
                   <input type="text" placeholder="Enter your address" required />
                 </div>
+                <p>If you are a company owner, please write it down below (Optional)</p>
+                <div className="input-box">
+                  <FontAwesomeIcon icon={faBuilding} />
+                  <input type="text" placeholder="Company Name" required />
+                </div>
                 <div className="button input-box">
                   <input type="submit" value="Submit" />
                 </div>
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <div className="text sign-up-text">Already have an account? <label htmlFor="flip">Login now</label></div>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} onSubmitEmail={handleSubmitEmail} />
-      <OtpModal isOpen={isOtpModalOpen} onClose={handleCloseOtpModal} onVerify={handleVerify} />
-      <ResetPasswordModal isOpen={isResetPasswordModalOpen} onClose={handleCloseResetPasswordModal} />
+
+      {/* Modal for Forgot Password */}
+      <Modal isOpen={isModalOpen} handleClose={handleCloseModal} onSubmit={handleSubmitEmail} />
+
+      {/* OTP Modal */}
+      <OtpModal isOpen={isOtpModalOpen} handleClose={handleCloseOtpModal} onVerify={handleVerify} />
+
+      {/* Reset Password Modal */}
+      <ResetPasswordModal isOpen={isResetPasswordModalOpen} handleClose={handleCloseResetPasswordModal} />
     </div>
   );
 };

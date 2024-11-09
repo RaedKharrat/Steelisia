@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const MainBanner = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const $ = window.$; // Ensure jQuery is available globally
     $('.owl-carousel').owlCarousel({
@@ -13,6 +16,10 @@ const MainBanner = () => {
       autoplayHoverPause: true,
     });
   }, []);
+
+  const handleNavigateToShop = () => {
+    navigate('/shop');
+  };
 
   return (
     <div className="main-banner" id="top">
@@ -27,9 +34,8 @@ const MainBanner = () => {
                   <p>Discover our exquisite range of furniture designed to elevate your home. From modern to classic, find pieces that reflect your style and personality.</p>
                   <div className="buttons">
                     <div className="main-button">
-                      <a href="#">Shop Now</a>
+                      <a onClick={handleNavigateToShop}>Shop Now</a>
                     </div>
-                  
                   </div>
                 </div>
               </div>
@@ -40,9 +46,8 @@ const MainBanner = () => {
                   <p>Check out our best-selling furniture pieces that have captivated hearts! Enjoy unmatched quality and style at amazing prices.</p>
                   <div className="buttons">
                     <div className="main-button">
-                      <a href="#">Request a Catalog</a>
+                      <a onClick={handleNavigateToShop}>Request a Catalog</a>
                     </div>
-              
                   </div>
                 </div>
               </div>
@@ -53,9 +58,8 @@ const MainBanner = () => {
                   <p>Experience a seamless shopping journey with us. Browse, compare, and order your favorite furniture without leaving your home.</p>
                   <div className="buttons">
                     <div className="main-button">
-                      <a href="#">Start Shopping</a>
+                      <a onClick={handleNavigateToShop}>Start Shopping</a>
                     </div>
-
                   </div>
                 </div>
               </div>

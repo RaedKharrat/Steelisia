@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
         },
         body: JSON.stringify({ email }),
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         alert(data.message); // Show success message
@@ -28,7 +28,6 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
       alert('An error occurred. Please try again.');
     }
   };
-  
 
   return (
     isOpen && (
@@ -47,7 +46,15 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
             <button onClick={onClose} style={{ borderRadius: '20px' }}>
               Cancel
             </button>
-            <button type="button" onClick={handleSubmit} style={{ borderRadius: '20px', color: 'white', backgroundColor: 'black' }}>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              style={{
+                borderRadius: '20px',
+                color: 'white',
+                backgroundColor: 'black',
+              }}
+            >
               Submit
             </button>
           </div>

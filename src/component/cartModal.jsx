@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import axios from 'axios';  // Import axios for making API requests
-import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
+import {jwtDecode} from 'jwt-decode';  // Corrected the import name if needed
 import './CartModal.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const CartModal = ({ cartItems, onClose, userId }) => {  // Add userId prop
+const CartModal = ({ cartItems, onClose, userId }) => {
   const [quantities, setQuantities] = useState(
     cartItems.reduce((acc, item, index) => ({ ...acc, [index]: item.quantity || 1 }), {})
   );
-  const [errorMessage, setErrorMessage] = useState(''); // Define state for error messages
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleQuantityChange = (index, newQuantity) => {
     setQuantities((prevQuantities) => ({
@@ -25,62 +27,78 @@ const CartModal = ({ cartItems, onClose, userId }) => {  // Add userId prop
     return cartItems.reduce((total, item, index) => total + calculateTotalPrice(item, index), 0);
   };
 
-  // Handle the checkout
   const handleCheckout = async () => {
     const token = localStorage.getItem('authToken');
-    
+
     if (!token) {
       setErrorMessage('No authentication token found.');
-      return; // Early return if no token is found
+      return;
     }
-  
+
     try {
       const decoded = jwtDecode(token);
       const userId = decoded.userId;
-      
+
       if (!userId) {
         setErrorMessage('User ID not found in token.');
-        return; // Return early if userId is missing
+        return;
       }
-  
+
       if (!cartItems || cartItems.length === 0) {
         setErrorMessage('Your cart is empty.');
-        return; // Early return if cart is empty
+        return;
       }
-  
-      // Prepare request data with proper productId and userId
+
       const requestData = {
-        userId,  // userId passed correctly from token
+        userId,
         products: cartItems.map((item, index) => ({
-          productId: item._id.toString(), // Ensure to send the ObjectId as string if needed
+          productId: item._id.toString(),
           quantity: quantities[index] || 1
         }))
       };
-  
-      // Log requestData to confirm its structure
-      console.log('Request Data:', requestData);
-  
-      // Send the request to the backend
+
       const response = await axios.post('http://localhost:9090/cmd/commande/', requestData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       });
-  
+
       console.log('Checkout successful:', response.data);
-      // Further success handling logic
-      
+
+      // Show success notification with customization
+      toast.success('🎉 Checkout successful!', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        style: {
+          backgroundColor: '#4CAF50',
+          color: '#fff',
+          fontSize: '16px',
+          fontWeight: 'bold',
+        },
+        icon: "🛒"
+      });
+
+      // Delay the closing of the modal to allow the toast to show
+      setTimeout(() => {
+        onClose();
+      }, 1000);  // 1-second delay before closing the modal
+
     } catch (error) {
       console.error('Error during checkout:', error.response ? error.response.data : error);
       setErrorMessage('Error during checkout.');
     }
   };
-  
 
   return (
     <div className="cart-modal-overlay">
       <div className="cart-modal">
+        <ToastContainer /> {/* Ensure ToastContainer is present */}
         <div className="cart-header" style={{ backgroundColor: '#2b2b2b' }}>
           <h2 style={{ color: 'white' }}>
             Shopping Cart <i className="fa fa-shopping-cart" style={{ margin: '18px', color: 'white' }}></i>
@@ -112,14 +130,13 @@ const CartModal = ({ cartItems, onClose, userId }) => {  // Add userId prop
                 />
               </div>
               <p className="total-price">
-                Total: <p>{calculateTotalPrice(item, index).toFixed(2)} Dt</p>
+                Total: <span>{calculateTotalPrice(item, index).toFixed(2)} Dt</span>
               </p>
             </li>
           ))}
         </ul>
         <hr className="total-amount-separator" />
 
-        {/* Display error message */}
         {errorMessage && <div className="error-message">{errorMessage}</div>}
 
         <button className="checkout-button" style={{ marginBottom: '10px' }} onClick={handleCheckout}>
