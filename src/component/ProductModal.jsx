@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaShoppingBasket } from 'react-icons/fa'; // Changed to a more significant icon
+import { FaTimes } from 'react-icons/fa'; // Adding the 'Esc' icon for closing the modal
 
 const ProductModal = ({ product, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -18,113 +19,131 @@ const ProductModal = ({ product, onClose }) => {
   const stateColor = product.etat === 'disponible' ? 'green' : 'red';
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 1000,
-    }}>
-      <div style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',  // Semi-transparent background color
-        backdropFilter: 'blur(10px)',  // Blur effect for frosted glass effect
-        borderRadius: '20px',
-        padding: '20px',
-        width: '400px',
-        maxWidth: '90%',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-        textAlign: 'center',
-        position: 'relative',
-      }}>
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Dark background for modal
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1000,
+        overflow: 'auto', // Allow scrolling if content overflows
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: '#1E1E1E', // Dark background for the modal
+          borderRadius: '20px',
+          padding: '20px',
+          width: '90%', // Set to 90% for responsiveness
+          maxWidth: '600px', // Max width to keep the modal in control
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
+          textAlign: 'center',
+          position: 'relative',
+          overflowY: 'auto', // Allow scrolling of content if it overflows
+          maxHeight: '90vh', // Limiting max height to 90% of the viewport height
+        }}
+      >
         <button
           style={{
             color: 'white',
-            backgroundColor: '#2b2b2b',
+            background: 'linear-gradient(to right, orange, red)',
             border: 'none',
-            borderRadius: '20px',
-            padding: '5px 10px',
+            borderRadius: '50%',
+            padding: '8px', 
             position: 'absolute',
             top: '10px',
-            right: '10px',
+            left: '10px',
             cursor: 'pointer',
+            fontSize: '10px',
           }}
           onClick={onClose}
         >
-          X
+          <FaTimes />
         </button>
-        <h2 style={{
-          color: 'black',
-          backgroundColor: '#bbbbbb',
-          borderRadius: '20px',
-          padding: '10px',
-        }}>
+{/* Centered State Overlay at the top */}
+<span
+            style={{
+              backgroundColor: stateColor,
+              color: 'white',
+              padding: '5px 10px',
+              borderRadius: '10px',
+              fontWeight: 'bold',
+              opacity: '0.9',
+              fontSize: '0.8rem',
+            }}
+          >
+            {product.etat}
+          </span>
+        <h2
+          style={{
+            color: '#fff', // Light color for text in dark mode
+            backgroundColor: '#2b2b2b',
+            borderRadius: '20px',
+            padding: '10px',
+            marginBottom: '15px',
+            fontSize: '1.4rem',
+          }}
+        >
           {product.name}
         </h2>
-        <div style={{
-          position: 'relative',
-          margin: '20px 0',
-          display: 'flex',
-          justifyContent: 'center',
-        }}>
+
+        <div
+          style={{
+            position: 'relative',
+            marginBottom: '20px',
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column',
+          }}
+        >
           <img
             src={`http://localhost:9090/images/${product.images[currentImageIndex]}`}
             alt={`${product.name} ${currentImageIndex + 1}`}
             style={{
-              width: '100%',
-              height: '400px',
+              width: 'auto',
+              height: 'auto',
+              maxHeight: '400px', // Make sure images don't exceed a certain height
               objectFit: 'cover',
               borderRadius: '10px',
             }}
           />
-          {/* Centered State Overlay at the top */}
-          <span style={{
-            position: 'absolute',
-            top: '10px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            backgroundColor: stateColor,
-            color: 'white',
-            padding: '5px 10px',
-            borderRadius: '10px',
-            fontWeight: 'bold',
-            opacity: '0.8'
-          }}>
-            {product.etat}
-          </span>
-          {/* Add to Cart Icon */}
-          <button  style={{
-            position: 'absolute',
-            bottom: '10px',
-            right: '10px',
-            backgroundColor: '#2b2b2b',
-            border: 'none',
-            color: 'white',
-            padding: '10px',
-            borderRadius: '50%',
-            cursor: 'pointer',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor:'brown'
-          }}>
-            <FaShoppingBasket size={20} />
-          </button>
+          
+          
+          {/* Dot Indicator Below Image */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+            {product.images.map((_, index) => (
+              <div
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  margin: '0 5px',
+                  borderRadius: '50%',
+                  backgroundColor: index === currentImageIndex ? 'orange' : 'gray',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s ease',
+                }}
+              />
+            ))}
+          </div>
         </div>
-        <div style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.3)',
-          backdropFilter: 'blur(10px)',
-          padding: '15px',
-          margin: '10px',
-          borderRadius: '20px',
-          color: 'white',
-        }}>
-          <p><strong>Description:</strong> {product.description}</p>
-          <p><strong>Price:</strong> DT {product.prix}</p>
+
+        <div
+          style={{
+            background: 'linear-gradient(to right, orange, red)',
+            padding: '15px',
+            margin: '10px',
+            borderRadius: '20px',
+            color: '#F0F0F0',
+          }}
+        >
+          DT <strong> {product.prix}</strong>DT
         </div>
       </div>
     </div>

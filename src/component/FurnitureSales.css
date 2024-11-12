@@ -1,63 +1,236 @@
+/* Main Section Styling */
+.section.furniture-sales {
+  padding: 40px 0;
+  background-color: #f5f5f5;
+}
+
+/* Toast Notification Styling */
+.Toastify__toast--success {
+  background-color: #4caf50;
+}
+
+/* Filter Section Styling */
 .filter-container {
-    background-color: #f8f9fa; /* Light background for the filter container */
-    padding: 20px; /* Padding around the container */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    margin-bottom: 20px; /* Space below the filter container */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
 }
 
-.filter-options {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: flex-start; /* Align items to the start */
-    width: 100%; /* Full width of the filter container */
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
 }
 
-.price-filter {
-    display: flex;
-    flex-direction: column;
-    width: 100%; /* Full width for the price filter */
+.filter-box {
+  padding: 10px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 110px;
+  width: 100%;
 }
 
-.range-values {
-    display: flex;
-    justify-content: space-between; /* Space out min and max values */
-    width: 100%; /* Full width for range values */
-    margin-top: 10px; /* Space above the range values */
+.modern-dropdown {
+  padding: 10px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
 }
 
-.slider-container {
-    margin: 20px 0; /* Vertical margin around the slider */
-    width: 100%; /* Ensure the slider container takes full width */
+.gradient-box {
+  background: linear-gradient(135deg, #ff7a18, #af002d 90%);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
 }
 
+.btn-clear {
+  display: flex;
+  align-items: center;
+  color: #333;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-clear:hover {
+  color: #ff3b3b;
+}
+
+/* Slider Styling */
 .slider-track {
-    background: linear-gradient(to right, #ff7a00 0%, #ff7a00 0%, #008000 0%, #008000 100%);
-    height: 4px; /* Track height */
-    border-radius: 2px; /* Rounded corners */
-    transition: background 0.2s ease; /* Smooth transition when thumbs move */
+  background-color: #ddd;
+  height: 8px;
+  border-radius: 4px;
 }
-
-
 
 .slider-thumb {
-    background: #2d2d2d; /* Thumb color */
-    height: 13px; /* Thumb height */
-    width: 13px; /* Thumb width */
-    border-radius: 50%; /* Circular thumb */
-    cursor: pointer; /* Cursor change on hover */
-    border: 2px solid white; /* White border around the thumb */
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); /* Shadow for the thumb */
+  background-color: #ff7a18;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-/* Additional CSS to make the slider itself full-width */
-.slider {
-    width: 100%; /* Make the slider full width */
+/* Price Range Display */
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: bold;
+  color: #555;
+  margin-top: 5px;
 }
+
+/* Items Display Styling */
 .items-container {
-    background-color: #f8f9fa; /* Same background as filter */
-    padding: 20px; /* Padding around items */
-    border-radius: 10px; /* Rounded corners to match filter */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    margin-top: 20px; /* Space above items container */
+  padding-top: 20px;
+}
+
+.event_outer {
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+.event_outer:hover {
+  transform: translateY(-5px);
+}
+
+.events_item {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.events_item .thumb {
+  cursor: pointer;
+  border-bottom: 2px solid #eee;
+  position: relative;
+}
+
+.events_item .category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.events_item .price {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.down-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.down-content h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.down-content p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.down-content button {
+  font-size: 14px;
+  color: blue;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Add to Cart Button Styling */
+.add-to-cart {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.add-to-cart .btn {
+  width: 90%;
+  color: #fff;
+  background:linear-gradient(135deg, #ff7a18, #af002d 90%) ;
+  border: 1px solid #4caf50;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.add-to-cart .btn:hover {
+  border-color: #45a049;
+}
+.gradient-box:hover {
+  background: linear-gradient(135deg, #ff5e4a, #d3001c 90%); /* Darker shade for hover */
+}
+.filter-box:hover {
+  transform: scale(1.05);  /* Slightly enlarges the box */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);  /* More prominent shadow */
+}
+/* Style for the checkbox */
+.filter-box input[type="checkbox"] {
+  transform: scale(1.8); /* Scale the checkbox to 1.5 times its normal size */
+  margin-right: 10px; /* Optional: adds space between the checkbox and the label */
+  padding: 10px;
+  border-radius: 10px;
+}
+/* Style for the description text container */
+.description-container {
+  max-height: 100px; /* Set the height for the scrollable area */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-bottom: 10px;
+  color: #ccc; /* Text color */
+  font-size: 1em;
+  text-overflow: ellipsis; /* Show ellipsis when the content overflows */
+  transition: max-height 0.3s ease-in-out; /* Smooth transition for expanding/collapsing */
+}
+
+/* When description is expanded */
+.description-container.expanded {
+  max-height: 80px; /* Expanded height */
+}
+
+
+
+.description-container::-webkit-scrollbar-thumb {
+  background-color: #ababab; /* Darker color for the thumb */
+  border-radius: 10px; /* Round corners */
+}
+
+.description-container::-webkit-scrollbar-track {
+  background: #d0d0d0; /* Track color */
+}
+.description-container {
+  max-height: 100px; /* Set the max height of the description */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  padding-right: 10px;  /* Optional, to prevent text from sticking to the scrollbar */
+  color: #333;  /* You can adjust the text color as needed */
+}
+
+.description-container p {
+  margin: 0;  /* Remove margin if needed */
+  font-size: 14px;  /* Adjust font size as per your design */
+  line-height: 1.4; /* Optional, for better readability */
 }

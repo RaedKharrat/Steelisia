@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import Sidebar from '../component/sidebar';  // Import the Sidebar component
+import LoadingScreen from '../component/LoadingScreen.jsx'; // Import LoadingScreen
 
 const DashboardCategorie = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -17,6 +19,14 @@ const DashboardCategorie = () => {
 
   const toggleSidebar = () => setSidebarActive(!sidebarActive);
 
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 2 seconds delay for the loading screen
+
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, []);
   // Fetch all categories
   useEffect(() => {
     const fetchCategories = async () => {
@@ -71,6 +81,9 @@ const DashboardCategorie = () => {
       console.error('Error updating category:', error.response ? error.response.data : error.message);
     }
   };
+  // const handleHome = () => {
+  //   navigate('/home'); // Navigate to the home route using useNavigate
+  // };
 
   const handleEditCategory = (category) => setEditCategory(category);
 
@@ -86,8 +99,9 @@ const DashboardCategorie = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-
+  if (loading) {
+    return <LoadingScreen />; // Render Preloader if loading is true
+  }
   // Filter categories based on search term
   const filteredCategories = categories.filter(category =>
     category.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -103,18 +117,10 @@ const DashboardCategorie = () => {
             <i className={`bx ${sidebarActive ? 'bx-menu-alt-right' : 'bx-menu'} sidebarBtn`}></i>
             <span className="dashboard">Dashboard</span>
           </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search categories..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
+          
           <div className="profile-details">
             <img src="/Frontoffice/assets/images/profile.jpg" alt="Profile" />
-            <span className="admin_name">Admin</span>
+            <span className="admin_name">Steelisia Dashboard</span>
             <i className="bx bx-chevron-down"></i>
           </div>
         </nav>
@@ -126,14 +132,28 @@ const DashboardCategorie = () => {
                 <div className="box-topic">Total Categories</div>
                 <div className="number">{totalCategories}</div>
               </div>
-              <i className="bx bx-category-alt cart"></i>
+              <i className="bx bx-category-alt cart" style={{
+              background: 'linear-gradient(45deg, red, orange)', // Linear gradient from red to orange
+
+              WebkitBackgroundClip: 'text', // Apply the gradient to the text (icon)
+              color: 'transparent', // Make the icon text transparent to show the gradient
+            }}></i>
             </div>
           </div>
 
           <div className="sales-boxes" style={{ width: '100%' }}>
             <div className="recent-sales box">
               <div className="title">Category List</div>
-
+              <button className="btn btn-outline-success mb-3" onClick={() => setShowAddCategoryModal(true)}>Add New Category</button>
+              <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search categories..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
               {/* Category List Table */}
               <div className="sales-details" style={{ width: '100%' }}>
                 <table className="table table-striped" id="categoryTable">
@@ -156,7 +176,6 @@ const DashboardCategorie = () => {
                   </tbody>
                 </table>
               </div>
-              <button className="btn btn-outline-success mb-3" onClick={() => setShowAddCategoryModal(true)}>Add New Category</button>
             </div>
           </div>
 

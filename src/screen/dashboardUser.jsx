@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css'; // Ensure you have the correct styles in this file
 import $ from 'jquery'; // Import jQuery
 import Sidebar from '../component/sidebar';  // Import the Sidebar component
+import LoadingScreen from '../component/LoadingScreen.jsx'; // Import LoadingScreen
+import { useNavigate } from 'react-router-dom';
 
 
 const DashboardU = () => {
@@ -17,7 +19,13 @@ const DashboardU = () => {
   const toggleSidebar = () => {
     setSidebarActive(!sidebarActive);
   };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 2 seconds delay for the loading screen
 
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, []);
   // Fetch all users
   useEffect(() => {
     const fetchUsers = async () => {
@@ -93,8 +101,9 @@ const DashboardU = () => {
     setEditUser(user);
   };
 
+
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingScreen  />; // Use LoadingScreen here
   }
 
   return (
@@ -114,7 +123,7 @@ const DashboardU = () => {
           </div>
           <div className="profile-details">
             <img src="/Frontoffice/assets/images/profile.jpg" alt="Profile" />
-            <span className="admin_name">Prem Shahi</span>
+            <span className="admin_name">Steelisia Dashboard</span>
             <i className="bx bx-chevron-down"></i>
           </div>
         </nav>
@@ -127,7 +136,12 @@ const DashboardU = () => {
                 <div className="number">{totalUsers}</div>
                 <div className="indicator"></div>
               </div>
-              <i className="bx bx-user cart"></i>
+              <i className="bx bx-user cart" style={{
+              background: 'linear-gradient(45deg, red, orange)', // Linear gradient from red to orange
+
+              WebkitBackgroundClip: 'text', // Apply the gradient to the text (icon)
+              color: 'transparent', // Make the icon text transparent to show the gradient
+            }}></i>
             </div>
           </div>
 

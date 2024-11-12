@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import Sidebar from '../component/sidebar';  // Import the Sidebar component
+import LoadingScreen from '../component/LoadingScreen.jsx'; // Import LoadingScreen
+import { useNavigate } from 'react-router-dom';
 
 const DashboardCmd = () => {
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -24,6 +26,14 @@ const DashboardCmd = () => {
 
   const toggleSidebar = () => setSidebarActive(!sidebarActive);
 
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 2 seconds delay for the loading screen
+
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, []);
   // Fetch all commands
   useEffect(() => {
     const fetchCommands = async () => {
@@ -200,8 +210,10 @@ const DashboardCmd = () => {
   };
 
 
-  if (loading) return <div>Loading...</div>;
 
+  if (loading) {
+    return <LoadingScreen />; // Render Preloader if loading is true
+  }
   // Filter commands based on search term
   const filteredCommands = commands.filter(command =>
     (
@@ -241,7 +253,7 @@ const DashboardCmd = () => {
           </div>
           <div className="profile-details">
             <img src="/Frontoffice/assets/images/profile.jpg" alt="Profile" />
-            <span className="admin_name">Admin</span>
+            <span className="admin_name">Steelisia Dashboard</span>
             <i className="bx bx-chevron-down"></i>
           </div>
         </nav>
@@ -251,8 +263,8 @@ const DashboardCmd = () => {
   
   {/* Total Commands Box */}
   <div className="overview-boxes" style={{
-    backgroundColor: '#4CAF50',
-    borderRadius: '10px',
+              background: 'linear-gradient(45deg, orange, yellow)', // Linear gradient from red to orange
+              borderRadius: '10px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     padding: '20px',
     width: '200px',
@@ -342,15 +354,15 @@ const DashboardCmd = () => {
     textAlign: 'center',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease'
   }}>
-    <i className="bx bx-package" style={{ fontSize: '50px', color: '#8BC34A' }}></i>
-    <div className="box-topic" style={{ fontSize: '14px', color: '#777', marginTop: '10px', fontWeight: 'bold' }}>Total Delivered</div>
-    <div className="number" style={{ fontSize: '28px', fontWeight: '600', color: '#333', marginTop: '5px' }}>{deliveredCommandes}</div>
+<i className="bx bx-x-circle" style={{ fontSize: '50px', color: 'red' }}></i>
+<div className="box-topic" style={{ fontSize: '14px', color: '#777', marginTop: '10px', fontWeight: 'bold' }}>Total canceled</div>
+    <div className="number" style={{ fontSize: '28px', fontWeight: '600', color: '#333', marginTop: '5px' }}>{canceledCommandes}</div>
   </div>
 
   {/* Special Total Money Box */}
   <div className="overview-boxes" style={{
-    backgroundColor: '#FFEB3B',
-    borderRadius: '10px',
+              background: 'linear-gradient(45deg, red, orange)', // Linear gradient from red to orange
+              borderRadius: '10px',
     boxShadow: '0 6px 12px rgba(0, 0, 0, 0.2)',
     padding: '20px',
     width: '320px',
@@ -364,9 +376,9 @@ const DashboardCmd = () => {
     cursor: 'pointer',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease'
   }}>
-    <i className="bx bx-wallet" style={{ fontSize: '50px', color: '#FFC107' }}></i>
-    <div className="box-topic" style={{ fontSize: '14px', color: '#777', marginTop: '10px', fontWeight: 'bold' }}>Total Money</div>
-    <div className="number" style={{ fontSize: '34px', fontWeight: '700', color: '#333', marginTop: '5px' }}>Dt {totalDeliveredAmount.toFixed(2)}</div>
+    <i className="bx bx-wallet" style={{ fontSize: '50px', color: '#2b2b2b' }}></i>
+    <div className="box-topic" style={{ fontSize: '14px', color: '#fff', marginTop: '10px', fontWeight: 'bold' }}>Total Money</div>
+    <div className="number" style={{ fontSize: '34px', fontWeight: '700', color: '#fff', marginTop: '5px' }}>Dt {totalDeliveredAmount.toFixed(2)}</div>
   </div>
 
 </div>
@@ -382,11 +394,9 @@ const DashboardCmd = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-              {/* Add New Command Button */}
-              <button className="btn btn-outline-primary mb-3" onClick={() => setShowAddCommandModal(true)} style={{marginTop:'30px'}}>Add New Command</button>
-
+              
               {/* Command List Table */}
-              <div className="sales-details" style={{ width: '100%' }}>
+              <div className="sales-details" style={{ width: '100%', marginTop:'30px' }}>
                 <table className="table table-striped" id="commandTable">
                   <thead>
                     <tr>

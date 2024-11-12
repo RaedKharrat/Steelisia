@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import Sidebar from '../component/sidebar';  // Import the Sidebar component
@@ -44,6 +42,11 @@ const DashboardP = () => {
     fetchProducts();
   }, []);
 
+
+  // const handleHome = () => {
+  //   navigate('/home'); // Navigate to the home route using useNavigate
+  // };
+  
   useEffect(() => {
     const fetchProductCount = async () => {
       try {
@@ -87,15 +90,15 @@ const DashboardP = () => {
   const handleUpdateProduct = async (event) => {
     event.preventDefault();
     try {
-      const { name, prix, qnt, etat } = editProduct;
-      const response = await axios.put(`http://localhost:9090/product/${editProduct._id}`, { name, prix, qnt, etat });
+      const { name, description, prix, qnt, etat } = editProduct;
+      const response = await axios.put(`http://localhost:9090/product/${editProduct._id}`, { name, description, prix, qnt, etat });
       setProducts(products.map(product => product._id === editProduct._id ? response.data : product));
-      setEditProduct(null);
+      setEditProduct(null); // Clear the form after successful update
     } catch (error) {
       console.error('Error updating product:', error);
     }
   };
-
+  
   const handleEditProduct = (product) => {
     setEditProduct(product);
   };
@@ -161,7 +164,7 @@ const DashboardP = () => {
           </div>
           <div className="profile-details">
             <img src="/Frontoffice/assets/images/profile.jpg" alt="Profile" />
-            <span className="admin_name">Prem Shahi</span>
+            <span className="admin_name">Steelisia Dashboard</span>
             <i className="bx bx-chevron-down"></i>
           </div>
         </nav>
@@ -174,7 +177,12 @@ const DashboardP = () => {
                 <div className="number">{totalProducts}</div>
                 <div className="indicator"></div>
               </div>
-              <i className="bx bx-package cart"></i>
+              <i className="bx bx-package cart" style={{
+              background: 'linear-gradient(45deg, red, orange)', // Linear gradient from red to orange
+
+              WebkitBackgroundClip: 'text', // Apply the gradient to the text (icon)
+              color: 'transparent', // Make the icon text transparent to show the gradient
+            }}></i>
             </div>
           </div>
 
@@ -220,7 +228,9 @@ const DashboardP = () => {
                         <td>{product.qnt}</td>
                         <td>{product.etat}</td>
                         <td>
-                          <button className="btn btn-success btn-sm me-2" onClick={() => handleEditProduct(product)}><i className="fas fa-pencil-alt"></i> </button>
+                        <button className="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editProductModal" onClick={() => handleEditProduct(product)}>
+                          <i className="fas fa-pencil-alt"></i> 
+                        </button>
                           <button className="btn btn-outline-danger btn-sm" onClick={() => deleteProduct(product._id)}><i className="fas fa-trash-alt"></i> </button>
                         </td>
                       </tr>
@@ -231,6 +241,76 @@ const DashboardP = () => {
               <div className="button">
              
               </div>
+
+              
+              
+              {/* Edit Product Modal */}
+<div className="modal fade" id="editProductModal" tabIndex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+        {editProduct && (
+          <form onSubmit={handleUpdateProduct}>
+            <div className="mb-3">
+              <label className="form-label">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={editProduct.name}
+                onChange={(e) => setEditProduct({...editProduct, name: e.target.value})}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Description</label>
+              <input
+                type="text"
+                className="form-control"
+                value={editProduct.description}
+                onChange={(e) => setEditProduct({...editProduct, description: e.target.value})}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Price /Dt</label>
+              <input
+                type="number"
+                className="form-control"
+                value={editProduct.prix}
+                onChange={(e) => setEditProduct({...editProduct, prix: e.target.value})}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Quantity</label>
+              <input
+                type="number"
+                className="form-control"
+                value={editProduct.qnt}
+                onChange={(e) => setEditProduct({...editProduct, qnt: e.target.value})}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Status</label>
+              <select
+                className="form-control"
+                value={editProduct.etat}
+                onChange={(e) => setEditProduct({...editProduct, etat: e.target.value})}>
+                <option value="disponible">Available</option>
+                <option value="non disponible">Not Available</option>
+              </select>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" className="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
 
               {/* Create Product Modal */}
               <div className="modal fade" id="createProductModal" tabIndex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
@@ -298,7 +378,7 @@ const DashboardP = () => {
                           </select>
                         </div>
                         <div className="mb-3">
-                          <label className="form-label">Images</label>
+                          <label className="form-label">Product Images</label>
                           <input
                             type="file"
                             className="form-control"

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser, faPhone, faMapMarkerAlt, faEye, faEyeSlash, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import logoapp from './logoAppDark.png';
 import logoapp2 from './logoAppDark2.png';
+import { ToastContainer, toast } from 'react-toastify';
 
 const LoginSignupForm = () => {
   const navigate = useNavigate();
@@ -100,37 +101,41 @@ const LoginSignupForm = () => {
   };
 
   const handleSignup = async (event) => {
-    event.preventDefault();
-    const first_name = event.target[0].value;
-    const last_name = event.target[1].value;
-    const email = event.target[2].value.toLowerCase();
-    const password = event.target[3].value;
-    const phone = event.target[4].value;
-    const adresse = event.target[5].value;
-    const companyName = event.target[6].value; // New company name field
-    const role = "Client";
+  event.preventDefault();
+  const first_name = event.target[0].value;
+  const last_name = event.target[1].value;
+  const email = event.target[2].value.toLowerCase();
+  const password = event.target[3].value;
+  const phone = event.target[4].value;
+  const adresse = event.target[5].value;
+  const companyName = event.target[6].value;
+  const role = "Client";
 
-    try {
-      const response = await axios.post("http://localhost:9090/user/signup", {
-        first_name,
-        last_name,
-        email,
-        password,
-        phone,
-        adresse,
-        companyName, // Include company name in the request
-        role,
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      console.log(response.data);
-    } catch (error) {
-      setErrorMessage(error.response?.data?.message || "Signup failed");
-      console.error("Signup error:", error.response);
+  try {
+    const response = await axios.post("http://localhost:9090/user/signup", {
+      first_name,
+      last_name,
+      email,
+      password,
+      phone,
+      adresse,
+      companyName,
+      role,
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.data) {
+      toast.success("Signup successful! You can login to your account now .");
     }
-  };
+  } catch (error) {
+    setErrorMessage(error.response?.data?.message || "Signup failed");
+    console.error("Signup error:", error.response);
+  }
+};
+
 
   const handleSubmitEmail = (submittedEmail) => {
     setEmail(submittedEmail);
@@ -139,6 +144,8 @@ const LoginSignupForm = () => {
 
   return (
     <div className="containerauth">
+          <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover draggable />
+
       <input type="checkbox" id="flip" />
       <div className="cover">
         <div className="front">

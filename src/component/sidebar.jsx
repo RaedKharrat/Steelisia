@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import logoApp from './logoApp.png'; // Import the logo image
 
 const Sidebar = ({ sidebarActive }) => {
   const navigate = useNavigate();
@@ -21,14 +22,28 @@ const Sidebar = ({ sidebarActive }) => {
     }
   };
 
+  const logoStyle = {
+    fontSize: '32px',  // Adjust size as necessary
+    fontWeight: 'bold',
+    background: 'linear-gradient(45deg, orange, red)',  // Orange to Red Gradient
+    WebkitBackgroundClip: 'text',  // Apply the gradient to the text
+    color: 'transparent',  // Make the text color transparent to show the gradient
+  };
+
   return (
-    <aside className={`sidebar ${sidebarActive ? 'active' : ''}`}>
+    <aside className={`sidebar ${sidebarActive ? 'active' : ''}`} style={{backgroundColor:'#2b2b2b'}}>
       <div className="logo-details">
-        <i className="bx bxl-c-plus-plus"></i>
-        <span className="logo_name">Steelisia</span>
+        <img src={logoApp} alt="Steelisia Logo" style={{ width: '30px', height: '30px', marginRight: '10px', marginLeft:'10px' }} />  {/* Replace the icon with the image */}
+        <span className="logo_name" style={logoStyle}>Steelisia</span>
       </div>
       <ul className="nav-links">
-        <li>
+      <li>
+          <Link to="/home">
+          <i className="bx bx-home" style={{color:'orange'}}></i>
+          <span className="links_name" style={{color:'orange'}}>MY Website</span>
+          </Link>
+        </li>
+        <li style={{marginTop:'20px'}}>
           <Link to="/dashboard-users">
             <i className="bx bx-grid-alt"></i>
             <span className="links_name">Users</span>
@@ -51,9 +66,10 @@ const Sidebar = ({ sidebarActive }) => {
             <i className="bx bx-command"></i>
             <span className="links_name">Commands</span>
           </Link>
+         
         </li>
         <li className="log_out">
-          <Link to="#" onClick={handleLogout}>
+          <Link  onClick={handleLogout}>
             <i className="bx bx-log-out"></i>
             <span className="links_name">Log out</span>
           </Link>

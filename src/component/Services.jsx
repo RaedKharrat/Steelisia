@@ -53,7 +53,7 @@ const Services = () => {
                 <h4>Expert Consultation</h4>
                 <p>Get personalized advice from our furniture experts to find the perfect pieces for your space.</p>
                 <div className="main-button">
-                  <a href="#">Book a Session</a>
+                  <a href="#contact">Book a Session</a>
                 </div>
               </div>
             </div>

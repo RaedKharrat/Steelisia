@@ -61,3 +61,32 @@ h3 {
 }
 
 
+.header-area {
+  transition: top 0.3s ease-in-out;
+}
+
+.header-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #2b2b2b;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Optional: add a shadow to make it stand out */
+  backdrop-filter: blur(100px); /* Adjust blur intensity as needed */
+  opacity: 0.9;
+
+}
+
+/* Make sure your header is also responsive */
+@media (max-width: 768px) {
+  .header-area {
+    padding: 10px;
+  }
+
+  .header-sticky {
+    position: fixed;
+  }
+}

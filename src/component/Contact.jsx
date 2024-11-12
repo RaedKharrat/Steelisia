@@ -18,7 +18,7 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, message } = formData;
-    const mailtoLink = `mailto:kharrat.raed@esprit.tn?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)} - From: ${encodeURIComponent(email)}`;
+    const mailtoLink = `mailto:noreplysteelisia@gmail.com?subject=Message from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)} - From: ${encodeURIComponent(email)}`;
     window.location.href = mailtoLink;
   };
 
@@ -26,21 +26,49 @@ const ContactUs = () => {
     <div className="contact-us section" id="contact">
       <div className="container">
         <div className="row">
+          {/* Updated Content for Social Media Links and Map */}
           <div className="col-lg-6 align-self-center">
             <div className="section-heading">
-              <h6>Contact Us</h6>
-              <h2>Explore Our Premium Furniture Collection</h2>
-              <p>
-                At Steelisia, we specialize in crafting high-quality, durable furniture made from premium metal and wood. Whether for your home or office, our pieces blend elegance with functionality, offering the perfect addition to any space.
-              </p>
-              <div className="special-offer">
-                <span className="offer">off<br /><em>30%</em></span>
-                <h6>Valid: <em>15 January 2025</em></h6>
-                <h4>Exclusive Offer: Get <em>30%</em> OFF on All  Package Furniture!</h4>
-                <a href="#events"><i className="fa fa-angle-right"></i></a>
+              <h6>Follow Us</h6>
+              <div className="social-links">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-facebook"></i> Facebook
+                </a>
               </div>
+              <h4 style={{marginBottom:'-40px' , marginTop:'50px'}}>Our Location</h4>
+              <p>Find us at our physical store to explore our collection in person.</p>
+              {/* Embed Google Map */}
+              <div 
+                className="map-container" 
+                style={{
+                  padding: '5px', // to provide some spacing inside the border
+                  borderRadius: '30px', 
+                  borderWidth: '30px', 
+                  borderStyle: 'solid',
+                  borderImage: 'linear-gradient(0deg, #2b2b2b, #2b2b2b) 1'
+                }}
+              >
+                <iframe
+                  title="location-map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.5578678241767!2d-122.41941568468137!3d37.774929279758816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c8f8e5e0d%3A0x102ee0e5f7eabbeb!2sSteelisia%20Furniture!5e0!3m2!1sen!2sus!4v1634106468540!5m2!1sen!2sus"
+                  width="100%"
+                  height="250"
+                  style={{ border: 0, borderRadius: '8px' }} // optional: add rounding to iframe
+                  allowFullScreen=""
+                  loading="lazy"
+                ></iframe>
+              </div>
+
             </div>
           </div>
+
+          {/* Contact Form */}
           <div className="col-lg-6">
             <div className="contact-us-content">
               <form id="contact-form" onSubmit={handleSubmit}>
@@ -96,6 +124,31 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+
+      {/* Inline CSS for Styling Social Links and Map */}
+      <style>
+        {`
+          .section-heading .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+          }
+          .section-heading .social-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+          }
+          .section-heading .social-links a i {
+            margin-right: 8px;
+            color: #ff4500;
+          }
+          .map-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+          }
+        `}
+      </style>
     </div>
   );
 };

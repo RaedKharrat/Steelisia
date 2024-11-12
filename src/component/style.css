@@ -209,11 +209,11 @@ body {
   border-radius: 20px;
   padding: 0;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.8s ease;
 }
 
 .forms .form-content .button input:hover {
-  background: rgb(105, 59, 0);
+  background: linear-gradient(to right, orange, red);
 }
 
 .forms .form-content label {

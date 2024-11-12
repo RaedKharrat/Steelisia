@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import Header from '../component/Header.jsx';
-import Preloader from '../component/Preloader.jsx';
+import LoadingScreen from '../component/LoadingScreen.jsx'; // Import the Preloader component
 import Services from '../component/Services.jsx';
 import AboutUs from '../component/AboutUs.jsx';
 import MainBanner from '../component/MainBanner.jsx';
@@ -9,9 +9,7 @@ import FunFacts from '../component/FunFact.jsx';
 import Testimonials from '../component/Testimonials.jsx';
 import ContactUs from '../component/Contact.jsx';
 import Footer from '../component/Footer.jsx';
-
-
-
+import NewestProducts from '../component/NewestProducts.jsx';
 
 const Homepage = () => {
   const [loading, setLoading] = useState(true);
@@ -19,24 +17,26 @@ const Homepage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 2 seconds delay
+    }, 1000); // 2 seconds delay
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, []);
 
+  if (loading) {
+    return <LoadingScreen />; // Render Preloader if loading is true
+  }
+
   return (
     <div>
-
-          <Header />
-          <MainBanner />
-          <Services />
-          <AboutUs />
-
-          <FunFacts />
-          <Testimonials />
-          <ContactUs />
-          <Footer />
-
+      <Header />
+      <MainBanner />
+      <Services />
+      <AboutUs />
+      <NewestProducts />
+      <FunFacts />
+      <Testimonials />
+      <ContactUs />
+      <Footer />
     </div>
   );
 };

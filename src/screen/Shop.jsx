@@ -4,40 +4,43 @@ import Header from '../component/Header.jsx';
 import MainBanner2 from '../component/MainBannerShop.jsx';
 import FurnitureSales from '../component/ShopComponent.jsx';
 import Footer from '../component/Footer.jsx';
-import CartModal from '../component/cartModal.jsx'; // Import CartModal
+import CartModal from '../component/cartModal.jsx';
+import LoadingScreen from '../component/LoadingScreen.jsx'; // Import LoadingScreen
 
 const Shop = () => {
   const [loading, setLoading] = useState(true);
-  const [cartCount, setCartCount] = useState(0); // Initialize cartCount state
-  const [cartItems, setCartItems] = useState([]); // Cart items state
-  const [cartModalOpen, setCartModalOpen] = useState(false); // Cart modal visibility state
+  const [cartCount, setCartCount] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
+  const [cartModalOpen, setCartModalOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 2 seconds delay for the loading screen
+    }, 1500); // 2 seconds delay for the loading screen
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, []);
 
   const updateCartCount = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]); // Add item to cart
+    setCartItems((prevItems) => [...prevItems, item]);
     setCartCount(cartCount + 1);
   };
-  const toggleCartModal = () => setCartModalOpen(!cartModalOpen); // Toggle modal open/close
+  const handleClearCart = () => {
+    setCartCount(0);
+  };
+  const toggleCartModal = () => setCartModalOpen(!cartModalOpen);
 
   if (loading) {
-    // You can add a loader or spinner here while the content is loading
-    return <div>Loading...</div>;
+    return <LoadingScreen  />; // Use LoadingScreen here
   }
 
   return (
     <div>
-      <Header cartCount={cartCount} onCartClick={toggleCartModal} /> {/* Open modal on cart click */}
+      <Header cartCount={cartCount} onCartClick={toggleCartModal} />
       <MainBanner2 />
       <FurnitureSales updateCartCount={updateCartCount} />
       <Footer />
-      {cartModalOpen && <CartModal cartItems={cartItems} onClose={toggleCartModal} />} {/* Show modal if open */}
+      {cartModalOpen && <CartModal cartItems={cartItems} onClose={toggleCartModal}   onCartUpdate={handleClearCart}  />}
     </div>
   );
 };

@@ -1,0 +1,103 @@
+.product-section {
+    text-align: center;
+    margin: 40px 0;
+    color: #2b2b2b;
+}
+
+.product-section-title {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: #2b2b2b; /* Adjust title color */
+}
+
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.card {
+    background-color: #2b2b2b;
+    border: 1px solid #2b2b2b;
+    border-radius: 25px;
+    width: 350px; /* Increased card size */
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative; /* To position the price container */
+}
+
+.card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+.card-image {
+    max-width: 100%;
+    height: 280px; /* Fixed height for uniformity */
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 1.8em;
+    margin: 15px 0 10px;
+    color: #ffffff;
+}
+
+.card-price-container {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    background: linear-gradient(to right, orange, red);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.card-description {
+    font-size: 1em;
+    color: #ccc;
+    margin: 10px 0;
+    height: 100px; /* Fixed height */
+    overflow-y: auto; /* Make it scrollable */
+    text-overflow: ellipsis; /* Add ellipsis when the text overflows */
+    transition: height 0.3s ease-in-out;
+    padding-right: 15px; /* To prevent the text from touching the scrollbar */
+}
+
+/* Scrollbar styling */
+.card-description::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+}
+
+.card-description::-webkit-scrollbar-thumb {
+    background-color: #444; /* Dark color for the thumb */
+    border-radius: 10px;
+    border: 2px solid #333; /* Lighter border for the thumb */
+}
+
+.card-description::-webkit-scrollbar-track {
+    background-color: #222; /* Dark track color */
+    border-radius: 10px;
+}
+
+.card-description-expanded {
+    height: 200px; /* Expanded height */
+}
+
+.show-more-btn {
+    background: none;
+    color: #ff6f61;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: underline;
+}

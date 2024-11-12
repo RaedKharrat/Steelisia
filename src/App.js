@@ -1,7 +1,6 @@
-// App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-//import './App.css';
+import { jwtDecode } from 'jwt-decode';
 import AuthPage from './screen/AuthPage.jsx';
 import Homepage from './screen/Homepage.jsx';
 import Shop from './screen/Shop.jsx';
@@ -11,6 +10,19 @@ import DashboardC from './screen/DashboardC.jsx';
 import DashboardCmd from './screen/dashboardCmd.jsx';
 
 const App = () => {
+  // Helper function to check if the user has an admin role
+  const isAdmin = () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) return false; // No token means not logged in
+
+    try {
+      const decodedToken = jwtDecode(token);
+      return decodedToken.role === 'Admin'; // Check if role is 'admin'
+    } catch (e) {
+      return false; // If decoding fails, treat as unauthorized
+    }
+  };
+
   return (
     <Router>
       <Routes>
@@ -20,11 +32,26 @@ const App = () => {
         {/* Other routes */}
         <Route path="/home" element={<Homepage />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/dashboard-produit" element={<DashboardP />} />
-        <Route path="/dashboard-users" element={<DashboardU />} />
-        <Route path="/dashboard-categories" element={<DashboardC />} />
-        <Route path="/dashboard-commande" element={<DashboardCmd />} />
 
+        {/* Protect dashboard routes with admin role check */}
+        <Route
+          path="/dashboard-produit"
+          element={isAdmin() ? <DashboardP /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/dashboard-users"
+          element={isAdmin() ? <DashboardU /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/dashboard-categories"
+          element={isAdmin() ? <DashboardC /> : <Navigate to="/home" />}
+        />
+        <Route
+          path="/dashboard-commande"
+          element={isAdmin() ? <DashboardCmd /> : <Navigate to="/home" />}
+        />
+
+        {/* Catch-all route */}
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </Router>
