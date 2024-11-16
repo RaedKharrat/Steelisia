@@ -149,14 +149,14 @@ const LoginSignupForm = () => {
       <input type="checkbox" id="flip" />
       <div className="cover">
         <div className="front">
-          <img src="/Frontoffice/assets/images/backgroundLogin1.jpg" alt="" />
+          <img src="/Frontoffice/assets/images/backgroundLogin1.jfif" alt="" />
           <div className="text">
             <span className="text-1">Transform Your Space <br /> with Our Unique Furniture & Decor</span>
             <span className="text-2">Style Meets Functionality</span>
           </div>
         </div>
         <div className="back">
-          <img className="backImg" src="/Frontoffice/assets/images/backgroundImg22.jpg" alt="" />
+          <img className="backImg" src="/Frontoffice/assets/images/backgroundImg22.jfif" alt="" />
           <div className="text">
             <span className="text-1">Discover Timeless Pieces <br /> for Every Room</span>
             <span className="text-2">Elevate Your Home Experience</span>
@@ -182,18 +182,18 @@ const LoginSignupForm = () => {
                   </span>
                 </div>
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <div className="text"><a  onClick={handleForgotPasswordClick}>Forgot password?</a></div>
+                <div className="text"><a  onClick={handleForgotPasswordClick} style={{color:'orange'}}>Forgot password?</a></div>
                 <div className="button input-box">
                   <input type="submit" value="Submit" />
                 </div>
-                <div className="text sign-up-text">Don't have an account? <label htmlFor="flip">Signup now</label></div>
+                <div className="text sign-up-text">Don't have an account? <label htmlFor="flip" style={{color:'orange'}}>Signup now</label></div>
               </div>
             </form>
           </div>
 
           <div className="signup-form">
             <img src={logoapp} alt="Logo" className="form-logo" />
-            <div className="title">Signup</div>
+            <div className="title">Create Account</div>
             <form onSubmit={handleSignup}>
               <div className="input-boxes">
                 <div className="input-box">
@@ -217,20 +217,25 @@ const LoginSignupForm = () => {
                 </div>
                 <div className="input-box">
                   <FontAwesomeIcon icon={faPhone} />
-                  <input type="text" placeholder="+216 ** *** ***" required />
+                  <input type="text" placeholder="write your 8 digit phone number" required />
                 </div>
                 <div className="input-box">
                   <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  <input type="text" placeholder="Enter your address" required />
+                  <input type="text" placeholder="Enter your commande recieved address" required />
                 </div>
                 <p>If you are a company owner, please write it down below (Optional)</p>
                 <div className="input-box">
                   <FontAwesomeIcon icon={faBuilding} />
                   <input type="text" placeholder="Company Name" required />
                 </div>
+                <div className="text sign-up-text">You have account ? <label htmlFor="flip" style={{color:'orange'}}>Login</label></div>
+
                 <div className="button input-box">
                   <input type="submit" value="Submit" />
                 </div>
+           
+           
+                
               </div>
             </form>
           </div>

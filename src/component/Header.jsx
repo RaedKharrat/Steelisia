@@ -85,9 +85,10 @@ const Header = ({ cartCount, onCartClick }) => {
     }
   };
 
-  const handleCategoryClick = () => {
-    navigate(`/shop`); // Navigate to /shop with the selected category as a query parameter
+  const handleCategoryClick = (categoryId) => {
+    navigate(`/shop?categoryId=${categoryId}`); // Navigate to the /shop page with categoryId as a query parameter
   };
+  
   const handleHomeClick = () => {
     navigate(`/home`); // Navigate to /shop with the selected category as a query parameter
   };
@@ -135,12 +136,13 @@ const Header = ({ cartCount, onCartClick }) => {
                     <ul className="submenu">
                       {/* Dynamically render categories */}
                       {categories.map((category, index) => (
-                        <li key={index}>
-                          <a onClick={() => handleCategoryClick(category._id)}>
-                            {category.name}
-                          </a>
-                        </li>
-                      ))}
+                      <li key={index}>
+                        <a onClick={() => handleCategoryClick(category._id)}>
+                          {category.name}
+                        </a>
+                      </li>
+                    ))}
+
                     </ul>
                   )}
                 </li>

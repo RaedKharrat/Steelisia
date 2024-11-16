@@ -51,7 +51,7 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
     const token = localStorage.getItem('authToken');
   
     if (!token) {
-      setErrorMessage('No authentication token found.');
+      setErrorMessage('You should Login first !');
       return;
     }
   

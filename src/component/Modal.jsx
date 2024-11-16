@@ -34,10 +34,10 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
       <div className="modal-overlay">
         <div className="modal-content">
           <h2 style={{ color: 'black' }}>Forgot Password?</h2>
-          <p>Please enter your email address:</p>
+          <p style={{ color: 'white' }}>Please enter your email address:</p>
           <input
             type="email"
-            placeholder="example@exp.ex"
+            placeholder="John.joe@gmail.com"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}

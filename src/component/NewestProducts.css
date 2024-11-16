@@ -1,62 +1,117 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
 .product-section {
     text-align: center;
-    margin: 40px 0;
     color: #2b2b2b;
+    margin-bottom: -400px;
+    margin-top: -20px;
 }
 
 .product-section-title {
-    font-size: 3.5em;
-    margin-bottom: 20px;
-    color: #2b2b2b; /* Adjust title color */
+    font-size: 4.5em;
+    margin-bottom: 80px;
+    color: #fff;
+    background-color: #2b2b2b;
+    padding: 10px;
+    border-radius: 60px;
 }
 
-.product-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 30px;
+/* Slick Carousel Styling */
+.product-slider {
+    position: relative;
+    padding: 0 60px; /* Added padding for next/prev buttons */
 }
 
+.product-slider .slick-list {
+    padding: 0 10px;
+}
+
+.product-slider .slick-slide {
+    margin: 0 10px;
+}
+
+.product-slider .slick-dots {
+    bottom: 350px;
+}
+
+.product-slider .slick-dots li button:before {
+    color: #ffa500;
+}
+
+.product-slider .slick-dots li.slick-active button:before {
+    color: #ff6f61;
+}
+
+/* Next/Prev Arrow Styling */
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: #ff6f61;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.slick-prev {
+    left: -35px;
+}
+
+.slick-next {
+    right: -35px;
+}
+
+.custom-arrow:hover {
+    color: orange;
+}
+
+/* Product Card Styling */
 .card {
     background-color: #2b2b2b;
-    border: 1px solid #2b2b2b;
+    border: 1px solid #fff;
     border-radius: 25px;
-    width: 350px; /* Increased card size */
-    margin: 15px;
-    padding: 20px;
+    width: 300px;
+    margin: 20px;
+    padding: 25px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative; /* To position the price container */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .card:hover {
-    transform: scale(1.07);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    transform: scale(1.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.75);
 }
 
 .card-image {
     max-width: 100%;
-    height: 280px; /* Fixed height for uniformity */
-    border-radius: 8px;
+    height: 220px;
+    border-radius: 10px;
     object-fit: cover;
     margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+    transform: scale(1.03);
 }
 
 .card-title {
     font-size: 1.8em;
     margin: 15px 0 10px;
-    color: #ffffff;
+    color: #ff6f61;
 }
 
 .card-price-container {
     position: absolute;
     top: 15px;
-    left: 20px;
+    left: 15px;
     background: linear-gradient(to right, orange, red);
     color: white;
-    padding: 8px 15px;
-    border-radius: 15px;
+    padding: 10px 18px;
+    border-radius: 18px;
     font-size: 1.2em;
     font-weight: bold;
 }
@@ -64,40 +119,24 @@
 .card-description {
     font-size: 1em;
     color: #ccc;
-    margin: 10px 0;
-    height: 100px; /* Fixed height */
-    overflow-y: auto; /* Make it scrollable */
-    text-overflow: ellipsis; /* Add ellipsis when the text overflows */
-    transition: height 0.3s ease-in-out;
-    padding-right: 15px; /* To prevent the text from touching the scrollbar */
+    margin: 15px 0;
+    height: 80px;
+    overflow-y: auto;
+    padding-right: 10px;
+    text-overflow: ellipsis;
+    line-height: 1.4;
 }
 
-/* Scrollbar styling */
 .card-description::-webkit-scrollbar {
-    width: 10px; /* Set the width of the scrollbar */
+    width: 8px;
 }
 
 .card-description::-webkit-scrollbar-thumb {
-    background-color: #444; /* Dark color for the thumb */
+    background-color: #555;
     border-radius: 10px;
-    border: 2px solid #333; /* Lighter border for the thumb */
 }
 
 .card-description::-webkit-scrollbar-track {
-    background-color: #222; /* Dark track color */
+    background-color: #333;
     border-radius: 10px;
-}
-
-.card-description-expanded {
-    height: 200px; /* Expanded height */
-}
-
-.show-more-btn {
-    background: none;
-    color: #ff6f61;
-    border: none;
-    font-size: 1em;
-    cursor: pointer;
-    margin-top: 10px;
-    text-decoration: underline;
 }

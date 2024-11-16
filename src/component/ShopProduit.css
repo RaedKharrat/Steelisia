@@ -1,0 +1,291 @@
+/* Overall Product Section */
+.product-section {
+    margin: 50px;
+    text-align: center;
+    color: #fff;
+    padding: 50px 0;
+    background-color: #ffffff;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
+/* Custom Scrollbar Styling */
+.product-card .description-container {
+    height: 60px; /* Set the height you want */
+    overflow-y: auto; /* Allow scrolling */
+    color: #000;
+    font-size: 14px;
+    margin-top: 10px;
+    
+    /* Styling the scrollbar */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #444 #2b2b2b; /* Firefox - thumb and track color */
+  }
+  
+  /* For Webkit browsers (Chrome, Safari, Edge) */
+  .product-card .description-container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  .product-card .description-container::-webkit-scrollbar-thumb {
+    background-color: #444; /* Dark color for the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+  }
+  
+  .product-card .description-container::-webkit-scrollbar-track {
+    background-color: #2b2b2b; /* Light color for the scrollbar track */
+    border-radius: 10px;
+  }
+  
+  
+  /* Left Filter Section */
+  .price-filter-container {
+    padding: 20px;
+    background-color: #444;
+    border-radius: 8px;
+    width: 25%;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  
+  /* Filters Header */
+  .price-filter-container h2 {
+    margin-right: 10px;
+    color: orangered;
+  }
+  
+  .price-filter-container i {
+    margin-right: 10px;
+    color: orangered;
+  }
+  
+  /* Price Filter */
+  .price-filter-container .slider {
+    margin-top: 20px;
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+    background: #ddd;
+  }
+  
+  .price-filter-container .slider .thumb {
+    background-color: orangered;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .price-filter-container .price-range {
+    margin-top: 10px;
+    color: #fff;
+  }
+  
+  .price-filter-container .price-range span {
+    margin: 0 10px;
+  }
+  
+  /* Subcategory Filter */
+  .price-filter-container .subcategory-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .price-filter-container .subcategory-buttons button {
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .price-filter-container .subcategory-buttons button.active {
+    background-color: orangered;
+  }
+  
+  /* Right Product Section */
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 70%;
+  }
+  
+  /* Individual Product Card */
+  .product-card {
+    background-color: #3d3d3d;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: 400px;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .product-card img:hover {
+    background-color: orange; /* Set background to orange on hover */
+  }
+  
+  .product-card img:hover::after {
+    content: attr(data-category); /* Displays the category name when hovered */
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .product-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #fff;
+  }
+  
+  .product-card p {
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .product-card .add-to-cart-btn {
+    background-color: orangered;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+  }
+  
+  .product-card .add-to-cart-btn:hover {
+    background: linear-gradient(to right, red, rgb(206, 134, 0));
+  }
+  
+  /* Loading and Error Messages */
+  .loading {
+    color: orangered;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .error {
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Toast Notifications */
+  .Toastify__toast {
+    background-color: rgb(255, 255, 255);
+    color: rgb(80, 80, 80);
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 1200px) {
+    .product-section {
+      flex-direction: column;
+      margin: 20px;
+    }
+  
+    .price-filter-container {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .product-container {
+      width: 100%;
+    }
+  
+    .product-card {
+      max-width: 100%;
+      margin: 10px 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .product-section {
+      padding: 20px;
+    }
+  
+    .price-filter-container {
+      width: 100%;
+    }
+  
+    .product-container {
+      gap: 10px;
+    }
+  
+    .product-card {
+      max-width: 100%;
+      margin: 10px 0;
+    }
+  
+    .price-filter-container h2,
+    .price-filter-container h3 {
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-section {
+      padding: 10px;
+    }
+  
+    .product-card {
+      max-width: 100%;
+      padding: 15px;
+    }
+  
+    .price-filter-container {
+      padding: 10px;
+    }
+  
+    .price-filter-container h3 {
+      font-size: 16px;
+    }
+  
+    .add-to-cart-btn {
+      font-size: 12px;
+      padding: 8px 15px;
+    }
+  }
+  .product-header {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .product-header h2 {
+    font-size: 1.8rem;
+    color: orangered;
+  }
+  
+  .product-header .fas {
+    margin-right: 10px;
+  }

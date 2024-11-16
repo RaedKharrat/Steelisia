@@ -1,25 +1,22 @@
 /* Modal.css */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+
+background-color: #333333;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* Ensure it appears above other content */
+
 }
 
 .modal-content {
-    background: rgba(182, 182, 182, 0.3); /* White background with 0.8 opacity */
+    background: rgba(182, 182, 182, 0.9); /* White background with 0.8 opacity */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 400px; /* Increased width to 400px, adjust as necessary */
     text-align: center;
-    backdrop-filter: blur(50px); /* Apply blur effect to the modal content itself */
+    height: 280px;
+    width: 20px;
 }
 
 .modal-buttons {

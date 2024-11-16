@@ -1,0 +1,9 @@
+.details-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem; /* Adds padding to avoid touching the edges */
+    background-color: #f8f9fa; /* Light background for a clean look */
+  }
+  

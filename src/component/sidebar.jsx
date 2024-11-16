@@ -31,7 +31,7 @@ const Sidebar = ({ sidebarActive }) => {
   };
 
   return (
-    <aside className={`sidebar ${sidebarActive ? 'active' : ''}`} style={{backgroundColor:'#2b2b2b'}}>
+    <aside className={`sidebar ${sidebarActive ? 'active' : ''}`} style={{backgroundColor:'#2b2b2b',marginRight:'60px'}}>
       <div className="logo-details">
         <img src={logoApp} alt="Steelisia Logo" style={{ width: '30px', height: '30px', marginRight: '10px', marginLeft:'10px' }} />  {/* Replace the icon with the image */}
         <span className="logo_name" style={logoStyle}>Steelisia</span>

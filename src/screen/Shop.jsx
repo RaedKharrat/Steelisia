@@ -6,6 +6,7 @@ import FurnitureSales from '../component/ShopComponent.jsx';
 import Footer from '../component/Footer.jsx';
 import CartModal from '../component/cartModal.jsx';
 import LoadingScreen from '../component/LoadingScreen.jsx'; // Import LoadingScreen
+import ShopProduit from '../component/shopByCategorie.jsx'; // Import LoadingScreen
 
 const Shop = () => {
   const [loading, setLoading] = useState(true);
@@ -37,8 +38,7 @@ const Shop = () => {
   return (
     <div>
       <Header cartCount={cartCount} onCartClick={toggleCartModal} />
-      <MainBanner2 />
-      <FurnitureSales updateCartCount={updateCartCount} />
+      <ShopProduit updateCartCount={updateCartCount} />
       <Footer />
       {cartModalOpen && <CartModal cartItems={cartItems} onClose={toggleCartModal}   onCartUpdate={handleClearCart}  />}
     </div>

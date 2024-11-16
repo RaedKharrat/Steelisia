@@ -4,23 +4,24 @@ import Slider from 'react-slick';
 import './NewestProducts.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const NewestProducts = () => {
+const RandomP = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchNewestProducts = async () => {
+        const fetchRandomProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:9090/product/newest');
-                setProducts(response.data);
+                const response = await axios.get('http://localhost:9090/product/randomproduct');
+                console.log(response.data); // Check what the API is returning
+                setProducts(Array.isArray(response.data) ? response.data : []); // Ensure `products` is an array
             } catch (err) {
-                setError('Error fetching newest products');
+                setError('Error fetching random products');
             } finally {
                 setLoading(false);
             }
         };
-        fetchNewestProducts();
+        fetchRandomProducts();
     }, []);
 
     if (loading) {
@@ -37,8 +38,8 @@ const NewestProducts = () => {
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: true,           // Enable autoplay
-        autoplaySpeed: 3000,      // Set autoplay speed to 3000ms (3 seconds)
+        autoplay: true,
+        autoplaySpeed: 3000,
         prevArrow: <FaChevronLeft className="slick-prev" />,
         nextArrow: <FaChevronRight className="slick-next" />,
         responsive: [
@@ -58,13 +59,12 @@ const NewestProducts = () => {
             }
         ]
     };
-    
 
     return (
         <section className="product-section">
-            <h2 className="product-section-title" style={{ marginTop: '100px' }}>Nouvelle collection</h2>
+            <h2 className="product-section-title" style={{ marginTop: '100px' }}>Produits Aléatoires</h2>
             <Slider {...sliderSettings} className="product-slider">
-                {products.map(product => (
+                {Array.isArray(products) && products.map(product => (
                     <div className="card" key={product._id}>
                         <img 
                             src={`http://localhost:9090/images/${product.images[0]}`} 
@@ -85,4 +85,4 @@ const NewestProducts = () => {
     );
 };
 
-export default NewestProducts;
+export default RandomP;

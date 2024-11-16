@@ -8,6 +8,7 @@ import DashboardP from './screen/dashboard.jsx';
 import DashboardU from './screen/dashboardUser.jsx';
 import DashboardC from './screen/DashboardC.jsx';
 import DashboardCmd from './screen/dashboardCmd.jsx';
+import DetaisProduutScreen from './screen/DetaisProduutScreen.jsx';
 
 const App = () => {
   // Helper function to check if the user has an admin role
@@ -31,6 +32,7 @@ const App = () => {
         
         {/* Other routes */}
         <Route path="/home" element={<Homepage />} />
+        <Route path="/produit-detais/:id" element={<DetaisProduutScreen />} />
         <Route path="/shop" element={<Shop />} />
 
         {/* Protect dashboard routes with admin role check */}

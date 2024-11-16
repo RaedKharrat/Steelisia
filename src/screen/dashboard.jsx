@@ -22,6 +22,7 @@ const DashboardP = () => {
     etat: 'disponible',
     idCategorie: '',
     images: null,
+    sousCategorie: '',
   });
 
   const toggleSidebar = () => {
@@ -90,8 +91,8 @@ const DashboardP = () => {
   const handleUpdateProduct = async (event) => {
     event.preventDefault();
     try {
-      const { name, description, prix, qnt, etat } = editProduct;
-      const response = await axios.put(`http://localhost:9090/product/${editProduct._id}`, { name, description, prix, qnt, etat });
+      const { name, description, prix, qnt, etat,sousCategorie } = editProduct;
+      const response = await axios.put(`http://localhost:9090/product/${editProduct._id}`, { name, description, prix, qnt, etat , sousCategorie});
       setProducts(products.map(product => product._id === editProduct._id ? response.data : product));
       setEditProduct(null); // Clear the form after successful update
     } catch (error) {
@@ -113,6 +114,7 @@ const DashboardP = () => {
     formData.append('qnt', newProduct.qnt);
     formData.append('etat', newProduct.etat);
     formData.append('idCategorie', newProduct.idCategorie);
+    formData.append('sousCategorie', newProduct.sousCategorie);
     if (newProduct.images) {
       for (let i = 0; i < newProduct.images.length; i++) {
         formData.append('images', newProduct.images[i]);
@@ -134,6 +136,8 @@ const DashboardP = () => {
         etat: 'disponible',
         idCategorie: '',
         images: null,
+        sousCategorie: '',
+
       });
     } catch (error) {
       console.error('Error creating product:', error);
@@ -141,8 +145,9 @@ const DashboardP = () => {
   };
 
   const filteredProducts = products.filter(product => 
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    product.name && product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -266,11 +271,23 @@ const DashboardP = () => {
             </div>
             <div className="mb-3">
               <label className="form-label">Description</label>
+              <textarea
+                className="form-control"
+                rows="4"
+                value={editProduct.description}
+                onChange={(e) =>
+                  setEditProduct({ ...editProduct, description: e.target.value })
+                }
+              ></textarea>
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Sous Categorie</label>
               <input
                 type="text"
                 className="form-control"
-                value={editProduct.description}
-                onChange={(e) => setEditProduct({...editProduct, description: e.target.value})}
+                value={editProduct.sousCategorie}
+                onChange={(e) => setEditProduct({...editProduct, sousCategorie: e.target.value})}
               />
             </div>
             <div className="mb-3">
@@ -322,7 +339,7 @@ const DashboardP = () => {
                     </div>
                     <div className="modal-body">
                       <form onSubmit={handleCreateProduct}>
-                        <div className="mb-3">
+                      <div className="mb-3">
                           <label className="form-label">Name</label>
                           <input
                             type="text"
@@ -334,15 +351,29 @@ const DashboardP = () => {
                           />
                         </div>
                         <div className="mb-3">
-                          <label className="form-label">Description</label>
+                          <label className="form-label">Sous Categorie</label>
                           <input
                             type="text"
+                            placeholder="write product name"
+
                             className="form-control"
-                            placeholder="write product description"
-                            value={newProduct.description}
-                            onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
+                            value={newProduct.sousCategorie}
+                            onChange={(e) => setNewProduct({...newProduct, sousCategorie: e.target.value})}
                           />
                         </div>
+                        <div className="mb-3">
+                          <label className="form-label">Description</label>
+                          <textarea
+                            className="form-control"
+                            rows="4"
+                            placeholder="Write product description"
+                            value={newProduct.description}
+                            onChange={(e) =>
+                              setNewProduct({ ...newProduct, description: e.target.value })
+                            }
+                          ></textarea>
+                        </div>
+
                         <div className="mb-3">
                           <label className="form-label">Price /Dt</label>
                           <input

@@ -34,10 +34,10 @@ const ContactUs = () => {
                 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-linkedin"></i> LinkedIn
                 </a>
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/steelisia/" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-instagram"></i> Instagram
                 </a>
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/profile.php?id=61566027376038" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-facebook"></i> Facebook
                 </a>
               </div>

@@ -10,6 +10,7 @@ import Testimonials from '../component/Testimonials.jsx';
 import ContactUs from '../component/Contact.jsx';
 import Footer from '../component/Footer.jsx';
 import NewestProducts from '../component/NewestProducts.jsx';
+import RandomP from '../component/RandomP.jsx';
 
 const Homepage = () => {
   const [loading, setLoading] = useState(true);
@@ -32,7 +33,6 @@ const Homepage = () => {
       <MainBanner />
       <Services />
       <AboutUs />
-      <NewestProducts />
       <FunFacts />
       <Testimonials />
       <ContactUs />
