@@ -20,12 +20,12 @@ const HeroSection = () => {
             L’élégance rencontre la robustesse. Explorez notre collection de meubles en bois et fer pour transformer votre intérieur en œuvre d'art.
           </p>
         </div>
-        <img 
+        {/* <img 
           src="https://cdn.dribbble.com/users/3752227/screenshots/10861282/media/5ff20e1ea27d71052d6f4e90ac8a0b0b.gif" 
           alt="Product GIF" 
           style={{height:'150px', width:'160px', margin:'20px'}}
-        />
-        <button className="hero-button" style={{marginLeft:'80px'}}>Nouvelle collection</button>
+        /> */}
+        <button className="hero-button" >Nouvelle collection</button>
       </div>
     </div>
   );

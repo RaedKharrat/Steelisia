@@ -27,7 +27,6 @@ const GoogleAuthButton = () => {
 
       const data = await res.json();
       console.log("Backend Response:", data);
-      alert("Login Successful!");
 
       // Store the authToken in local storage
       localStorage.setItem('authToken', idToken);

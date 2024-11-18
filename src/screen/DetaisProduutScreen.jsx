@@ -4,12 +4,13 @@ import Header from '../component/Header.jsx';
 import LoadingScreen from '../component/LoadingScreen.jsx';
 import Footer from '../component/Footer.jsx';
 import DetailsProduit from '../component/DetaisProduitC.jsx';
+import CartModal from '../component/cartModal.jsx';
 
 const DetaisProduutScreen = () => {
   const [loading, setLoading] = useState(true);
   const [cartCount, setCartCount] = useState(0);
-  const [cart, setCart] = useState([]); // Maintain cart state
-  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [cartModalOpen, setCartModalOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,15 +20,14 @@ const DetaisProduutScreen = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const toggleCartModal = () => {
-    setIsCartModalOpen(!isCartModalOpen);
-  };
-
   const updateCartCount = (item) => {
-    const newCart = [...cart, item];
-    setCart(newCart);
-    setCartCount(newCart.length);
+    setCartItems((prevItems) => [...prevItems, item]);
+    setCartCount(cartCount + 1);
   };
+  const handleClearCart = () => {
+    setCartCount(0);
+  };
+  const toggleCartModal = () => setCartModalOpen(!cartModalOpen);
   
 
   if (loading) {
@@ -39,6 +39,8 @@ const DetaisProduutScreen = () => {
       <Header cartCount={cartCount} onCartClick={toggleCartModal} />
       <DetailsProduit updateCartCount={updateCartCount} />
       <Footer />
+      {cartModalOpen && <CartModal cartItems={cartItems} onClose={toggleCartModal}   onCartUpdate={handleClearCart}  />}
+
     </div>
   );
 };

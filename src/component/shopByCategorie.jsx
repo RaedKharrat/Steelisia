@@ -98,7 +98,7 @@ const ShopProduit = ({ updateCartCount }) => {
         <meta property="og:url" content={`http://yourwebsite.com/shop?categoryId=${categoryId}`} />
       </Helmet>
 
-      <section className="product-section">
+      <section className="product-section" style={{background:'linear-gradient(90deg,#fff,#fff)'}}>
         <ToastContainer />
 
         {/* Filters Section */}
@@ -146,7 +146,7 @@ const ShopProduit = ({ updateCartCount }) => {
           ></div>
           {/* Price Filter */}
           <div>
-            <h3>Filter by Price</h3>
+            <h3 style={{ marginTop: '20px' }}>Filtrer par prix</h3>
             <Slider
               value={priceRange}
               onChange={handlePriceRangeChange}
@@ -197,7 +197,7 @@ const ShopProduit = ({ updateCartCount }) => {
           ></div>
           {/* Subcategory Filter */}
           <div>
-            <h3 style={{ marginTop: '20px' }}>Filter by Subcategory</h3>
+            <h3 style={{ marginTop: '20px' }}>sous categorie</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
               {subCategories.map((subCategory) => (
                 <button
@@ -223,16 +223,19 @@ const ShopProduit = ({ updateCartCount }) => {
 
         {/* Products Section */}
         
-        <div className="product-container">
+        <div className="product-container" >
           
   {filteredProducts.map((product) => (
     <div key={product._id} className="product-card" onClick={() => navigateToDetails(product._id)}>
       <div className="product-img-container">
+      
+
         <img
           src={`http://localhost:9090/images/${product.images[0]}`}
           alt={product.name}
           style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '10px' }}
         />
+        
         <div className="product-img-overlay">
           <span style={{ backgroundColor: 'grey', padding: '6px', borderRadius: '10px' }}>
             {product.sousCategorie}
@@ -245,7 +248,7 @@ const ShopProduit = ({ updateCartCount }) => {
           <p>{product.description.slice(0, 50)}...</p>
         </div>
         <div>
-          <span>{product.prix} DT</span>
+          <span style={{color : 'orange'}}>{product.prix} DT</span>
         </div>
         {/* Centering the button */}
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -270,7 +273,7 @@ const ShopProduit = ({ updateCartCount }) => {
             }}
           >
             <FaShoppingCart />
-            Add to Cart
+            Ajouter au Panier
           </button>
         </div>
       </div>

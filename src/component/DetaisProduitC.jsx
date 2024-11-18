@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart,faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const DetailsProduit = () => {
+const DetailsProduit = ({ updateCartCount }) => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -44,6 +44,9 @@ const DetailsProduit = () => {
   }, [quantity, product]);
 
   const handleAddToCart = () => {
+    // Assuming `updateCartCount` is passed down as a prop from the parent component.
+    updateCartCount(product); // Add the product to the cart
+
     toast.success(`${product.name} added to cart!`, {
       position: 'top-right',
       autoClose: 2000,
@@ -51,6 +54,7 @@ const DetailsProduit = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      style: { backgroundColor: '#fff', color: '#2b2b2b', borderRadius: '8px' }
     });
   };
 
@@ -83,7 +87,7 @@ const DetailsProduit = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:9090/cmd/command/', {
+      const response = await fetch('http://localhost:9090/cmd/commande/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -116,9 +120,9 @@ const DetailsProduit = () => {
   }
 
   return (
-    <div className="container-fluid" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5rem', backgroundColor: '#0f0f0f', }}>
+    <div className="container-fluid" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5rem', background: 'linear-gradient(45deg,#2b2b2b,#000)', }}>
       <ToastContainer />
-      <div className="card shadow-lg border-0" style={{ width: '100%', maxWidth: '1300px', minHeight: '70vh', display: 'flex', backgroundColor: '#2B2B2B', borderRadius: '20px', overflow: 'hidden', position: 'relative' }}>
+      <div className="card shadow-lg border-0" style={{ width: '100%', maxWidth: '1300px', minHeight: '70vh', display: 'flex', backgroundColor: '#2B2B2B', borderRadius: '20px', overflow: 'hidden', position: 'relative' , marginTop:'30px'}}>
         <div className="row g-0 h-100" style={{ width: '100%' }}>
           {/* Thumbnail List */}
           <div className="col-md-2 h-100 d-flex flex-column align-items-center py-3" style={{ backgroundColor: '#2c2c2c', borderRadius: '10px' }}>
@@ -130,7 +134,7 @@ const DetailsProduit = () => {
                 className="img-thumbnail mb-2"
                 style={{
                   cursor: 'pointer',
-                  width: '80%',
+                  width: '90%',
                   objectFit: 'cover',
                   maxHeight: '100px',
                   border: mainImage === `http://localhost:9090/images/${img}` ? '2px solid #ff9800' : 'none',
@@ -143,7 +147,7 @@ const DetailsProduit = () => {
 
           {/* Main Product Image */}
           <div className="col-md-4 h-100 d-flex justify-content-center align-items-center">
-            <img src={mainImage} className="img-fluid rounded" alt={product.name} style={{ height: '500px', width: '100%', objectFit: 'cover', borderRadius: '10px' }} />
+            <img src={mainImage} className="img-fluid rounded" alt={product.name} style={{ height: '400px', width: '100%', objectFit: 'cover', borderRadius: '10px', border:'2px solid red'}} />
           </div>
 
           {/* Product Details */}
@@ -151,20 +155,24 @@ const DetailsProduit = () => {
             <div className="card-body" style={{ backgroundColor: '#2b2b2b', borderRadius: '20px', padding: '2rem', height: '100%', display: 'flex', flexDirection: 'column', marginLeft: '15px' }}>
               <div>
                 <h3 className="card-title" style={{ color: '#fff' }}>{product.name}</h3>
-                <p className="text-muted mb-2" style={{ color: '#b0b0b0' }}>{product.idCategorie?.name || 'Uncategorized'}</p>
-                <h4 style={{ color: 'orange' }}>Price per unit: {Number(product.prix).toFixed(1)} Dt</h4>
-                <h4 style={{ color: '#fff' }}>Total Amount: {Number(totalAmount).toFixed(1)} Dt</h4>
+                <p style={{ color: '#fff' }}>{product.idCategorie?.name || 'Uncategorized'}-{product.sousCategorie || 'Uncategorized'}</p>
+                <p style={{ color: '#fff',backgroundColor:'grey' , padding:'5px' , borderRadius:'20px' }}>{product.etat }</p>
+
+                <h4 style={{ color: 'orange' }}>Prix : {Number(product.prix).toFixed(2)} Dt</h4>
 
                 {/* Quantity Input */}
                 <div className="d-flex align-items-center mt-3">
-                  <label className="me-2" style={{ color: '#fff' }}>Quantity:</label>
+                  <label className="me-2" style={{ color: '#fff' }}>Quantité:</label>
                   <input
                     type="number"
                     min="1"
                     value={quantity}
                     onChange={(e) => setQuantity(Number(e.target.value) || 1)}
-                    style={{ width: '60px', borderRadius: '5px', textAlign: 'center' }}
+                    style={{ width: '60px', borderRadius: '5px', textAlign: 'center', backgroundColor:'#2b2b2b' , color:'#fff' , margin:'30px' }}
                   />
+                 <h4 style={{ color: 'orangered' }}>       <FontAwesomeIcon icon={faExchangeAlt} size="2px" style={{color:'orange', marginLeft:'20px',marginRight:'30px'}}/>
+                 Total: {Number(totalAmount).toFixed(2)} Dt</h4>
+
                 </div>
 
                 <p className="card-text mt-4" style={{ color: '#fff', flexGrow: 1 }}>{product.description}</p>
@@ -185,22 +193,18 @@ const DetailsProduit = () => {
                     transition: 'background 0.3s',
                   }}
                 >
-                  <FontAwesomeIcon icon={faShoppingCart} className="me-2" style={{ color: 'white' }} /> Add to Cart
+                  <FontAwesomeIcon icon={faShoppingCart} className="me-2" />
+                  Ajouter au panier
                 </button>
                 <button
-                  className="btn btn-lg w-100 d-flex align-items-center justify-content-center"
+                  className="btn btn-success ms-2 w-100 d-flex align-items-center justify-content-center"
                   onClick={handleConfirmOrder}
                   style={{
-                    background: 'linear-gradient(to right, #2196F3, #21CBF3)',
-                    color: 'white',
-                    borderRadius: '10px',
-                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-                    padding: '1rem 2rem',
+               
                     fontWeight: 'bold',
-                    transition: 'background 0.3s',
                   }}
                 >
-                  Confirm Order
+                  Confirmer la commande
                 </button>
               </div>
             </div>

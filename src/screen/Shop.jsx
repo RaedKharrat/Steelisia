@@ -38,7 +38,7 @@ const Shop = () => {
 
   return (
     <div>
-      <h2 style={{    background: '#2b2b2b', padding:'20px', marginTop :'70px' , color:'white' , textAlign: 'center', fontWeight: 'bold', borderRadius:'50px',    border: '4px solid black',marginRight:'20px',marginLeft:'20px' }}>      <FaStore style={{ marginRight: '30px', fontSize: '2.5rem',  color:'orange'}} />Steelisia Marketplace  <FaStore style={{ marginLeft: '30px', fontSize: '2.5rem',  color:'orange'}} /></h2>
+      <h2 style={{    background: '#3a3a3a', padding:'20px', marginTop :'70px' , color:'white' , textAlign: 'center', fontWeight: 'bold', borderRadius:'50px',marginRight:'20px',marginLeft:'20px' }}>      <FaStore style={{ marginRight: '30px', fontSize: '2.5rem',  color:'white'}} />Steelisia Marketplace  </h2>
       <Header cartCount={cartCount} onCartClick={toggleCartModal} />
       <ShopProduit updateCartCount={updateCartCount} />
       <Footer />

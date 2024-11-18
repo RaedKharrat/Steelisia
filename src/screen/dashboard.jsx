@@ -216,18 +216,20 @@ const DashboardP = () => {
                   <thead>
                     <tr>
                       <th>Reference</th>
+                      <th>Sous Category</th>
                       <th>Name</th>
                       <th>Price /dt</th>
-                      <th>Quantity</th>
-                      <th>Status</th>
+                      <th>Quantité</th>
+                      <th>etat</th>
                       <th>Actions</th>
+
                     </tr>
                   </thead>
                   <tbody>
                     {filteredProducts.map(product => (
                       <tr key={product._id}>
                         <td>{product._id}</td>
-                        <td>{product.name}</td>
+                        <td>{product.sousCategorie}</td>
                         <td>{product.name}</td>
                         <td>{product.prix}</td>
                         <td>{product.qnt}</td>
@@ -250,9 +252,9 @@ const DashboardP = () => {
               
               
               {/* Edit Product Modal */}
-<div className="modal fade" id="editProductModal" tabIndex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
+<div className="modal fade" id="editProductModal" tabIndex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true" >
+  <div className="modal-dialog" >
+    <div className="modal-content" style={{height:'100%' , backgroundColor:'#fefefe' , padding:'20px' , borderRadius:'20px', opacity:'0.9'}} >
       <div className="modal-header">
         <h5 className="modal-title" id="editProductModalLabel">Edit Product</h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -330,9 +332,9 @@ const DashboardP = () => {
 </div>
 
               {/* Create Product Modal */}
-              <div className="modal fade" id="createProductModal" tabIndex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                  <div className="modal-content">
+              <div className="modal fade" id="createProductModal" tabIndex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true" >
+                <div className="modal-dialog" > 
+                  <div  style={{height:'100%' , backgroundColor:'#fefefe' , padding:'20px' , borderRadius:'20px', opacity:'0.9'}}>
                     <div className="modal-header">
                       <h5 className="modal-title" id="createProductModalLabel">Add New Product</h5>
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

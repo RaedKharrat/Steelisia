@@ -7,53 +7,53 @@ const Services = () => {
     <div className="services section" id="services">
       <div className="container">
         <h1 className="text-center" style={{ marginBottom: '7rem' }}>
-          <strong>Our</strong> <span style={{ fontWeight: '100' }}>Services</span>
+          <strong>Nos</strong> <span style={{ fontWeight: '100' }}>Services</span>
         </h1>
 
         <div className="row">
-          {/* Custom Furniture Service */}
+          {/* Service de Meubles Sur Mesure */}
           <div className="col-lg-4 col-md-6">
             <div className="service-item">
               <div className="icon">
                 <FontAwesomeIcon icon={faCouch} size="4x" style={{ color: 'white', marginBottom: '-1rem' }} />
               </div>
               <div className="main-content">
-                <h4>Custom Furniture</h4>
-                <p>Bring your dream furniture to life with our custom design services tailored to your style and space.</p>
+                <h4 style={{color:'orangered'}}>Meubles Sur Mesure</h4>
+                <p>Donnez vie à vos meubles de rêve grâce à nos services de conception personnalisée adaptés à votre style et votre espace.</p>
                 <div className="main-button">
-                  <a href="#">Learn More</a>
+                  <a href="#">En Savoir Plus</a>
                 </div>
               </div>
             </div>
           </div>
           
-          {/* Livraison Service */}
+          {/* Service de Livraison */}
           <div className="col-lg-4 col-md-6">
             <div className="service-item">
               <div className="icon">
                 <FontAwesomeIcon icon={faTruck} size="4x" style={{ color: 'white', marginBottom: '-1rem' }} />
               </div>
               <div className="main-content">
-                <h4>Livraison Service</h4>
-                <p>Enjoy swift and reliable delivery to bring your furniture right to your doorstep, hassle-free.</p>
+                <h4 style={{color:'orangered'}}>Service de Livraison</h4>
+                <p>Profitez d'une livraison rapide et fiable pour recevoir vos meubles directement chez vous, sans tracas.</p>
                 <div className="main-button">
-                  <a href="#">Discover Now</a>
+                  <a href="#">Découvrez Maintenant</a>
                 </div>
               </div>
             </div>
           </div>
           
-          {/* Expert Consultation */}
+          {/* Consultation d'Expert */}
           <div className="col-lg-4 col-md-6">
             <div className="service-item">
               <div className="icon">
                 <FontAwesomeIcon icon={faUserTie} size="4x" style={{ color: 'white', marginBottom: '-1rem' }} />
               </div>
               <div className="main-content">
-                <h4>Expert Consultation</h4>
-                <p>Get personalized advice from our furniture experts to find the perfect pieces for your space.</p>
+                <h4 style={{color:'orangered'}}>Consultation d'Expert</h4>
+                <p>Bénéficiez de conseils personnalisés de nos experts en ameublement pour trouver les pièces parfaites pour votre espace.</p>
                 <div className="main-button">
-                  <a href="#contact">Book a Session</a>
+                  <a href="#contact">Réserver une Session</a>
                 </div>
               </div>
             </div>

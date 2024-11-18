@@ -112,7 +112,7 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
       // Delay the closing of the modal to allow the toast to show
       setTimeout(() => {
         onClose();
-      }, 2500); // 1-second delay before closing the modal
+      }, 1500); // 1-second delay before closing the modal
   
     } catch (error) {
       console.error('Error during checkout:', error.response ? error.response.data : error);
@@ -122,7 +122,7 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
   
 
   return (
-    <div className="cart-modal-overlay">
+    <div className="cart-modal-overlay" >
       <div className="cart-modal">
         <ToastContainer /> {/* Ensure ToastContainer is present */}
         <div className="cart-header" style={{ backgroundColor: '#2b2b2b' }}>
@@ -131,13 +131,13 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
           </h2>
           <button className="close-button" onClick={onClose}>&times;</button>
         </div>
-        <div className="total-amount">
+        <div className="total-amount" >
           <p>Total Amount:</p>
-          <h1 style={{ color: '#2b2b2b', fontWeight: 'bold' }}>
+          <h1 style={{ color: 'green', fontWeight: 'bold' }}>
             {calculateTotalAmount().toFixed(2)}  Dt
           </h1>
-          <hr className="total-amount-separator" />
         </div>
+        <hr className="total-amount-separator" />
 
         <ul className="cart-items">
           {cart.map((item, index) => (
@@ -169,6 +169,9 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
                   padding: '5px 10px',
                   cursor: 'pointer',
                   borderRadius: '5px',
+                  width:'80%',
+                  alignItems:'center'
+                
                 }}
               >
                 <i className="fa fa-trash"></i>

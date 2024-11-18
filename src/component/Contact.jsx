@@ -49,13 +49,13 @@ const ContactUs = () => {
               </div>
 
               {/* Address and Phone Number */}
-              <div className="contact-info">
-                <h4>Contact Information</h4>
-                <p>
+              <div className="contact-info" style={{background:'linear-gradient(#2b2b2b,#3a3a3a)' , padding:'20px', borderRadius:'20px'}}>
+                <h4 style={{color:'white'}}>Contact Information</h4>
+                <p style={{color:'white'}}>
                   <i className="fas fa-map-marker-alt" style={{ color: '#ff4500', marginRight: '10px' }}></i>
-                   123 Steelisia Street, San Francisco, CA 94103
+                   2081, Ariana-Essoghra, Ariana , Tunisie
                 </p>
-                <p>
+                <p style={{color:'white'}}>
                   <i className="fas fa-phone" style={{ color: '#ff4500', marginRight: '10px' }}></i>
                   (+216) 55 584 661
                 </p>
