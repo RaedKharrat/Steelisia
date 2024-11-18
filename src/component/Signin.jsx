@@ -10,6 +10,7 @@ import { faEnvelope, faLock, faUser, faPhone, faMapMarkerAlt, faEye, faEyeSlash,
 import logoapp from './logoAppDark.png';
 import logoapp2 from './logoAppDark2.png';
 import { ToastContainer, toast } from 'react-toastify';
+import GoogleAuthButton from './GoogleOauthButton'; // Make sure the path is correct
 
 const LoginSignupForm = () => {
   const navigate = useNavigate();
@@ -165,31 +166,37 @@ const LoginSignupForm = () => {
       </div>
       <div className="forms">
         <div className="form-content">
-          <div className="login-form">
-            <img src={logoapp2} alt="Logo" className="form-logo" />
-            <div className="title">Login</div>
-            <form onSubmit={handleLogin}>
-              <div className="input-boxes">
-                <div className="input-box">
-                  <FontAwesomeIcon icon={faEnvelope} />
-                  <input type="text" placeholder="Enter your email" required />
-                </div>
-                <div className="input-box">
-                  <FontAwesomeIcon icon={faLock} />
-                  <input type={showPasswordLogin ? 'text' : 'password'} placeholder="Enter your password" required />
-                  <span onClick={togglePasswordVisibilityLogin}>
-                    <FontAwesomeIcon icon={showPasswordLogin ? faEyeSlash : faEye} />
-                  </span>
-                </div>
-                {errorMessage && <div className="error-message">{errorMessage}</div>}
-                <div className="text"><a  onClick={handleForgotPasswordClick} style={{color:'orange'}}>Forgot password?</a></div>
-                <div className="button input-box">
-                  <input type="submit" value="Submit" />
-                </div>
-                <div className="text sign-up-text">Don't have an account? <label htmlFor="flip" style={{color:'orange'}}>Signup now</label></div>
+        <div className="login-form">
+          <img src={logoapp2} alt="Logo" className="form-logo" />
+          <div className="title">Login</div>
+          <form onSubmit={handleLogin}>
+            <div className="input-boxes">
+              <div className="input-box">
+                <FontAwesomeIcon icon={faEnvelope} />
+                <input type="text" placeholder="Enter your email" required />
               </div>
-            </form>
+              <div className="input-box">
+                <FontAwesomeIcon icon={faLock} />
+                <input type={showPasswordLogin ? 'text' : 'password'} placeholder="Enter your password" required />
+                <span onClick={togglePasswordVisibilityLogin}>
+                  <FontAwesomeIcon icon={showPasswordLogin ? faEyeSlash : faEye} />
+                </span>
+              </div>
+              {errorMessage && <div className="error-message">{errorMessage}</div>}
+              <div className="text"><a onClick={handleForgotPasswordClick} style={{ color: 'orange' }}>Forgot password?</a></div>
+              <div className="button input-box">
+                <input type="submit" value="Submit" />
+              </div>
+              <div className="text sign-up-text">Don't have an account? <label htmlFor="flip" style={{ color: 'orange' }}>Signup now</label></div>
+            </div>
+          </form>
+
+          {/* Google Authentication Button */}
+          <div className="google-login">
+            <GoogleAuthButton />
           </div>
+        </div>
+
 
           <div className="signup-form">
             <img src={logoapp} alt="Logo" className="form-logo" />

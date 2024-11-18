@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
-import logoApp from './logoApp.png';
+import logoApp from './logoSteelisia.png';
 import logoApp2 from './logoApp2.png';
 
 const Header = ({ cartCount, onCartClick }) => {
@@ -85,6 +85,10 @@ const Header = ({ cartCount, onCartClick }) => {
     }
   };
 
+  const handleAboutus = () => {
+    navigate(`/aboutus`);
+  };
+
   const handleCategoryClick = (categoryId) => {
     navigate(`/shop?categoryId=${categoryId}`); // Navigate to the /shop page with categoryId as a query parameter
   };
@@ -94,10 +98,7 @@ const Header = ({ cartCount, onCartClick }) => {
   };
 
   return (
-    <header
-      className="header-area header-sticky"
-
-    >
+    <header className="header-area header-sticky">
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -121,8 +122,10 @@ const Header = ({ cartCount, onCartClick }) => {
 
               {/* Menu Start */}
               <ul className="nav">
-                                {/* Other Menu Items */}
-                                <li className="scroll-to-section">
+                <li
+                  className="scroll-to-section"
+                  style={{ cursor: 'pointer' }}
+                >
                   <a onClick={handleHomeClick}>home</a>
                 </li>
                 {/* Categorie Dropdown */}
@@ -130,38 +133,49 @@ const Header = ({ cartCount, onCartClick }) => {
                   className="scroll-to-section dropdown"
                   onClick={toggleCategorieDropdown}
                   onMouseLeave={() => setIsCategorieOpen(false)} // Close on mouse leave
+                  style={{ cursor: 'pointer' }} // Set cursor to pointer for clickable items
                 >
                   <a style={{ color: 'white' }}>Products</a>
                   {isCategorieOpen && (
                     <ul className="submenu">
                       {/* Dynamically render categories */}
                       {categories.map((category, index) => (
-                      <li key={index}>
-                        <a onClick={() => handleCategoryClick(category._id)}>
-                          {category.name}
-                        </a>
-                      </li>
-                    ))}
-
+                        <li
+                          key={index}
+                          style={{ cursor: 'pointer' }} // Set cursor to pointer for clickable items
+                        >
+                          <a onClick={() => handleCategoryClick(category._id)}>
+                            {category.name}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </li>
 
+                <li
+                  className="scroll-to-section"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <a onClick={handleAboutus}>A propos</a>
+                </li>
 
-
-                <li className="scroll-to-section">
-                  <a
-                    style={{
-                      color: 'white',
-                      paddingLeft: '80px',
-                      fontWeight: 'bold',
-                    }}
-                    onClick={handleSignInClick}
-                  >
+                <li
+                  className="scroll-to-section"
+                  style={{
+                    cursor: 'pointer',
+                    paddingLeft: '80px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  <a onClick={handleSignInClick}>
                     {isLoggedIn ? 'Logout' : 'Sign In'} {/* Dynamically display text */}
                   </a>
                 </li>
-                <li className="scroll-to-section">
+                <li
+                  className="scroll-to-section"
+                  style={{ cursor: 'pointer' }}
+                >
                   <a
                     onClick={onCartClick}
                     style={{
@@ -204,10 +218,19 @@ const Header = ({ cartCount, onCartClick }) => {
 
                 {/* Conditionally Render 'Go to Dashboard' for Admin */}
                 {isAdmin && (
-                  <li className="scroll-to-section">
+                  <li
+                    className="scroll-to-section"
+                    style={{ cursor: 'pointer' }}
+                  >
                     <a
                       onClick={() => navigate('/dashboard-produit')}
-                      style={{ color: '#f84702', paddingLeft: '80px', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
+                      style={{
+                        color: '#f84702',
+                        paddingLeft: '80px',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                      }}
                     >
                       <i className="fa fa-tachometer" style={{ marginRight: '10px' }}></i>
                       Dashboard

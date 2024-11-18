@@ -13,8 +13,10 @@ const NewestProducts = () => {
         const fetchNewestProducts = async () => {
             try {
                 const response = await axios.get('http://localhost:9090/product/newest');
+                console.log(response.data); // Debugging response
                 setProducts(response.data);
             } catch (err) {
+                console.error(err);
                 setError('Error fetching newest products');
             } finally {
                 setLoading(false);
@@ -24,60 +26,53 @@ const NewestProducts = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="loading-container">Loading...</div>;
     }
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className="error-message">{error}</div>;
+    }
+
+    if (!products.length) {
+        return <div className="error-message">No products found.</div>;
     }
 
     const sliderSettings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: Math.min(3, products.length),
         slidesToScroll: 1,
-        autoplay: true,           // Enable autoplay
-        autoplaySpeed: 3000,      // Set autoplay speed to 3000ms (3 seconds)
-        prevArrow: <FaChevronLeft className="slick-prev" />,
-        nextArrow: <FaChevronRight className="slick-next" />,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        prevArrow: <FaChevronLeft className="custom-arrow slick-prev" />,
+        nextArrow: <FaChevronRight className="custom-arrow slick-next" />,
         responsive: [
             {
                 breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
+                settings: { slidesToShow: 2, slidesToScroll: 1 },
             },
             {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                }
-            }
-        ]
+                breakpoint: 768,
+                settings: { slidesToShow: 1, slidesToScroll: 1 },
+            },
+        ],
     };
-    
 
     return (
         <section className="product-section">
-            <h2 className="product-section-title" style={{ marginTop: '100px' }}>Nouvelle collection</h2>
+            <h2 className="product-section-title">Nouvelle Collection</h2>
             <Slider {...sliderSettings} className="product-slider">
-                {products.map(product => (
+                {products.map((product) => (
                     <div className="card" key={product._id}>
-                        <img 
-                            src={`http://localhost:9090/images/${product.images[0]}`} 
-                            alt={product.name} 
+                        <img
+                            src={`http://localhost:9090/images/${product.images[0]}`}
+                            alt={product.name}
                             className="card-image"
                         />
-                        <div className="card-price-container">
-                            Dt {product.prix}
-                        </div>
+                        <div className="card-price-container">DT {product.prix}</div>
                         <h3 className="card-title">{product.name}</h3>
-                        <div className="card-description">
-                            {product.description}
-                        </div>
+                        <div className="card-description">{product.description}</div>
                     </div>
                 ))}
             </Slider>

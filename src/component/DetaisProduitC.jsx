@@ -116,7 +116,7 @@ const DetailsProduit = () => {
   }
 
   return (
-    <div className="container-fluid" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2rem', backgroundColor: '#fff' }}>
+    <div className="container-fluid" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5rem', backgroundColor: '#0f0f0f', }}>
       <ToastContainer />
       <div className="card shadow-lg border-0" style={{ width: '100%', maxWidth: '1300px', minHeight: '70vh', display: 'flex', backgroundColor: '#2B2B2B', borderRadius: '20px', overflow: 'hidden', position: 'relative' }}>
         <div className="row g-0 h-100" style={{ width: '100%' }}>
