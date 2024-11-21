@@ -25,7 +25,7 @@ const HeroSection = () => {
           alt="Product GIF" 
           style={{height:'150px', width:'160px', margin:'20px'}}
         /> */}
-        <button className="hero-button" >Nouvelle collection</button>
+        <button className="hero-button" >Découvrir Nos Offre</button>
       </div>
     </div>
   );

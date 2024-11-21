@@ -31,9 +31,8 @@ const AboutUsScreen = () => {
     <div>
       <Header />
       <AboutUs />
-
-      <Services />
       <FunFacts />
+      <Services />
       <Testimonials />
       <ContactUs />
       <Footer />

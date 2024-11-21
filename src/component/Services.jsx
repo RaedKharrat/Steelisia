@@ -6,9 +6,10 @@ const Services = () => {
   return (
     <div className="services section" id="services">
       <div className="container">
-        <h1 className="text-center" style={{ marginBottom: '7rem' }}>
+        {/* <h1 className="text-center" style={{ marginBottom: '7rem' }}>
           <strong>Nos</strong> <span style={{ fontWeight: '100' }}>Services</span>
-        </h1>
+        </h1> */}
+            <h2 style={{    background: '#3a3a3a', padding:'20px', marginTop :'70px' , color:'white' , textAlign: 'center', fontWeight: 'bold', borderRadius:'50px',marginRight:'20px',marginLeft:'20px' , marginBottom:'80px'}}>Nos Service </h2>
 
         <div className="row">
           {/* Service de Meubles Sur Mesure */}

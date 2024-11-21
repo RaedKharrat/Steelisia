@@ -2,16 +2,14 @@ import React, { useEffect, useState } from 'react';
 import '../App.css';
 import Header from '../component/Header.jsx';
 import LoadingScreen from '../component/LoadingScreen.jsx'; // Import the Preloader component
-import Services from '../component/Services.jsx';
-import AboutUs from '../component/AboutUs.jsx';
-import MainBanner from '../component/MainBanner.jsx';
 import FunFacts from '../component/FunFact.jsx';
 import NewestProductsSlider from '../component/NewestProductsSlider.jsx';
 import ContactUs from '../component/Contact.jsx';
 import Footer from '../component/Footer.jsx';
-import NewestProducts from '../component/NewestProducts.jsx';
-import RandomP from '../component/RandomP.jsx';
 import HeroSection from '../component/HeroSection.jsx';
+import CategorySection from '../component/CategorySection.jsx';
+
+
 
 const Homepage = () => {
   const [loading, setLoading] = useState(true);
@@ -34,6 +32,9 @@ const Homepage = () => {
       <HeroSection />
       <NewestProductsSlider />
       <FunFacts />
+      <h2 style={{    background: '#3a3a3a', padding:'20px', marginTop :'70px' , color:'white' , textAlign: 'center', fontWeight: 'bold', borderRadius:'50px',marginRight:'20px',marginLeft:'20px' , marginBottom:'80px'}}>Nos Categorie </h2>
+
+      <CategorySection />
       <ContactUs />
       <Footer />
     </div>

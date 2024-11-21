@@ -3,7 +3,10 @@ import React from 'react';
 
 const AboutUs = () => {
   return (
+    
     <div className="section about-us"  id="team">
+            <h2 style={{    background: '#3a3a3a', padding:'20px', marginTop :'70px' , color:'white' , textAlign: 'center', fontWeight: 'bold', borderRadius:'50px',marginRight:'20px',marginLeft:'20px' , marginBottom:'80px'}}>À Propos de Nous</h2>
+
       <div className="container">
         <div className="row">
           <div className="col-lg-6 offset-lg-1">
