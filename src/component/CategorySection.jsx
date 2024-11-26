@@ -19,7 +19,7 @@ const CategorySection = () => {
   return (
 
     <div className="category-section">
-        
+
       {categories.map((category) => (
         <Link to={category.route} key={category.id} className="category-card">
           <div className="category-card-content" style={{ backgroundImage: `url(${category.image})` }}>

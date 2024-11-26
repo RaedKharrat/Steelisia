@@ -1,10 +1,12 @@
 .category-section {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
     justify-content: center;
     padding: 20px;
     margin: 30px;
+    background-color: #2b2b2b;
+    border-radius: 20px;
   }
   
   .category-card {

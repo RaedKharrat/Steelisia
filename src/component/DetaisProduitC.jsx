@@ -122,7 +122,7 @@ const DetailsProduit = ({ updateCartCount }) => {
   return (
     <div className="container-fluid" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5rem', background: 'linear-gradient(45deg,#2b2b2b,#000)', }}>
       <ToastContainer />
-      <div className="card shadow-lg border-0" style={{ width: '100%', maxWidth: '1300px', minHeight: '70vh', display: 'flex', backgroundColor: '#2B2B2B', borderRadius: '20px', overflow: 'hidden', position: 'relative' , marginTop:'30px'}}>
+      <div className="card shadow-lg border-0" style={{ width: '100%', maxWidth: '1300px', height: '100%', display: 'flex', backgroundColor: '#2B2B2B', borderRadius: '20px', overflow: 'hidden', position: 'relative' , marginTop:'30px'}}>
         <div className="row g-0 h-100" style={{ width: '100%' }}>
           {/* Thumbnail List */}
           <div className="col-md-2 h-100 d-flex flex-column align-items-center py-3" style={{ backgroundColor: '#2c2c2c', borderRadius: '10px' }}>
@@ -152,7 +152,7 @@ const DetailsProduit = ({ updateCartCount }) => {
 
           {/* Product Details */}
           <div className="col-md-6 h-100 d-flex flex-column justify-content-between" style={{ position: 'relative' }}>
-            <div className="card-body" style={{ backgroundColor: '#2b2b2b', borderRadius: '20px', padding: '2rem', height: '100%', display: 'flex', flexDirection: 'column', marginLeft: '15px' }}>
+            <div className="card-body" style={{ backgroundColor: '#3b3b3b', borderRadius: '20px', padding: '2rem', height: '100%', display: 'flex', flexDirection: 'column', marginLeft: '15px' }}>
               <div>
                 <h3 className="card-title" style={{ color: '#fff' }}>{product.name}</h3>
                 <p style={{ color: '#fff' }}>{product.idCategorie?.name || 'Uncategorized'}-{product.sousCategorie || 'Uncategorized'}</p>

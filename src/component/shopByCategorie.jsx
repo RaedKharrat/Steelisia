@@ -59,7 +59,6 @@ const ShopProduit = ({ updateCartCount }) => {
   }, [priceRange, products, activeSubCategories, searchTerm]);  // Include searchTerm in dependency array
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
 
   const handlePriceRangeChange = (values) => setPriceRange(values);
 
@@ -89,8 +88,8 @@ const ShopProduit = ({ updateCartCount }) => {
       {/* SEO Meta Tags */}
       <Helmet>
         <title>Shop - Category {categoryId}</title>
-        <meta name="description" content={`Browse products in category ${categoryId}`} />
-        <meta name="keywords" content="shop, products, category, ecommerce, wood, iron ,Sales , Tunisia" />
+        <meta name="description" content={`Explorez notre collection de produits dans la catégorie ${categoryId}. Découvrez une large gamme de mobilier industriel et de meubles pour salon, cuisine, salle de bain, bureau et plus encore, fabriqués en bois, fer et métal avec un design élégant et robuste.`} />
+        <meta name="keywords" content="mobilier industriel, meubles en bois, meubles en fer, mobilier en bois et métal, décoration intérieure, meubles de salon, meubles de cuisine, meubles de salle de bain, meubles de bureau, mobilier de chambre, canapé industriel, tables basses, bibliothèques en bois, étagères en métal, chaises de cuisine, armoires en bois, mobilier moderne, meubles design, mobilier artisanal, meubles vintage, style loft, décoration industrielle, mobilier en Tunisie, boutique de meubles, tables à manger, meubles écologiques, mobilier en acier et bois, lits industriels, mobilier robuste, rangement en métal, meubles sur mesure" />
         <meta name="author" content="Steelisia Market Place" />
         <meta property="og:title" content={`Shop - Category ${categoryId}`} />
         <meta property="og:description" content={`Browse our range of products in category ${categoryId}`} />

@@ -12,11 +12,26 @@ const DetaisProduutScreen = () => {
   const [cartItems, setCartItems] = useState([]);
   const [cartModalOpen, setCartModalOpen] = useState(false);
 
+  // Load cart items from local storage on mount
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      const parsedItems = JSON.parse(storedCartItems);
+      setCartItems(parsedItems);
+      setCartCount(parsedItems.length);
+    }
+  }, []);
+
+  // Save cart items to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // Simulate a loading screen for 1 second
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000); // Simulate loading
-
+    }, 1000); // Simulate loading time
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,11 +39,14 @@ const DetaisProduutScreen = () => {
     setCartItems((prevItems) => [...prevItems, item]);
     setCartCount(cartCount + 1);
   };
+
   const handleClearCart = () => {
+    setCartItems([]);
     setCartCount(0);
+    localStorage.removeItem('cartItems'); // Clear local storage
   };
+
   const toggleCartModal = () => setCartModalOpen(!cartModalOpen);
-  
 
   if (loading) {
     return <LoadingScreen />;
@@ -37,10 +55,17 @@ const DetaisProduutScreen = () => {
   return (
     <div>
       <Header cartCount={cartCount} onCartClick={toggleCartModal} />
+      {/* <h2 style={{    background: '#1b1b1b', padding:'20px', marginTop :'70px' , color:'white' , textAlign: 'center', fontWeight: 'bold', borderRadius:'50px',marginRight:'20px',marginLeft:'20px' }}>   Product details  </h2> */}
+
       <DetailsProduit updateCartCount={updateCartCount} />
       <Footer />
-      {cartModalOpen && <CartModal cartItems={cartItems} onClose={toggleCartModal}   onCartUpdate={handleClearCart}  />}
-
+      {cartModalOpen && (
+        <CartModal
+          cartItems={cartItems}
+          onClose={toggleCartModal}
+          onCartUpdate={handleClearCart}
+        />
+      )}
     </div>
   );
 };

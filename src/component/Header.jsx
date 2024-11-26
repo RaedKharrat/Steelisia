@@ -96,6 +96,12 @@ const Header = ({ cartCount, onCartClick }) => {
   const handleHomeClick = () => {
     navigate(`/home`); // Navigate to /shop with the selected category as a query parameter
   };
+  const handleMyCmd = () => {
+    navigate(`/mescommandes`); // Navigate to /shop with the selected category as a query parameter
+  };
+  const handleprofile = () => {
+    navigate(`/profile`); // Navigate to /shop with the selected category as a query parameter
+  };
 
   return (
     <header className="header-area header-sticky">
@@ -126,7 +132,7 @@ const Header = ({ cartCount, onCartClick }) => {
                   className="scroll-to-section"
                   style={{ cursor: 'pointer' }}
                 >
-                  <a onClick={handleHomeClick}>home</a>
+                  <a onClick={handleHomeClick}>Accueil</a>
                 </li>
                 {/* Categorie Dropdown */}
                 <li
@@ -135,7 +141,7 @@ const Header = ({ cartCount, onCartClick }) => {
                   onMouseLeave={() => setIsCategorieOpen(false)} // Close on mouse leave
                   style={{ cursor: 'pointer' }} // Set cursor to pointer for clickable items
                 >
-                  <a style={{ color: 'white' }}>Products</a>
+                  <a style={{ color: 'white' }}>Nos Produits</a>
                   {isCategorieOpen && (
                     <ul className="submenu">
                       {/* Dynamically render categories */}
@@ -159,6 +165,18 @@ const Header = ({ cartCount, onCartClick }) => {
                 >
                   <a onClick={handleAboutus}>A propos</a>
                 </li>
+                <li
+                  className="scroll-to-section"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <a onClick={handleMyCmd}>{isLoggedIn ? 'Mes Commande' : ''} {/* Dynamically display text */}                  </a>
+                </li>
+                {/* <li
+                  className="scroll-to-section"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <a onClick={handleprofile}>Profile</a>
+                </li> */}
 
                 <li
                   className="scroll-to-section"
@@ -169,7 +187,7 @@ const Header = ({ cartCount, onCartClick }) => {
                   }}
                 >
                   <a onClick={handleSignInClick}>
-                    {isLoggedIn ? 'Logout' : 'Sign In'} {/* Dynamically display text */}
+                    {isLoggedIn ? 'Se Déconnecté' : 'Se Connecté'} {/* Dynamically display text */}
                   </a>
                 </li>
                 <li

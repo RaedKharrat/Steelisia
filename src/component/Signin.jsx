@@ -184,7 +184,7 @@ const LoginSignupForm = () => {
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
                 <div className="text"><a onClick={handleForgotPasswordClick} style={{ color: 'orange' }}>Mot de passe oublié ?</a></div>
                 <div className="button input-box">
-                  <input type="submit" value="Soumettre" />
+                  <input type="submit" value="se connecte" />
                 </div>
                 <div className="text sign-up-text">Vous n'avez pas de compte ? <label htmlFor="flip" style={{ color: 'orange' }}>Inscrivez-vous maintenant</label></div>
               </div>

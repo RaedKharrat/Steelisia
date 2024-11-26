@@ -4,6 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import './CartModal.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
   const [quantities, setQuantities] = useState(
@@ -11,6 +12,7 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
   );
   const [errorMessage, setErrorMessage] = useState('');
   const [cart, setCart] = useState(cartItems); // Local cart state to manage item removal
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleQuantityChange = (index, newQuantity) => {
     setQuantities((prevQuantities) => ({
@@ -87,7 +89,7 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
       console.log('Checkout successful:', response.data);
   
       // Show success notification
-      toast.success('🎉 Your Commande have been successfully sent !!', {
+      toast.success('🎉 Your Commande has been successfully sent !!', {
         position: "bottom-right",
         autoClose: 500,
         hideProgressBar: false,
@@ -171,7 +173,6 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
                   borderRadius: '5px',
                   width:'80%',
                   alignItems:'center'
-                
                 }}
               >
                 <i className="fa fa-trash"></i>
@@ -181,7 +182,16 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
         </ul>
         <hr className="total-amount-separator" />
 
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        {errorMessage && (
+          <div className="error-message">
+            <p>{errorMessage}</p>
+            <button onClick={() => navigate('/auth')} style={{
+              backgroundColor: '#4CAF50', color: 'white', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer', border: 'none', marginTop: '10px'
+            }}>
+              Go to Login
+            </button>
+          </div>
+        )}
 
         <button className="checkout-button" style={{ marginBottom: '10px' }} onClick={handleCheckout}>
           <i className="fa fa-check-circle" style={{ marginRight: '8px' }}></i> Checkout

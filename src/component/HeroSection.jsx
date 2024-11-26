@@ -1,8 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";  // Import useNavigate
 import "./HeroSection.css";
 import logoSteelisia from './logoSteelisia.png';
 
 const HeroSection = () => {
+  const navigate = useNavigate();  // Initialize the navigate function
+
+  const handleButtonClick = () => {
+    // Navigate to the shop page with the specific categoryId
+    navigate("/shop?categoryId=6730d2bf4e5f6d1bf8cd2536");
+  };
+
   return (
     <div className="hero-section">
       {/* Left side with logo */}
@@ -20,12 +28,9 @@ const HeroSection = () => {
             L’élégance rencontre la robustesse. Explorez notre collection de meubles en bois et fer pour transformer votre intérieur en œuvre d'art.
           </p>
         </div>
-        {/* <img 
-          src="https://cdn.dribbble.com/users/3752227/screenshots/10861282/media/5ff20e1ea27d71052d6f4e90ac8a0b0b.gif" 
-          alt="Product GIF" 
-          style={{height:'150px', width:'160px', margin:'20px'}}
-        /> */}
-        <button className="hero-button" >Découvrir Nos Offre</button>
+        <button className="hero-button" onClick={handleButtonClick}>
+          Découvrir Nos Offres
+        </button>
       </div>
     </div>
   );

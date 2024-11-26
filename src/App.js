@@ -11,6 +11,8 @@ import DashboardC from './screen/DashboardC.jsx';
 import DashboardCmd from './screen/dashboardCmd.jsx';
 import DetaisProduutScreen from './screen/DetaisProduutScreen.jsx';
 import AboutUsScreen from './screen/aboutusScreen.jsx';
+import ProfileScreen from './screen/ProfileScreen.jsx';
+import MycommandesScreen from './screen/mycommandesScreen.jsx';
 
 const App = () => {
   // Helper function to check if the user has an admin role
@@ -42,6 +44,8 @@ const App = () => {
           <Route path="/aboutus" element={<AboutUsScreen />} />
           <Route path="/produit-detais/:id" element={<DetaisProduutScreen />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/profile" element={<ProfileScreen />} />
+          <Route path="/mescommandes" element={<MycommandesScreen />} />
 
           {/* Protected Routes for Admin */}
           <Route
