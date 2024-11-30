@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"; // Import slick-carousel CSS
 import "./NewestProductsSlider.css";
 
 const NewestProductsSlider = () => {
@@ -13,6 +15,7 @@ const NewestProductsSlider = () => {
     axios
       .get("http://localhost:9090/product/newest")
       .then((response) => {
+        console.log(response.data); // Log the fetched data
         setProducts(response.data);
       })
       .catch((error) => {
@@ -38,7 +41,7 @@ const NewestProductsSlider = () => {
 
   return (
     <div className="slider-container">
-      <h2 className="slider-title2">Nouvelle Collection </h2>
+      <h2 className="slider-title2">Nouvelle Collection</h2>
       <Slider {...sliderSettings} className="slider">
         {products.map((product) => (
           <div
@@ -54,9 +57,8 @@ const NewestProductsSlider = () => {
             <div className="card-content">
               <h3 className="card-title2">{product.name}</h3>
               <p className="card-category">
-                {product.idCategorie?.name || "Uncategorized"}
+                {product.idCategorie?.name || "Uncategorized"} | {product.sousCategorie || "Non Affecté"}
               </p>
-              <p>{product.sousCategorie || "non affecter"}</p>
               <p className="card-price">
                 {product.prix ? product.prix.toFixed(2) : "N/A"} Dt
               </p>

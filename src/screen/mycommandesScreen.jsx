@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import Header from '../component/Header.jsx';
-import LoadingScreen from '../component/LoadingScreen.jsx'; // Import the Preloader component
-import Services from '../component/Services.jsx';
-import AboutUs from '../component/AboutUs.jsx';
-import MainBanner from '../component/MainBanner.jsx';
-import FunFacts from '../component/FunFact.jsx';
-import Testimonials from '../component/Testimonials.jsx';
+import LoadingScreen from '../component/LoadingScreen.jsx'; 
 import ContactUs from '../component/Contact.jsx';
 import Footer from '../component/Footer.jsx';
-import NewestProducts from '../component/NewestProducts.jsx';
 import CommandeShowcase from '../component/CommandeShowcase.jsx';
 
 const MycommandesScreen = () => {
@@ -18,7 +12,7 @@ const MycommandesScreen = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000); // 2 seconds delay
+    }, 1000); 
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, []);

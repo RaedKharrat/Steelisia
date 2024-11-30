@@ -1,9 +1,9 @@
 /* General dark theme */
-
 .slider-container {
   padding: 40px;
   max-width: 100%;
   margin: 0 auto;
+  background-color: #f0f0f0; /* Add background color to debug */
 }
 
 .slider-title2 {
@@ -28,6 +28,9 @@
   width: 100%;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 350px; /* Ensure a fixed height for cards */
+  display: flex;
+  flex-direction: column;
 }
 
 .cardnew:hover {
@@ -45,6 +48,7 @@
 .card-content {
   padding: 20px;
   text-align: center;
+  flex-grow: 1; /* Allow content to grow and fill available space */
 }
 
 .card-title2 {
@@ -68,9 +72,10 @@
 }
 
 /* Slick dots */
-.slick-dots2 li button:before {
+.slick-dots li button:before {
   color: #ff5722;
 }
-.slick-dots2 li.slick-active button:before {
+
+.slick-dots li.slick-active button:before {
   color: #ffffff;
 }

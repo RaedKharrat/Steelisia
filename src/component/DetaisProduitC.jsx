@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart,faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DetailsProduit = ({ updateCartCount }) => {
@@ -122,7 +122,7 @@ const DetailsProduit = ({ updateCartCount }) => {
   return (
     <div className="container-fluid" style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5rem', background: 'linear-gradient(45deg,#2b2b2b,#000)', }}>
       <ToastContainer />
-      <div className="card shadow-lg border-0" style={{ width: '100%', maxWidth: '1300px', height: '100%', display: 'flex', backgroundColor: '#2B2B2B', borderRadius: '20px', overflow: 'hidden', position: 'relative' , marginTop:'30px'}}>
+      <div className="card shadow-lg border-0" style={{ width: '100%', maxWidth: '1300px', height: '100%', display: 'flex', backgroundColor: '#2B2B2B', borderRadius: '20px', overflow: 'hidden', position: 'relative', marginTop: '30px' }}>
         <div className="row g-0 h-100" style={{ width: '100%' }}>
           {/* Thumbnail List */}
           <div className="col-md-2 h-100 d-flex flex-column align-items-center py-3" style={{ backgroundColor: '#2c2c2c', borderRadius: '10px' }}>
@@ -147,7 +147,7 @@ const DetailsProduit = ({ updateCartCount }) => {
 
           {/* Main Product Image */}
           <div className="col-md-4 h-100 d-flex justify-content-center align-items-center">
-            <img src={mainImage} className="img-fluid rounded" alt={product.name} style={{ height: '400px', width: '100%', objectFit: 'cover', borderRadius: '10px', border:'2px solid red'}} />
+            <img src={mainImage} className="img-fluid rounded" alt={product.name} style={{ height: '400px', width: '100%', objectFit: 'cover', borderRadius: '10px', border: '2px solid red' }} />
           </div>
 
           {/* Product Details */}
@@ -155,10 +155,19 @@ const DetailsProduit = ({ updateCartCount }) => {
             <div className="card-body" style={{ backgroundColor: '#3b3b3b', borderRadius: '20px', padding: '2rem', height: '100%', display: 'flex', flexDirection: 'column', marginLeft: '15px' }}>
               <div>
                 <h3 className="card-title" style={{ color: '#fff' }}>{product.name}</h3>
-                <p style={{ color: '#fff' }}>{product.idCategorie?.name || 'Uncategorized'}-{product.sousCategorie || 'Uncategorized'}</p>
-                <p style={{ color: '#fff',backgroundColor:'grey' , padding:'5px' , borderRadius:'20px' }}>{product.etat }</p>
+                <p style={{ color: '#fff' }}>{product.idCategorie?.name || 'Uncategorized'} - {product.sousCategorie || 'Uncategorized'}</p>
+                <p style={{ color: '#fff', backgroundColor: 'grey', padding: '5px', borderRadius: '20px' }}>{product.etat}</p>
 
-                <h4 style={{ color: 'orange' }}>Prix : {Number(product.prix).toFixed(2)} Dt</h4>
+                {/* Display Old and Current Prices */}
+                <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '10px' }}>
+                  <h4 style={{ color: 'white' }}>Ancien Prix : </h4>
+                  <h4 style={{ color: 'white', marginRight: '10px', textDecoration: 'line-through', backgroundColor:'red'  , padding:'6px' , borderRadius:'10px'}}>
+                    {Number(product.oldPrix).toFixed(2)} Dt
+                  </h4>
+                  <h4 style={{ color: 'orange' }}>
+                    Prix: {Number(product.prix).toFixed(2)} Dt
+                  </h4>
+                </div>
 
                 {/* Quantity Input */}
                 <div className="d-flex align-items-center mt-3">
@@ -168,11 +177,12 @@ const DetailsProduit = ({ updateCartCount }) => {
                     min="1"
                     value={quantity}
                     onChange={(e) => setQuantity(Number(e.target.value) || 1)}
-                    style={{ width: '60px', borderRadius: '5px', textAlign: 'center', backgroundColor:'#2b2b2b' , color:'#fff' , margin:'30px' }}
+                    style={{ width: '60px', borderRadius: '5px', textAlign: 'center', backgroundColor: '#2b2b2b', color: '#fff', margin: '30px' }}
                   />
-                 <h4 style={{ color: 'orangered' }}>       <FontAwesomeIcon icon={faExchangeAlt} size="2px" style={{color:'orange', marginLeft:'20px',marginRight:'30px'}}/>
-                 Total: {Number(totalAmount).toFixed(2)} Dt</h4>
-
+                  <h4 style={{ color: 'orangered' }}>
+                    <FontAwesomeIcon icon={faExchangeAlt} size="2px" style={{ color: 'orange', marginLeft: '20px', marginRight: '30px' }} />
+                    Total: {Number(totalAmount).toFixed(2)} Dt
+                  </h4>
                 </div>
 
                 <p className="card-text mt-4" style={{ color: '#fff', flexGrow: 1 }}>{product.description}</p>
@@ -200,7 +210,6 @@ const DetailsProduit = ({ updateCartCount }) => {
                   className="btn btn-success ms-2 w-100 d-flex align-items-center justify-content-center"
                   onClick={handleConfirmOrder}
                   style={{
-               
                     fontWeight: 'bold',
                   }}
                 >

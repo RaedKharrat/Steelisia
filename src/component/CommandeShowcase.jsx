@@ -13,10 +13,12 @@ import {
   TextField,
   InputAdornment,
   Box,
+  IconButton,
 } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import axios from "axios";
 import SearchIcon from '@mui/icons-material/Search';
+import CancelIcon from '@mui/icons-material/Cancel'; // Add the Cancel icon
 
 // Define color mapping for status
 const statusColors = {
@@ -77,18 +79,38 @@ const CommandeShowcase = () => {
     fetchCommandes();
   }, []);
 
+  const handleCancelCommande = async (commandeId) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:9090/cmd/cancel/${commandeId}`
+      );
+      if (response.data) {
+        // Update the status locally after cancellation
+        setCommandes((prevCommandes) =>
+          prevCommandes.map((commande) =>
+            commande._id === commandeId
+              ? { ...commande, status: "canceled" }
+              : commande
+          )
+        );
+      }
+    } catch (err) {
+      console.error("Error canceling commande:", err.message);
+    }
+  };
+
   const filteredCommandes = commandes.filter((commande) =>
-    (commande.userId?.first_name?.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    (commande.userId?.first_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
      commande.userId?.last_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
      commande.status?.toLowerCase().includes(searchQuery.toLowerCase()) ||
      String(commande.totalAmount).toLowerCase().includes(searchQuery.toLowerCase()) ||
      String(commande.totalPrice).toLowerCase().includes(searchQuery.toLowerCase()) ||
      commande.products?.some((product) =>
-       (product.name?.toLowerCase().includes(searchQuery.toLowerCase()) || 
+       (product.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.description?.toLowerCase().includes(searchQuery.toLowerCase()))
      ))
   );
-  
+
   // Helper function to format the timestamp
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -153,91 +175,116 @@ const CommandeShowcase = () => {
                 filteredCommandes.map((commande) => (
                   <Grid item xs={12} sm={6} md={4} key={commande._id}>
                     <Card
-                      elevation={3}
-                      sx={{
-                        borderRadius: 2,
-                        overflow: "hidden",
-                        backgroundColor: darkTheme.palette.background.paper,
-                        color: darkTheme.palette.text.primary,
-                      }}
-                    >
-                      <CardContent>
-                        <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                          <Avatar sx={{ bgcolor: deepOrange[500] }}>
-                            {commande.userId?.first_name[0] || "U"}
-                          </Avatar>
-                          <Box sx={{ ml: 2 }}>
-                            <Typography variant="h6">
-                              {commande.userId?.first_name} {commande.userId?.last_name}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                              {commande.userId?.email}
-                            </Typography>
-                          </Box>
-                        </Box>
+  elevation={3}
+  sx={{
+    borderRadius: 2,
+    overflow: "hidden",
+    backgroundColor: darkTheme.palette.background.paper,
+    color: darkTheme.palette.text.primary,
+    position: "relative", // Ensure the card content has relative positioning for absolute elements
+  }}
+>
+  <CardContent>
+    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+      <Avatar sx={{ bgcolor: deepOrange[500] }}>
+        {commande.userId?.first_name[0] || "U"}
+      </Avatar>
+      <Box sx={{ ml: 2 }}>
+        <Typography variant="h6">
+          {commande.userId?.first_name} {commande.userId?.last_name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {commande.userId?.email}
+        </Typography>
+      </Box>
+    </Box>
 
-                        <Divider sx={{ my: 2, borderColor: darkTheme.palette.text.secondary }} />
+    <Divider sx={{ my: 2, borderColor: darkTheme.palette.text.secondary }} />
 
-                        <Typography variant="subtitle1" gutterBottom>
-                          Products:
-                        </Typography>
-                        {commande.products.map((item, idx) => (
-                          <Box
-                            key={idx}
-                            sx={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                              mb: 1,
-                              p: 1,
-                              bgcolor: idx % 2 === 0 ? "grey.800" : "grey.700",
-                              borderRadius: 1,
-                            }}
-                          >
-                            <Typography variant="body2" style={{ color: 'white' }}>
-                              {item.productId?.name}
-                            </Typography>
-                            <Typography variant="body2" style={{ color: 'white' }}>
-                              Qty: {item.quantity}
-                            </Typography>
-                            <Typography variant="body2" color="warning">
-                              Dt {item.prix}
-                            </Typography>
-                            <Typography variant="body2" color="warning">
-                              Dt {item.totalPrice.toFixed(2)}
-                            </Typography>
-                          </Box>
-                        ))}
+    {/* Products List */}
+    <Typography variant="subtitle1" gutterBottom>
+      Products:
+    </Typography>
+    {commande.products.map((item, idx) => (
+      <Box
+        key={idx}
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          mb: 1,
+          p: 1,
+          bgcolor: idx % 2 === 0 ? "grey.800" : "grey.700",
+          borderRadius: 1,
+        }}
+      >
+        <Typography variant="body2" style={{ color: 'white' }}>
+          {item.productId?.name}
+        </Typography>
+        <Typography variant="body2" style={{ color: 'white' }}>
+          Qty: {item.quantity}
+        </Typography>
+        <Typography variant="body2" color="warning">
+          Dt {item.prix}
+        </Typography>
+        <Typography variant="body2" color="warning">
+          Dt {item.totalPrice.toFixed(2)}
+        </Typography>
+      </Box>
+    ))}
 
-                        <Typography variant="h6" color="orangered" sx={{ mt: 2 }}>
-                          Total: Dt {commande.totalAmount.toFixed(2)}
-                        </Typography>
+    <Typography variant="h6" color="orangered" sx={{ mt: 2 }}>
+      Total: Dt {commande.totalAmount.toFixed(2)}
+    </Typography>
 
-                        {/* Display the date of the commande */}
-                        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-                          Date: {formatDate(commande.createdAt)} {/* Assuming `createdAt` is the timestamp */}
-                        </Typography>
+    {/* Display the date of the commande */}
+    <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+      Date: {formatDate(commande.createdAt)} {/* Assuming `createdAt` is the timestamp */}
+    </Typography>
 
-                        {/* Status with dynamic color */}
-                        <Typography
-                          variant="body1"
-                          sx={{
-                            mt: 2,
-                            padding: "4px 10px",
-                            borderRadius: "5px",
-                            backgroundColor: statusColors[commande.status] || "grey",
-                            color: "white",
-                            textAlign: "center",
-                          }}
-                        >
-                          {commande.status.charAt(0).toUpperCase() + commande.status.slice(1)}
-                        </Typography>
-                      </CardContent>
-                    </Card>
+    {/* Status with dynamic color */}
+    <Typography
+      variant="body1"
+      sx={{
+        mt: 2,
+        padding: "4px 10px",
+        borderRadius: "5px",
+        backgroundColor: statusColors[commande.status] || "grey",
+        color: "white",
+        textAlign: "center",
+      }}
+    >
+      {commande.status.charAt(0).toUpperCase() + commande.status.slice(1)}
+    </Typography>
+
+    {/* Cancel Button with Icon */}
+    {commande.status !== "canceled" && (
+      <IconButton
+      color="error"
+      sx={{
+        position: "absolute",
+        top: 10,
+        right: 10,
+        display: "flex",
+        flexDirection: "column",  // To stack the icon and text vertically
+        alignItems: "center",
+      }}
+      onClick={() => handleCancelCommande(commande._id)}
+    >
+      <CancelIcon />
+      <Typography variant="caption" color="error" sx={{ mt: 0.5 }}>
+        Cancel Order
+      </Typography>
+    </IconButton>
+    
+    )}
+  </CardContent>
+</Card>
+
                   </Grid>
                 ))
               ) : (
-                <Typography variant="body1" color="text.secondary" sx={{ mt: 4 }}>
-                  No commandes found matching the search query.
+                <Typography variant="body1" color="text.secondary" sx={{ width: "100%", textAlign: "center" }}>
+                  No commandes found
                 </Typography>
               )}
             </Grid>

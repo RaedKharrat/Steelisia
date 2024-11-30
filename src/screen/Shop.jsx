@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import Header from '../component/Header.jsx';
-import MainBanner2 from '../component/MainBannerShop.jsx';
-import FurnitureSales from '../component/ShopComponent.jsx';
 import Footer from '../component/Footer.jsx';
 import CartModal from '../component/cartModal.jsx';
 import LoadingScreen from '../component/LoadingScreen.jsx'; // Import LoadingScreen
