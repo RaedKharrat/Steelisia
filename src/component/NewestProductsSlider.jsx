@@ -13,7 +13,7 @@ const NewestProductsSlider = () => {
   useEffect(() => {
     // Fetch the newest products from the API
     axios
-      .get("http://localhost:9090/product/newest")
+      .get("https://steelisia-tunisie.onrender.com/product/newest")
       .then((response) => {
         console.log(response.data); // Log the fetched data
         setProducts(response.data);
@@ -51,7 +51,7 @@ const NewestProductsSlider = () => {
           >
             <img
               className="card-image"
-              src={`http://localhost:9090/images/${product.images[0]}`}
+              src={`https://steelisia-tunisie.onrender.com/images/${product.images[0]}`}
               alt={product.name}
             />
             <div className="card-content">

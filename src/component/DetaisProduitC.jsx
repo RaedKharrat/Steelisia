@@ -18,12 +18,12 @@ const DetailsProduit = ({ updateCartCount }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:9090/product/${id}`);
+        const response = await fetch(`https://steelisia-tunisie.onrender.com/product/${id}`);
         if (!response.ok) throw new Error('Network response was not ok');
 
         const data = await response.json();
         setProduct(data);
-        setMainImage(`http://localhost:9090/images/${data.images[0]}`);
+        setMainImage(`https://steelisia-tunisie.onrender.com/images/${data.images[0]}`);
         setTotalAmount(Number(data.prix)); // Ensure initial total amount is a number
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -87,7 +87,7 @@ const DetailsProduit = ({ updateCartCount }) => {
     };
 
     try {
-      const response = await fetch('http://localhost:9090/cmd/commande/', {
+      const response = await fetch('https://steelisia-tunisie.onrender.com/cmd/commande/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ const DetailsProduit = ({ updateCartCount }) => {
             {product.images.map((img, index) => (
               <img
                 key={index}
-                src={`http://localhost:9090/images/${img}`}
+                src={`https://steelisia-tunisie.onrender.com/images/${img}`}
                 alt={`Thumbnail ${index}`}
                 className="img-thumbnail mb-2"
                 style={{
@@ -137,10 +137,10 @@ const DetailsProduit = ({ updateCartCount }) => {
                   width: '90%',
                   objectFit: 'cover',
                   maxHeight: '100px',
-                  border: mainImage === `http://localhost:9090/images/${img}` ? '2px solid #ff9800' : 'none',
+                  border: mainImage === `https://steelisia-tunisie.onrender.com/images/${img}` ? '2px solid #ff9800' : 'none',
                   transition: 'border 0.3s',
                 }}
-                onClick={() => setMainImage(`http://localhost:9090/images/${img}`)}
+                onClick={() => setMainImage(`https://steelisia-tunisie.onrender.com/images/${img}`)}
               />
             ))}
           </div>

@@ -25,7 +25,7 @@ const ShopProduit = ({ updateCartCount }) => {
   useEffect(() => {
     const fetchProductsByCategory = async () => {
       try {
-        const response = await axios.get(`http://localhost:9090/product/productsbycategorie/${categoryId}`);
+        const response = await axios.get(`https://steelisia-tunisie.onrender.com/product/productsbycategorie/${categoryId}`);
         setProducts(response.data);
 
         const uniqueSubCategories = [
@@ -198,7 +198,7 @@ const ShopProduit = ({ updateCartCount }) => {
             <div key={product._id} className="product-card" onClick={() => navigateToDetails(product._id)}>
               <div className="product-img-container">
                 <img
-                  src={`http://localhost:9090/images/${product.images[0]}`}
+                  src={`https://steelisia-tunisie.onrender.com/images/${product.images[0]}`}
                   alt={product.name}
                   style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '10px' }}
                 />

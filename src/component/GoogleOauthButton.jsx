@@ -14,7 +14,7 @@ const GoogleAuthButton = () => {
 
     try {
       // Send token to the backend for validation
-      const backendUrl = "http://localhost:9090/user/google-auth";
+      const backendUrl = "https://steelisia-tunisie.onrender.com/user/google-auth";
       const res = await fetch(backendUrl, {
         method: "POST",
         headers: {

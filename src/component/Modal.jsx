@@ -6,7 +6,7 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:9090/user/forgetpwd', {
+      const response = await fetch('https://steelisia-tunisie.onrender.com/user/forgetpwd', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

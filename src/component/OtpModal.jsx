@@ -64,7 +64,7 @@ const OtpModal = ({ isOpen, onClose, onVerify, onResend, email }) => {
     const otpCode = otp.join(""); // Join the array to form a 6-digit OTP string
 
     try {
-      const response = await fetch('http://localhost:9090/user/otpverify', {
+      const response = await fetch('https://steelisia-tunisie.onrender.com/user/otpverify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

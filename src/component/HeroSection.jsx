@@ -16,7 +16,7 @@ const HeroSection = () => {
   // Function to handle PDF download
   const handleDownloadPDF = async () => {
     try {
-      const response = await axios.get("http://localhost:9090/product/download-pdf", {
+      const response = await axios.get("https://steelisia-tunisie.onrender.com/product/download-pdf", {
         responseType: "blob",  // This is important for downloading files
       });
 

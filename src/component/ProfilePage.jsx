@@ -138,7 +138,7 @@ const ProfilePage = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:9090/user/${userId}`,
+        `https://steelisia-tunisie.onrender.com/user/${userId}`,
         formDataToSend,
         {
           headers: {

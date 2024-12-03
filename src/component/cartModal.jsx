@@ -79,7 +79,7 @@ const CartModal = ({ cartItems, onClose, userId, onCartUpdate }) => {
         })),
       };
   
-      const response = await axios.post('http://localhost:9090/cmd/commande/', requestData, {
+      const response = await axios.post('https://steelisia-tunisie.onrender.com/cmd/commande/', requestData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',

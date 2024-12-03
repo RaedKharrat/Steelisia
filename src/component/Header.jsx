@@ -16,7 +16,7 @@ const Header = ({ cartCount, onCartClick }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('http://localhost:9090/categorie/');
+        const response = await fetch('https://steelisia-tunisie.onrender.com/categorie/');
         const data = await response.json();
         setCategories(data); // Store fetched categories in state
       } catch (error) {
@@ -72,7 +72,7 @@ const Header = ({ cartCount, onCartClick }) => {
   const handleLogout = async () => {
     try {
       // Send DELETE request to logout API
-      await fetch('http://localhost:9090/user/logout', {
+      await fetch('https://steelisia-tunisie.onrender.com/user/logout', {
         method: 'DELETE',
         credentials: 'include', // Include credentials (cookies) in the request
       });

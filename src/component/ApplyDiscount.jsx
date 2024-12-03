@@ -13,7 +13,7 @@ const ApplyDiscount = ({ productId }) => {
         setError('');
 
         try {
-            const response = await axios.post(`http://localhost:9090/product/discount/${productId}`, {
+            const response = await axios.post(`https://steelisia-tunisie.onrender.com/product/discount/${productId}`, {
                 discountType,
                 discountValue: Number(discountValue),
             });

@@ -14,7 +14,7 @@ const ResetPasswordModal = ({ isOpen, onClose, email }) => {
   const handleSubmit = async () => {
     if (password === confirmPassword) {
       try {
-        const response = await axios.post('http://localhost:9090/user/resetpwd', {
+        const response = await axios.post('https://steelisia-tunisie.onrender.com/user/resetpwd', {
           email, 
           newPassword: password,
         });

@@ -38,7 +38,7 @@ const DashboardP = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:9090/product/");
+        const response = await axios.get("https://steelisia-tunisie.onrender.com/product/");
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -57,7 +57,7 @@ const DashboardP = () => {
     const fetchProductCount = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:9090/product/countp"
+          "https://steelisia-tunisie.onrender.com/product/countp"
         );
         if (response.data && response.data.totalProducts !== undefined) {
           setTotalProducts(response.data.totalProducts);
@@ -75,7 +75,7 @@ const DashboardP = () => {
     // Fetch categories dynamically
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:9090/categorie/");
+        const response = await axios.get("https://steelisia-tunisie.onrender.com/categorie/");
         setCategories(response.data); // Assuming the response contains the list of categories
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -87,7 +87,7 @@ const DashboardP = () => {
   const deleteProduct = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        await axios.delete(`http://localhost:9090/product/${id}`);
+        await axios.delete(`https://steelisia-tunisie.onrender.com/product/${id}`);
         setProducts(products.filter((product) => product._id !== id));
       } catch (error) {
         console.error("Error deleting product:", error);
@@ -100,7 +100,7 @@ const DashboardP = () => {
     try {
       const { name, description, prix, qnt, etat, sousCategorie } = editProduct;
       const response = await axios.put(
-        `http://localhost:9090/product/${editProduct._id}`,
+        `https://steelisia-tunisie.onrender.com/product/${editProduct._id}`,
         { name, description, prix, qnt, etat, sousCategorie }
       );
       setProducts(
@@ -154,7 +154,7 @@ const DashboardP = () => {
   
     try {
       const response = await axios.post(
-        "http://localhost:9090/product/",
+        "https://steelisia-tunisie.onrender.com/product/",
         formData,
         {
           headers: {

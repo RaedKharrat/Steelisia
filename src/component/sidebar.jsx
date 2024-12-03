@@ -9,7 +9,7 @@ const Sidebar = ({ sidebarActive }) => {
   const handleLogout = async () => {
     try {
       // Send a DELETE request to the logout endpoint
-      await axios.delete('http://localhost:9090/user/logout', { withCredentials: true });
+      await axios.delete('https://steelisia-tunisie.onrender.com/user/logout', { withCredentials: true });
 
       // Clear the token from local storage
       localStorage.removeItem('authToken');

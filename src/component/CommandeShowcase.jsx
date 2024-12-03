@@ -66,7 +66,7 @@ const CommandeShowcase = () => {
         const decodedToken = jwtDecode(authToken);
         const userId = decodedToken.userId;
         const response = await axios.get(
-          `http://localhost:9090/cmd/mycommandes/${userId}`
+          `https://steelisia-tunisie.onrender.com/cmd/mycommandes/${userId}`
         );
         setCommandes(response.data);
       } catch (err) {
@@ -82,7 +82,7 @@ const CommandeShowcase = () => {
   const handleCancelCommande = async (commandeId) => {
     try {
       const response = await axios.put(
-        `http://localhost:9090/cmd/cancel/${commandeId}`
+        `https://steelisia-tunisie.onrender.com/cmd/cancel/${commandeId}`
       );
       if (response.data) {
         // Update the status locally after cancellation

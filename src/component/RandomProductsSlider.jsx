@@ -13,7 +13,7 @@ const RandomProductsSlider = () => {
   useEffect(() => {
     const fetchRandomProducts = async () => {
       try {
-        const response = await fetch('http://localhost:9090/product/randomproduct');
+        const response = await fetch('https://steelisia-tunisie.onrender.com/product/randomproduct');
         if (!response.ok) throw new Error('Network response was not ok');
 
         const data = await response.json();
@@ -97,7 +97,7 @@ const RandomProductsSlider = () => {
                 }}
               >
                 <img
-                  src={`http://localhost:9090/images/${product.images[0]}`}
+                  src={`https://steelisia-tunisie.onrender.com/images/${product.images[0]}`}
                   alt={product.name}
                   className="card-img-top"
                   style={{

@@ -38,7 +38,7 @@ const DashboardCmd = () => {
   useEffect(() => {
     const fetchCommands = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/cmd/commandes/');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/cmd/commandes/');
         setCommands(response.data);
       } catch (error) {
         console.error('Error fetching commands:', error.response ? error.response.data : error.message);
@@ -53,7 +53,7 @@ const DashboardCmd = () => {
   useEffect(() => {
     const fetchCommandCount = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/cmd/commande/countcmd');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/cmd/commande/countcmd');
         if (response.data && response.data.totalCommands !== undefined) {
           setTotalCommands(response.data.totalCommands);
         } else {
@@ -69,7 +69,7 @@ const DashboardCmd = () => {
   useEffect(() => {
     const fetchCommandCounts = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/cmd/commande/countcmd-shipped');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/cmd/commande/countcmd-shipped');
         if (response.data && response.data.shippedCount !== undefined) {
           setShippedCommands(response.data.shippedCount);
         } else {
@@ -84,7 +84,7 @@ const DashboardCmd = () => {
   useEffect(() => {
     const fetchCommandCountc = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/cmd/commande/countcmd-canceled');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/cmd/commande/countcmd-canceled');
         if (response.data && response.data.canceledCommandes !== undefined) {
           setCanceledCommands(response.data.canceledCommandes);
         } else {
@@ -99,7 +99,7 @@ const DashboardCmd = () => {
   useEffect(() => {
     const fetchCommandCountd = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/cmd/commande/countcmd-delivred');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/cmd/commande/countcmd-delivred');
         if (response.data && response.data.deliveredCommandes !== undefined) {
           setDeliveredCommands(response.data.deliveredCommandes);
         } else {
@@ -114,7 +114,7 @@ const DashboardCmd = () => {
   useEffect(() => {
     const fetchCommandCountp = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/cmd/commande/countcmd-pending');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/cmd/commande/countcmd-pending');
         if (response.data && response.data.pendingCommandes !== undefined) {
           setPendingCommands(response.data.pendingCommandes);
         } else {
@@ -129,7 +129,7 @@ const DashboardCmd = () => {
   useEffect(() => {
     const fetchCommandCountss = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/cmd/commande/countcmd-sum');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/cmd/commande/countcmd-sum');
         if (response.data && response.data.totalDeliveredAmount !== undefined) {
           setSumDeliveredCmd(response.data.totalDeliveredAmount);
         } else {
@@ -145,7 +145,7 @@ const DashboardCmd = () => {
   const deleteCommand = async (id) => {
     if (window.confirm("Are you sure you want to delete this command?")) {
       try {
-        await axios.delete(`http://localhost:9090/cmd/commande/${id}`);
+        await axios.delete(`https://steelisia-tunisie.onrender.com/cmd/commande/${id}`);
         setCommands(commands.filter(command => command._id !== id));
       } catch (error) {
         console.error('Error deleting command:', error.response ? error.response.data : error.message);
@@ -161,7 +161,7 @@ const DashboardCmd = () => {
     event.preventDefault();
     try {
       const { name, status, _id } = editCommand;
-      const response = await axios.put(`http://localhost:9090/cmd/commande/${_id}`, { name, status });
+      const response = await axios.put(`https://steelisia-tunisie.onrender.com/cmd/commande/${_id}`, { name, status });
       setCommands(commands.map(command => command._id === _id ? response.data : command));
       setEditCommand(null); // Clear the edit form
     } catch (error) {
@@ -171,7 +171,7 @@ const DashboardCmd = () => {
 
   const handleStatusChange = async (commandId, newStatus) => {
     try {
-      const response = await axios.put(`http://localhost:9090/cmd/commande/${commandId}`, { status: newStatus });
+      const response = await axios.put(`https://steelisia-tunisie.onrender.com/cmd/commande/${commandId}`, { status: newStatus });
       setCommands(commands.map(command => command._id === commandId ? response.data : command));
     } catch (error) {
       console.error('Error updating status:', error.response ? error.response.data : error.message);
@@ -181,7 +181,7 @@ const DashboardCmd = () => {
   const handleAddCommand = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:9090/cmd/commande', { name: newCommandName, status: newCommandStatus });
+      const response = await axios.post('https://steelisia-tunisie.onrender.com/cmd/commande', { name: newCommandName, status: newCommandStatus });
       setCommands([...commands, response.data]);
       setShowAddCommandModal(false);
       setNewCommandName('');
@@ -193,7 +193,7 @@ const DashboardCmd = () => {
 
   const handleDownloadPDF = async (commandId) => {
     try {
-      const response = await axios.get(`http://localhost:9090/cmd/commande-pdf/${commandId}`, {
+      const response = await axios.get(`https://steelisia-tunisie.onrender.com/cmd/commande-pdf/${commandId}`, {
         responseType: 'blob', // Important for file download
       });
       // Create a link to download the PDF

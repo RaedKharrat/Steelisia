@@ -32,7 +32,7 @@ const DashboardCategorie = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/categorie/');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/categorie/');
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error.response ? error.response.data : error.message);
@@ -46,7 +46,7 @@ const DashboardCategorie = () => {
   useEffect(() => {
     const fetchCategoryCount = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/categorie/countc');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/categorie/countc');
         if (response.data && response.data.totalCategories !== undefined) {
           setTotalCategories(response.data.totalCategories);
         } else {
@@ -62,7 +62,7 @@ const DashboardCategorie = () => {
   const deleteCategory = async (id) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
       try {
-        await axios.delete(`http://localhost:9090/categorie/${id}`);
+        await axios.delete(`https://steelisia-tunisie.onrender.com/categorie/${id}`);
         setCategories(categories.filter(category => category._id !== id));
       } catch (error) {
         console.error('Error deleting category:', error.response ? error.response.data : error.message);
@@ -73,7 +73,7 @@ const DashboardCategorie = () => {
   const handleAddCategory = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:9090/categorie', { name: newCategoryName });
+      const response = await axios.post('https://steelisia-tunisie.onrender.com/categorie', { name: newCategoryName });
       setCategories([...categories, response.data]);
       setShowAddCategoryModal(false);
       setNewCategoryName('');
@@ -85,7 +85,7 @@ const DashboardCategorie = () => {
   const handleEditCategory = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:9090/categorie/${editCategory._id}`, { name: editCategory.name });
+      const response = await axios.put(`https://steelisia-tunisie.onrender.com/categorie/${editCategory._id}`, { name: editCategory.name });
       setCategories(categories.map(category => (category._id === response.data._id ? response.data : category)));
       setEditCategory(null);  // Close the edit modal after saving changes
     } catch (error) {
@@ -109,7 +109,7 @@ const DashboardCategorie = () => {
 
     try {
       setUploadStatus('Uploading...');
-      const response = await axios.post('http://localhost:9090/product/upload-pdf', formData, {
+      const response = await axios.post('https://steelisia-tunisie.onrender.com/product/upload-pdf', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

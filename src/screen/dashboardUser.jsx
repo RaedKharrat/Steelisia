@@ -30,7 +30,7 @@ const DashboardU = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/user/');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/user/');
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -45,7 +45,7 @@ const DashboardU = () => {
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/user/countu');
+        const response = await axios.get('https://steelisia-tunisie.onrender.com/user/countu');
         console.log('API Response:', response.data);
         
         if (response.data && response.data.totalUser !== undefined) {
@@ -77,7 +77,7 @@ const DashboardU = () => {
   const deleteUser = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        await axios.delete(`http://localhost:9090/user/${id}`);
+        await axios.delete(`https://steelisia-tunisie.onrender.com/user/${id}`);
         setUsers(users.filter(user => user._id !== id));
       } catch (error) {
         console.error('Error deleting user:', error);
@@ -89,7 +89,7 @@ const DashboardU = () => {
     event.preventDefault();
     try {
       const { email, first_name, last_name, companyName, phone, adresse, role } = editUser;
-      const response = await axios.put(`http://localhost:9090/user/${editUser._id}`, { email, first_name, last_name, companyName, phone, adresse, role });
+      const response = await axios.put(`https://steelisia-tunisie.onrender.com/user/${editUser._id}`, { email, first_name, last_name, companyName, phone, adresse, role });
       setUsers(users.map(user => user._id === editUser._id ? response.data : user));
       setEditUser(null);
     } catch (error) {

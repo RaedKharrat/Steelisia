@@ -22,8 +22,8 @@ const FurnitureSales = ({ updateCartCount }) => {
     const fetchData = async () => {
       try {
         const [productsResponse, categoriesResponse] = await Promise.all([
-          fetch('http://localhost:9090/product/'),
-          fetch('http://localhost:9090/categorie/')
+          fetch('https://steelisia-tunisie.onrender.com/product/'),
+          fetch('https://steelisia-tunisie.onrender.com/categorie/')
         ]);
         const products = await productsResponse.json();
         const categories = await categoriesResponse.json();
@@ -141,7 +141,7 @@ const FurnitureSales = ({ updateCartCount }) => {
               <div key={item._id} className="col-lg-3 col-md-4 col-sm-6 mb-30">
                 <div className="item-card">
                   <div className="item-image" onClick={() => openModal(item)}>
-                    <img src={`http://localhost:9090/images/${item.images[0]}`} alt={item.name} />
+                    <img src={`https://steelisia-tunisie.onrender.com/images/${item.images[0]}`} alt={item.name} />
                     <span className="category-badge">{item.idCategorie?.name || 'Unknown Category'}</span>
                     <span className="price-tag">{item.prix.toFixed(1)} Dt</span>
                   </div>

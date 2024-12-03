@@ -12,7 +12,7 @@ const RandomP = () => {
     useEffect(() => {
         const fetchRandomProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:9090/product/randomproduct');
+                const response = await axios.get('https://steelisia-tunisie.onrender.com/product/randomproduct');
                 console.log(response.data); // Check what the API is returning
                 setProducts(Array.isArray(response.data) ? response.data : []); // Ensure `products` is an array
             } catch (err) {
@@ -67,7 +67,7 @@ const RandomP = () => {
                 {Array.isArray(products) && products.map(product => (
                     <div className="card" key={product._id}>
                         <img 
-                            src={`http://localhost:9090/images/${product.images[0]}`} 
+                            src={`https://steelisia-tunisie.onrender.com/images/${product.images[0]}`} 
                             alt={product.name} 
                             className="card-image"
                         />

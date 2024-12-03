@@ -102,7 +102,7 @@ const ProductModal = ({ product, onClose }) => {
           }}
         >
           <img
-            src={`http://localhost:9090/images/${product.images[currentImageIndex]}`}
+            src={`https://steelisia-tunisie.onrender.com/images/${product.images[currentImageIndex]}`}
             alt={`${product.name} ${currentImageIndex + 1}`}
             style={{
               width: 'auto',

@@ -12,7 +12,7 @@ const NewestProducts = () => {
     useEffect(() => {
         const fetchNewestProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:9090/product/newest');
+                const response = await axios.get('https://steelisia-tunisie.onrender.com/product/newest');
                 console.log(response.data); // Debugging response
                 setProducts(response.data);
             } catch (err) {
@@ -66,7 +66,7 @@ const NewestProducts = () => {
                 {products.map((product) => (
                     <div className="card" key={product._id}>
                         <img
-                            src={`http://localhost:9090/images/${product.images[0]}`}
+                            src={`https://steelisia-tunisie.onrender.com/images/${product.images[0]}`}
                             alt={product.name}
                             className="card-image"
                         />
