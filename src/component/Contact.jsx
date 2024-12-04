@@ -53,11 +53,12 @@ const ContactUs = () => {
                 <h4 style={{color:'white'}}>Contact Information</h4>
                 <p style={{color:'white'}}>
                   <i className="fas fa-map-marker-alt" style={{ color: '#ff4500', marginRight: '10px' }}></i>
-                   2081, Ariana-Essoghra, Ariana , Tunisie
-                </p>
+
+                  Touta, Km 5 jp1 grombalia borj cedriya                </p>
                 <p style={{color:'white'}}>
                   <i className="fas fa-phone" style={{ color: '#ff4500', marginRight: '10px' }}></i>
-                  (+216) 55 584 661
+                  (+216) 57 116 876
+
                 </p>
               </div>
 
