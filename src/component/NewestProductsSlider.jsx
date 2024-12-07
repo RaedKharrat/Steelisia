@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Slider from "react-slick";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css"; // Import slick-carousel CSS
+import "slick-carousel/slick/slick-theme.css";
 import "./NewestProductsSlider.css";
 
 const NewestProductsSlider = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate(); // Initialize the navigate function
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the newest products from the API
     axios
       .get("https://steelisia-tunisie.onrender.com/product/newest")
       .then((response) => {
-        console.log(response.data); // Log the fetched data
+        console.log(response.data);
         setProducts(response.data);
       })
       .catch((error) => {
@@ -23,20 +22,39 @@ const NewestProductsSlider = () => {
       });
   }, []);
 
-  // Slider settings
   const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4, // Show 4 cards at a time
+    slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true, // Enable auto-slide
-    autoplaySpeed: 2000, // 2 seconds per slide
+    autoplay: true,
+    autoplaySpeed: 2000,
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   const handleCardClick = (id) => {
-    navigate(`/produit-detais/${id}`); // Navigate to the product detail page with the product's ID
+    navigate(`/produit-detais/${id}`);
   };
 
   return (
@@ -47,7 +65,7 @@ const NewestProductsSlider = () => {
           <div
             className="cardnew"
             key={product._id}
-            onClick={() => handleCardClick(product._id)} // Add onClick handler to each card
+            onClick={() => handleCardClick(product._id)}
           >
             <img
               className="card-image"
@@ -57,7 +75,8 @@ const NewestProductsSlider = () => {
             <div className="card-content">
               <h3 className="card-title2">{product.name}</h3>
               <p className="card-category">
-                {product.idCategorie?.name || "Uncategorized"} | {product.sousCategorie || "Non Affecté"}
+                {product.idCategorie?.name || "Uncategorized"} |{" "}
+                {product.sousCategorie || "Non Affecté"}
               </p>
               <p className="card-price">
                 {product.prix ? product.prix.toFixed(2) : "N/A"} Dt
